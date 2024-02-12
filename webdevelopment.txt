@@ -1,0 +1,13 @@
+# Information about portfolio website.
+- Developer is 32 year old male.
+- Developer had a harsh past, fought against addiction and depression.
+- Developer was reborn, a new person. So he want's the website to be in the style of a Rising phoenix.
+- Developer is self taught and immensly ambitious and hardworking.
+
+# Goals for portfolio website:
+- Showcase his work
+- Inspire other developers / and people who were in similar situation
+- Reach potential employers
+- Build a unique brand for helping others combined with tech.
+
+

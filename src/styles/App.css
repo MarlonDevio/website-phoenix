@@ -1,0 +1,32 @@
+#root {
+  /* --color-red-400: #A50808;
+  --color-red-500: #730217;
+  --color-red-800: #400112;
+  --color-yellow-500: #f2c063;
+  --color-yellow-100: #ffffc9; */
+  --color-red-400: rgba(165, 8, 8, 1);
+  --color-red-500: rgba(115, 2, 23, 1);
+  --color-red-800: rgba(64, 1, 18, 1);
+  --color-yellow-500: rgba(242, 192, 99, 1);
+  --color-yellow-100: rgba(255, 255, 201, 1);
+  --color-text-grey: #f8f8f8;
+
+  --color-grey: rgb(39, 42, 48);
+  --color-light-green: rgb(73, 174, 126);
+  --color-black: rgb(5, 10, 13);
+  --color-black: #050a0d;
+  --color-light-orange: #e5b276;
+  --color-light-yellow: rgb(246, 243, 176);
+  --color-light-yellow: #f6f3b0;
+}
+body {
+  background-image:
+          linear-gradient(to bottom,
+      rgba(5, 10, 13, 0.2),
+      rgba(5, 10, 13, 0.9)
+    ),
+    url('../assets/bg-image.webp');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
