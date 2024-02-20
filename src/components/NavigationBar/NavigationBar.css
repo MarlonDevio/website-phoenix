@@ -1,53 +1,42 @@
 .navigation-bar {
-  /*background: linear-gradient(*/
-  /*  90deg,*/
-  /*  rgba(165, 8, 8, 1) 0%,*/
-  /*  rgba(115, 2, 23, 1) 10%,*/
-  /*  rgba(64, 1, 18, 1) 30%,*/
-  /*  rgba(67, 1, 18, 1) 60%,*/
-  /*  rgba(115, 2, 23, 1) 90%,*/
-  /*  rgba(165, 8, 8, 1) 100%*/
-  /*);*/
-  /*background-color: #006633;*/
-  /*.navbar-gradient {*/
-  /*  background: linear-gradient(to right, #006633, #00A550, #AEEA00);*/
-  /*}*/
-  /*  background: linear-gradient(to right, #006633, #00A550, #AEEA00, #00A550, #006633);*/
+    padding: 2rem 4rem;
+    justify-content: space-between;
+    align-items: baseline;
 
-  /*HEEL SJIEK */
-
-  /*background-image: linear-gradient(*/
-  /*    90deg,*/
-  /*    rgba(165, 8, 8, 1) 0%,*/
-  /*    rgba(115, 2, 23, 1) 10%,*/
-  /*    rgba(64, 1, 18, 1) 30%,*/
-  /*    rgba(67, 1, 18, 1) 60%,*/
-  /*    rgba(115, 2, 23, 1) 90%,*/
-  /*    rgba(165, 8, 8, 1) 100%*/
-  /*);*/
-
-  background-image: linear-gradient(
-    135deg,
-    rgba(246, 243, 176, 1) 0%,
-    rgba(39, 42, 48, 1) 100%
-  );
-
-  /*background-image: linear-gradient(90deg, rgba(246,243,176,1),rgba(39,42,48,1), rgba(246,243,176,1));*/
-  padding: 4rem;
-  align-items: baseline;
-  /* justify-content: space-between; */
-
-  ul {
-    gap: 4rem;
-    font-weight: 800;
+}
+.nav__list {
+gap: 2rem;
+    align-items: center;
+}
+.nav__list a{
+    color: var(--color-black);
     font-size: 2rem;
-  }
+    font-weight: 600;
+    position: relative;
+    transition: all 0.4s ease-in-out;
+    &:after{
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--color-green-light);
+        transition: all 0.4s ease-in-out;
+    }
+    &:hover {
+            color: var(--color-gold-1);
+            &:after {
+                width: 100%;
+            }
+    }
 }
 
-.navigation__logo {
-  max-width: 6rem;
+.light {
+    background-color: var(--color-green-light);
+
 }
 
-.navigation__items__list {
-  margin: 0 auto;
+.dark {
+    background: linear-gradient(to bottom,  var(--color-gold-3),var(--color-black));
 }

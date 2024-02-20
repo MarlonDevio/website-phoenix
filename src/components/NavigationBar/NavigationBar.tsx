@@ -1,64 +1,32 @@
-import './NavigationBar.css';
-import { GradientText } from '../../styles/GeneralStyles';
-import { logo } from '../../assets';
+import "./NavigationBar.css";
+import { Logo, NavigationButton } from "../index.ts";
+import { useTheme } from "../../hooks";
 
-function NavigationBar() {
+const NavigationBar = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { theme } = useTheme();
+
   return (
-    <nav className='navigation-bar flex'>
-      <img
-        className='navigation__logo'
-        src={logo}
-        alt=''
-      />
-      <ul className='navigation__items__list flex justify-center'>
+    <nav className={`navigation-bar flex a-baseline ${theme}`}>
+      <Logo theme={theme} />
+      <ul className="flex nav__list a-center">
         <li>
-          <GradientText
-            as='a'
-            href='#about'
-            title='About'
-          >
-            About Me
-          </GradientText>
+          <a href="#">Home</a>
         </li>
         <li>
-          <GradientText
-            as='a'
-            href='#home'
-            title='Home'
-          >
-            Home
-          </GradientText>
+          <a href="#">About</a>
         </li>
         <li>
-          <GradientText
-            as='a'
-            href='#portfolio'
-            title='Portfolio'
-          >
-            Portfolio
-          </GradientText>
+          <a href="#">Portfolio</a>
         </li>
         <li>
-          <GradientText
-            as='a'
-            href='#mission'
-            title='Mission'
-          >
-            My Mission
-          </GradientText>
+          <a href="#">Mission</a>
         </li>
-        <li>
-          <GradientText
-            as='a'
-            href='#blog'
-            title='Blog'
-          >
-            Blog
-          </GradientText>
-        </li>
+        <NavigationButton theme={theme}>Contact</NavigationButton>
       </ul>
+      {/*<button onClick={toggleTheme}>toggle</button>*/}
     </nav>
   );
-}
+};
 
 export default NavigationBar;
