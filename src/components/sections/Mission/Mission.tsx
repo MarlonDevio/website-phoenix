@@ -3,7 +3,7 @@ import { Container, Section } from "../../index.ts";
 
 const Mission = () => {
   return (
-    <Section $dark={true}>
+    <Section className="mission__section" $dark={true}>
       <Container>
         <h2>Mission</h2>
         <h3>Rising Together: Coding for Change</h3>

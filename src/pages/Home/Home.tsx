@@ -1,5 +1,5 @@
 import "./Home.css";
-import { About, Hero, Mission, Portfolio } from "../../components";
+import { About, Contact, Hero, Mission, Portfolio } from "../../components";
 
 const Home = () => {
   return (
@@ -8,6 +8,7 @@ const Home = () => {
       <About />
       <Portfolio />
       <Mission />
+      <Contact />
     </div>
   );
 };
