@@ -4,7 +4,7 @@ import { Container, Section } from "../../index.ts";
 const Hero = () => {
   return (
     <Section $dark={false}>
-      <Container>
+      <Container className="hero">
         <h1>
           Whatever The Mind can Conceive and Believe,
           <br /> It can Achieve

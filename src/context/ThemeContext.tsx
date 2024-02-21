@@ -1,15 +1,16 @@
-import {createContext, useState} from 'react';
+import { createContext, ReactNode, useState } from "react";
 
-const ThemeContext = createContext({
-    theme:"",
-    setTheme: (theme:string) => {},
-})
+export const ThemeContext = createContext({
+  theme: "",
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  setTheme: (value: string): void => {},
+});
 
-export const ThemeProvider = ({children}:{children:React.ReactNode}) => {
-    const [theme, setTheme] = useState("light");
-    return (
-        <ThemeContext.Provider value={{theme, setTheme}}>
-            {children}
-        </ThemeContext.Provider>
-    )
-}
+export const ThemeProvider = ({ children }: { children: ReactNode }) => {
+  const [theme, setTheme] = useState("dark");
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};

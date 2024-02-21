@@ -3,7 +3,7 @@ import { Container, Section } from "../../index.ts";
 
 const About = () => {
   return (
-    <Section $dark={true}>
+    <Section $dark={true} className="about">
       <Container>
         <h2>ABOUT</h2>
         <p style={{ maxWidth: "70ch" }}>

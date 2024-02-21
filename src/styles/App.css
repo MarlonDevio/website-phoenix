@@ -1,32 +1,72 @@
-#root {
-  /* --color-red-400: #A50808;
-  --color-red-500: #730217;
-  --color-red-800: #400112;
-  --color-yellow-500: #f2c063;
-  --color-yellow-100: #ffffc9; */
-  --color-red-400: rgba(165, 8, 8, 1);
-  --color-red-500: rgba(115, 2, 23, 1);
-  --color-red-800: rgba(64, 1, 18, 1);
-  --color-yellow-500: rgba(242, 192, 99, 1);
-  --color-yellow-100: rgba(255, 255, 201, 1);
-  --color-text-grey: #f8f8f8;
+@import './helpers.css';
 
-  --color-grey: rgb(39, 42, 48);
-  --color-light-green: rgb(73, 174, 126);
-  --color-black: rgb(5, 10, 13);
-  --color-black: #050a0d;
-  --color-light-orange: #e5b276;
-  --color-light-yellow: rgb(246, 243, 176);
-  --color-light-yellow: #f6f3b0;
+:root {
+    --color-red-400: rgba(165, 8, 8, 1);
+    --color-red-500: rgba(115, 2, 23, 1);
+    --color-red-800: rgba(64, 1, 18, 1);
+    --color-text-grey: #f8f8f8;
+
+    --color-green-light: rgb(87, 255, 198);
+    --color-green-1: rgb(0, 208, 98);
+    --color-green-2: rgb(0, 156, 74);
+    --color-green-3: rgb(5, 135, 67);
+    --color-green-4: #004d24;
+    --color-green-5: rgb(0, 71, 33);
+
+    --color-green-puppy-1: #00ff66;
+    --color-green-puppy-2: #00cc66;
+    --color-green-puppy-3: rgb(0, 153, 102);
+    --color-green-puppy-4: rgb(0, 102, 102);
+
+    --color-blue: #101056;
+    --color-blue-1: #1c1c84;
+    --color-blue-2: #000068;
+    --color-blue-3: #000053;
+    --color-blue-4: #000042;
+    --color-blue-5: #000035;
+
+
+    --color-white: #ffffff;
+
+    --color-black: rgb(005, 005, 005);
+    --color-gold: #f6c960;
+    --color-gold-1: rgb(234, 168, 12);
+    --color-gold-2: rgb(199, 144, 10);
+    --color-gold-3: rgb(184, 134, 12);
+    --color-gold-4: rgb(171, 123, 3);
+    --color-light-yellow: rgb(246, 243, 176);
+    /*background-image: url("src/assets/backgrounds/bg-image-2.webp");*/
+    /*background-attachment: fixed;*/
+    /*background-size: cover;*/
+    /*background-position: center;*/
 }
-body {
-  background-image:
-          linear-gradient(to bottom,
-      rgba(5, 10, 13, 0.2),
-      rgba(5, 10, 13, 0.9)
-    ),
-    url('../assets/bg-image.webp');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+.hero {
+    position: relative;
+    z-index: 0;
+}
+.hero > *{
+    position: relative;
+    z-index:0;
+    animation: parallax linear;
+    animation-timeline: scroll();
+
+}
+.about {
+    background-image: url("src/assets/backgrounds/bg-image-2.webp");
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}
+h1 {
+    --parallax-speed: 10;
+}
+p{
+    --parallax-speed: 9;
+}
+
+@keyframes parallax {
+    to{
+        transform: translateY(calc(var(--parallax-speed)*200px));
+    }
+
 }
