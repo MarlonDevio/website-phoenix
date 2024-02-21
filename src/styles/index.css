@@ -22,7 +22,8 @@
 
 html {
     font-size: 62.5%;
-    color: #222;
+    color: white;
+    background-color: var(--color-black);
 }
 body {
     font-size: 1.6rem;
@@ -63,7 +64,7 @@ li,
 a {
     text-decoration: none;
     list-style: none;
-    color: var(--color-text-grey);
+    color: white;
 }
 
 

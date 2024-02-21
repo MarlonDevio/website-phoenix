@@ -2,31 +2,29 @@ import { useState, useEffect } from "react";
 
 const useHideOnScroll = () => {
   const [hide, setHide] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  let timeoutId: number | null | undefined = null; // To keep track of the timeout
 
   const controlNavbar = () => {
-    if (typeof window !== "undefined") {
-      // Check the current scroll position compared to the last scroll position
-      if (window.scrollY > lastScrollY) {
-        // If user is scrolling down, hide the navbar
-        setHide(true);
-      } else {
-        // If user is scrolling up, show the navbar
-        setHide(false);
-      }
-      // Update the last scroll position to the current scroll position
-      setLastScrollY(window.scrollY);
+    if (timeoutId !== null) {
+      // If there's an existing timeout, clear it
+      clearTimeout(timeoutId);
+      setHide(true); // Hide the navbar when scrolling
     }
+    // Set a new timeout
+    timeoutId = setTimeout(() => {
+      setHide(false); // Show the navbar when scrolling stops
+    }, 100); // Delay after which to show the navbar again (100ms)
   };
 
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      // Add the event listener when the component mounts
-      window.addEventListener("scroll", controlNavbar);
-      // Remove the event listener when the component unmounts
-      return () => window.removeEventListener("scroll", controlNavbar);
-    }
-  }, [lastScrollY]); // Only re-run the effect if the lastScrollY changes
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+      if (timeoutId !== null) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, []); // Empty array ensures effect runs only once on mount and unmount
 
   return hide;
 };

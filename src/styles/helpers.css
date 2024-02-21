@@ -22,3 +22,11 @@
 .a-baseline {
     align-items: baseline;
 }
+
+.grid {
+    display: grid;
+}
+
+.grid-col-3 {
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+}

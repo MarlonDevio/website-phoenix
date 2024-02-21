@@ -1,0 +1,20 @@
+.portfolio__item {
+    padding: 4rem;
+    background-image: linear-gradient(185deg, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
+    border-radius: 1rem;
+    box-shadow: 0 0 10px 0.02rem var(--color-green-light);
+    transition: all .8cd s ease-in-out;
+    &:hover {
+        box-shadow: 0px 0px 20px 2px var(--color-green-light),
+        inset 0px 0px 200px 200px var(--color-green-light);
+    }
+}
+
+
+.portfolio__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}

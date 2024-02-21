@@ -5,10 +5,12 @@
     position: fixed;
     width: 100%;
     z-index: 100;
+    min-height: 15vh;
 }
 
 .navbar-hidden {
     animation: showNav 1.5s ease-in-out;
+    transition: all 1s ease-in-out;
 }
 .nav__list {
 gap: 2rem;
