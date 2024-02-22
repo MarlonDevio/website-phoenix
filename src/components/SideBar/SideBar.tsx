@@ -2,6 +2,19 @@ import React from 'react';
 import { Links, ToggleButton } from '..';
 import './SideBar.scss';
 import { motion } from 'framer-motion';
+/**
+ * Variants for animating the sidebar open and closed.
+ */
+const variants = {
+  open: {
+    clipPath: 'circle(120rem at calc(100% - 5rem) 5rem)',
+    transition: { type: 'spring', stiffness: 20 }
+  },
+  closed: {
+    clipPath: 'circle(3rem at calc(100% - 5rem) 5rem)',
+    transition: { delay: 0.5, type: 'spring', stiffness: 400, damping: 40 }
+  }
+};
 
 /**
  * Sidebar component that displays a toggleable sidebar with links.
@@ -22,20 +35,6 @@ const SideBar = () => {
   const openHandling = {
     handleOpen,
     open
-  };
-
-  /**
-   * Variants for animating the sidebar open and closed.
-   */
-  const variants = {
-    open: {
-      clipPath: 'circle(120rem at 5rem 5rem)',
-      transition: { type: 'spring', stiffness: 20 }
-    },
-    closed: {
-      clipPath: 'circle(3rem at 5rem 5rem)',
-      transition: { delay: 0.5, type: 'spring', stiffness: 400, damping: 40 }
-    }
   };
 
   return (

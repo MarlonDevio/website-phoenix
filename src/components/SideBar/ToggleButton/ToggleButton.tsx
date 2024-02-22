@@ -8,6 +8,14 @@ interface ToggleButtonProps {
   };
 }
 
+/**
+ * Renders a toggle button component.
+ *
+ * @component
+ * @param {Object} openHandling - The object containing the open handling functions.
+ * @param {Function} openHandling.handleOpen - The function to handle the open action.
+ * @returns {JSX.Element} The toggle button component.
+ */
 const ToggleButton = ({ openHandling }: ToggleButtonProps) => {
   return (
     <button

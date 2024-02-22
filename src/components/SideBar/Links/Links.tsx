@@ -1,6 +1,19 @@
 import { sidebarLinks } from '../../../constants/constants';
 import './Links.scss';
 
+const variants = {
+  open: {
+    transition: {
+      staggeredChildren: 0.1
+    }
+  },
+  closed: {
+    transition: {
+      staggeredChildren: 0.05,
+      staggerDirection: -1
+    }
+  }
+};
 const Links = () => {
   return (
     <div className='links__container flex--column'>
