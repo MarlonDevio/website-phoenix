@@ -1,0 +1,21 @@
+.logo__navigationbar {
+  &--container {
+    align-items: baseline;
+
+  }
+  &--img {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 0.3rem;
+
+  }
+}
+
+.span__heading {
+  font-size: 3.5rem;
+  font-weight: 700;
+
+  &--dev {
+    color: $color-gold-2;
+  }
+}

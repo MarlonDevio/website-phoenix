@@ -1,0 +1,9 @@
+.socials {
+  gap: 1rem;
+
+  svg{
+    &:hover {
+      fill: $color-gold-1;
+    }
+  }
+}

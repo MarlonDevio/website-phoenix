@@ -1,36 +1,30 @@
 // Automatisch gegenereerde index.ts
-import Form from "./Form/Form";
 import Logo from "./Logo/Logo";
 import NavigationBar from "./NavigationBar/NavigationBar";
-import PlaceHolder from "./PlaceHolder/PlaceHolder";
-import PortfolioItem from "./PortfolioItem/PortfolioItem";
+import Socials from "./Socials/Socials";
+import Wrapper from "./StyledComponents/Wrapper";
+import GithubIcon from "./Svg/GithubIcon";
+import InstagramIcon from "./Svg/InstagramIcon";
+import LinkedInIcon from "./Svg/LinkedInIcon";
 import About from "./sections/About/About";
 import Contact from "./sections/Contact/Contact";
-import Footer from "./sections/Footer/Footer";
 import Hero from "./sections/Hero/Hero";
 import Mission from "./sections/Mission/Mission";
+import Parallax from "./sections/Parallax/Parallax";
 import Portfolio from "./sections/Portfolio/Portfolio";
-import Container from "./styledComponents/Container";
-import FormButton from "./styledComponents/buttons/FormButton";
-import NavigationButton from "./styledComponents/buttons/NavigationButton";
-import HeadingOne from "./styledComponents/headers/HeadingOne";
-import Section from "./styledComponents/sections/Section";
 
 export {
-  Form,
   Logo,
   NavigationBar,
-  PlaceHolder,
-  PortfolioItem,
+  Socials,
+  Wrapper,
+  GithubIcon,
+  InstagramIcon,
+  LinkedInIcon,
   About,
   Contact,
-  Footer,
   Hero,
   Mission,
+  Parallax,
   Portfolio,
-  Container,
-  NavigationButton,
-  FormButton,
-  HeadingOne,
-  Section,
 };
