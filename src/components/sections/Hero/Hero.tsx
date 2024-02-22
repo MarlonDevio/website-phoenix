@@ -1,7 +1,7 @@
-import "./Hero.scss";
+import './Hero.scss';
 
 const Hero = () => {
-  return <section>Hero</section>;
+  return <section id='home'>Hero</section>;
 };
 
 export default Hero;

@@ -1,6 +1,5 @@
 import "./Logo.scss";
 import { logoIconGold } from "../../assets";
-
 const Logo = () => {
   return (
     <figure className="logo__navigationbar flex logo__navigationbar--container">

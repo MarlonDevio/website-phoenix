@@ -1,17 +1,14 @@
-import "./styles/App.css";
-import { NavigationBar, PlaceHolder, Footer } from "./components";
-import { ThemeProvider } from "./context/ThemeContext.tsx";
+import "./styles/App.scss";
 import { Home } from "./pages";
+import { NavigationBar } from "./components";
 
 function App() {
   return (
     <>
-      <ThemeProvider>
+      <section>
         <NavigationBar />
-        <PlaceHolder />
-        <Home />
-        <Footer />
-      </ThemeProvider>
+      </section>
+      <Home />
     </>
   );
 }

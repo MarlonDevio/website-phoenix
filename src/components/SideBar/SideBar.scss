@@ -1,0 +1,14 @@
+.sidebar {
+  align-items: center;
+  justify-content: center;
+  background-color: $color-green-light;
+  color: $color-black;
+  .bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 40rem;
+    background-color: $color-green-light;
+  }
+}

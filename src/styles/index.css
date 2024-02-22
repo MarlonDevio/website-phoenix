@@ -1,8 +1,3 @@
-/* Google Fonts Import */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Lato:wght@700&display=swap');
-
-/* Applying Font Styles */
-
 :root {
 
     line-height: 1.5;
@@ -23,18 +18,17 @@
 html {
     font-size: 62.5%;
     color: white;
-    background-color: var(--color-black);
+
 }
 body {
     font-size: 1.6rem;
-    font-family: 'Lato', sans-serif;
-    -ms-overflow-style: none; /* for Internet Explorer, Edge */
-    scrollbar-width: none; /* for Firefox */
-    background-image: url("src/assets/backgrounds/bg-image.webp");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
+    /*-ms-overflow-style: none; !* for Internet Explorer, Edge *!*/
+    /*scrollbar-width: none; !* for Firefox *!*/
+    /*background-image: url("src/assets/backgrounds/bg-image.webp");*/
+    /*background-size: cover;*/
+    /*background-repeat: no-repeat;*/
+    /*background-position: center;*/
+    /*background-attachment: fixed;*/
 }
 
 body::-webkit-scrollbar {
@@ -42,29 +36,14 @@ body::-webkit-scrollbar {
 }
 
 
-h1 {
-    font-size: 6rem;
 
-
-}
-
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 700; /* Ensures headings are bold and impactful */
-}
 
 ul,
 li,
 a {
     text-decoration: none;
     list-style: none;
-    color: white;
+    color: inherit;
 }
 
 

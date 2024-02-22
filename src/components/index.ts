@@ -1,6 +1,9 @@
 // Automatisch gegenereerde index.ts
 import Logo from "./Logo/Logo";
 import NavigationBar from "./NavigationBar/NavigationBar";
+import Links from "./SideBar/Links/Links";
+import SideBar from "./SideBar/SideBar";
+import ToggleButton from "./SideBar/ToggleButton/ToggleButton";
 import Socials from "./Socials/Socials";
 import Wrapper from "./StyledComponents/Wrapper";
 import GithubIcon from "./Svg/GithubIcon";
@@ -16,6 +19,9 @@ import Portfolio from "./sections/Portfolio/Portfolio";
 export {
   Logo,
   NavigationBar,
+  Links,
+  SideBar,
+  ToggleButton,
   Socials,
   Wrapper,
   GithubIcon,
