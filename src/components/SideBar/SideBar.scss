@@ -1,8 +1,10 @@
 .sidebar {
+  position: relative;
   align-items: center;
   justify-content: center;
   background-color: $color-green-light;
   color: $color-black;
+  z-index: 20000;
   .bg {
     position: fixed;
     top: 0;

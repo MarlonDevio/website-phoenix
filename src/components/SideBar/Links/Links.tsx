@@ -1,31 +1,49 @@
 import { sidebarLinks } from '../../../constants/constants';
 import './Links.scss';
+import { motion } from 'framer-motion';
 
 const variants = {
   open: {
     transition: {
-      staggeredChildren: 0.1
+      staggerChildren: 0.1
     }
   },
   closed: {
     transition: {
-      staggeredChildren: 0.05,
+      staggerChildren: 0.05,
       staggerDirection: -1
     }
   }
 };
+
+const itemVariants = {
+  open: {
+    y: 0,
+    opacity: 1
+  },
+  closed: {
+    y: 50,
+    opacity: 0
+  }
+};
 const Links = () => {
   return (
-    <div className='links__container flex--column'>
+    <motion.div
+      className='links__container flex--column'
+      variants={variants}
+    >
       {sidebarLinks.map((item) => (
-        <a
+        <motion.a
           key={item.id}
           href={`#${item.sectionName.toLowerCase()}`}
+          variants={itemVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           {item.sectionName}
-        </a>
+        </motion.a>
       ))}
-    </div>
+    </motion.div>
   );
 };
 

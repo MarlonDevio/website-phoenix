@@ -1,12 +1,12 @@
-import './NavigationBar.scss';
-import { Logo, SideBar, Socials, Wrapper } from '../index.ts';
+import "./NavigationBar.scss";
+import { Logo, SideBar, Socials, Wrapper } from "../index.ts";
 
 const NavigationBar = () => {
   return (
-    <nav className='navbar'>
+    <nav className="navbar">
       {/*Sidebar*/}
       <SideBar />
-      <Wrapper className='navbar--wrapper'>
+      <Wrapper display="flex" className="navbar--wrapper">
         <Logo />
         <Socials />
       </Wrapper>

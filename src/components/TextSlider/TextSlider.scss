@@ -1,0 +1,10 @@
+.container__sliding__text {
+  position: absolute;
+  font-size: 50vh;
+  bottom: -12rem;
+  white-space: nowrap;
+  color: rgba($color-light-grey, 0.05);
+  z-index: -1;
+  width: 50%;
+  font-weight: 700;
+}

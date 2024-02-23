@@ -1,8 +1,16 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const Wrapper = styled.div`
+interface WrapperProps {
+  display?: "flex" | "grid";
+}
+
+const Wrapper = styled.div<WrapperProps>`
   max-width: 136.6rem;
   margin: auto;
-  display: flex;
+  ${({ display }) =>
+    display &&
+    css`
+      display: ${display};
+    `}
 `;
 export default Wrapper;
