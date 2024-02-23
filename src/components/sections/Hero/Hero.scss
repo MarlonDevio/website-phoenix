@@ -1,5 +1,5 @@
 .hero {
-  min-height: calc(100vh - 10rem);
+  min-height: 100vh;
   overflow: hidden;
   background: linear-gradient(
     180deg,
@@ -7,18 +7,16 @@
     rgba($color-green-5, 0.3)
   );
 
-
   .container {
     &__hero {
-      align-items: center;
       height: 100%;
+      align-items: center;
       gap: 10rem;
       h1 {
         line-height: 1.2;
       }
     }
     &__text {
-      height: 100%;
       justify-content: center;
       gap: 4rem;
 

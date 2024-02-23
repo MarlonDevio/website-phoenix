@@ -16,16 +16,14 @@ const Home = () => {
         <NavigationBar />
         <Hero />
       </section>
-      <main>
-        <Parallax />
-        <About />
-        <Mission />
-        <Parallax />
-        <Portfolio />
-        <Portfolio />
-        <Portfolio />
-        <Contact />
-      </main>
+      <Parallax type='' />
+      <About />
+      <Mission />
+      <Parallax type='services' />
+      <Portfolio />
+      <Portfolio />
+      <Portfolio />
+      <Contact />
     </>
   );
 };
