@@ -1,26 +1,32 @@
-import "./Home.scss";
 import {
   About,
   Contact,
   Hero,
   Mission,
+  NavigationBar,
   Parallax,
-  Portfolio,
-} from "../../components";
+  Portfolio
+} from '../../components';
+import './Home.scss';
 
 const Home = () => {
   return (
-    <main>
-      <Hero />
-      <Parallax />
-      <About />
-      <Mission />
-      <Parallax />
-      <Portfolio />
-      <Portfolio />
-      <Portfolio />
-      <Contact />
-    </main>
+    <>
+      <section className='heading__section'>
+        <NavigationBar />
+        <Hero />
+      </section>
+      <main>
+        <Parallax />
+        <About />
+        <Mission />
+        <Parallax />
+        <Portfolio />
+        <Portfolio />
+        <Portfolio />
+        <Contact />
+      </main>
+    </>
   );
 };
 

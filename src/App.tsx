@@ -1,13 +1,9 @@
-import "./styles/App.scss";
-import { Home } from "./pages";
-import { NavigationBar } from "./components";
+import './styles/App.scss';
+import { Home } from './pages';
 
 function App() {
   return (
     <>
-      <section>
-        <NavigationBar />
-      </section>
       <Home />
     </>
   );
