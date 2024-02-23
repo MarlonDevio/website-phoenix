@@ -23,11 +23,29 @@
 
 .landscape {
   grid-area: parallax;
-  @include gradient($color-black, $color-green-5, 0.9, 0.5, 'src/assets/backgrounds/fire-landscape-background.webp');
+  @include gradient($color-black, $color-green-light, 0.9, 0.1, 'src/assets/backgrounds/fire-landscape-background.webp');
   background-position: bottom;
   background-size: cover;
   height: 100vh;
   width: 100%;
+}
+
+.fireball {
+  position: absolute;
+
+  &--1 {
+    top: 20%;
+    left: 20%;
+  }
+  &--2 {
+    top: 30%;
+    left: 30%;
+  }
+
+  &--3 {
+    top: 10%;
+    left: 10%;
+  }
 }
 
 .parallax--services {
