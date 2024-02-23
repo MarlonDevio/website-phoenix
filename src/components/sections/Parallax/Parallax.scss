@@ -1,0 +1,37 @@
+.parallax {
+  width: 100%;
+  height: 100%;
+
+
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.grid--parallax {
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "parallax";
+  position: relative;
+
+  h2 {
+    grid-area: parallax;
+    z-index: 1;
+  }
+}
+
+.landscape {
+  grid-area: parallax;
+  @include gradient($color-black, $color-green-5, 0.9, 0.5, 'src/assets/backgrounds/fire-landscape-background.webp');
+  background-position: bottom;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+
+.parallax--services {
+  position: relative;
+
+  @include backgroundGradient;
+}

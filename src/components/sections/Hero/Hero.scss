@@ -1,5 +1,5 @@
 .hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 10rem);
   overflow: hidden;
   background: linear-gradient(
     180deg,
@@ -17,6 +17,7 @@
       }
     }
     &__text {
+      min-height: 100%;
       justify-content: center;
       gap: 4rem;
 

@@ -10,12 +10,22 @@ import bg1 from "./backgrounds/bg-image.webp";
 import bg2 from "./backgrounds/bg-image-2.webp";
 import bg3 from "./backgrounds/bg-image-3.webp";
 import phoenixImg from "./backgrounds/img-phoenix.png";
+import fireLandScapeBackground from "./backgrounds/fire-landscape-background.webp";
+
+// Elements
+import fireballOne from "./backgrounds/fireball-1.png";
+import fireballTwo from "./backgrounds/fireball-2.png";
+import fireballThree from "./backgrounds/fireball-3.png";
 
 // Logos
 import logoIconGold from "./logos/logo-icon-gold.png";
 import logoIconBlack from "./logos/logo-icon-black.png";
 
 export {
+  fireLandScapeBackground,
+  fireballOne,
+  fireballTwo,
+  fireballThree,
   scrollIconGreen,
   phoenixImg,
   instagramIcon,

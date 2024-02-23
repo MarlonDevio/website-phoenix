@@ -3,11 +3,13 @@
 html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 section {
-  height: 100vh;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
+  scroll-behavior: smooth;
+  min-height: 100vh;
 }
 
 body {

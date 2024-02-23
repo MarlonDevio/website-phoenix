@@ -4,3 +4,9 @@
   // background-size: contain;
   // background-repeat: no-repeat;
 }
+
+.grid__wrapper__page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}

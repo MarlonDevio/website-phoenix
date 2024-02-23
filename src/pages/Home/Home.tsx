@@ -5,21 +5,25 @@ import {
   Mission,
   NavigationBar,
   Parallax,
-  Portfolio
-} from '../../components';
-import './Home.scss';
+  Portfolio,
+} from "../../components";
+import "./Home.scss";
 
 const Home = () => {
   return (
     <>
-      <section className='heading__section'>
+      <section className="heading__section">
         <NavigationBar />
         <Hero />
       </section>
-      <Parallax type='' />
+      <section>
+        <Parallax type="services" />
+      </section>
       <About />
       <Mission />
-      <Parallax type='services' />
+      <section>
+        <Parallax type="services" />
+      </section>
       <Portfolio />
       <Portfolio />
       <Portfolio />
