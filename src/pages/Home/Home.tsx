@@ -16,10 +16,10 @@ const Home = () => {
         <NavigationBar />
         <Hero />
       </section>
+      <About />
       <section>
         <Parallax type="services" />
       </section>
-      <About />
       <Mission />
       <section>
         <Parallax type="services" />
