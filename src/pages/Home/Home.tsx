@@ -25,6 +25,7 @@ const Home = () => {
         <Parallax type="services" />
       </section> */}
       <Portfolio />
+
       <Contact />
     </>
   );

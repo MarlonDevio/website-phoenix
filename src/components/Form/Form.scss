@@ -1,0 +1,29 @@
+.contact__form {
+  justify-content: center;
+  max-width: 100rem;
+  margin: auto;
+  gap: 1rem;
+
+  input {
+    padding: 1rem;
+    border: none;
+    outline: none;
+    &:focus {
+      background-color: rgba($color-green-light, 0.9);
+    }
+  }
+}
+
+.valid {
+  color: $color-green-2;
+}
+
+.invalid {
+  color: red;
+}
+
+.control__el__container {
+  p {
+    font-size: 1.2rem;
+  }
+}
