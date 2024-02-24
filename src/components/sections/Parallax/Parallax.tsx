@@ -3,7 +3,8 @@ import {
   fireLandScapeBackground,
   fireballOne,
   fireballThree,
-  fireballTwo
+  fireballTwo,
+  phoenix
 } from '../../../assets';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
@@ -21,7 +22,8 @@ const Parallax = ({ type }: ParallaxProps) => {
     offset: ['start start', 'end start']
   });
   const yBg = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
-  const yText = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const yText = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
+  const yBg2 = useTransform(scrollYProgress, [0, 1], ['0%', '90%']);
   return (
     <div
       className={`grid--parallax grid parallax parallax--${
@@ -44,15 +46,20 @@ const Parallax = ({ type }: ParallaxProps) => {
         alt=''
         className='fireball__img fireball__img--1'
       />
-      <img
+      <motion.img
         src={fireballOne}
         alt=''
         className='fireball__img fireball__img--2'
+        style={{ y: yBg2 }}
       />
       <img
         src={fireballThree}
         alt=''
         className='fireball__img fireball__img--3'
+      />
+      <motion.img
+        src={phoenix}
+        className='phoenix'
       />
     </div>
   );

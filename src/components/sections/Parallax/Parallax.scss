@@ -29,18 +29,21 @@
   position: absolute;
 
   &--1 {
-    top: 20%;
-    left: 20%;
+    top: 5%;
+    left: 10%;
   }
   &--2 {
     top: 10%;
-    right: 20%;
+    left: 80%;
   }
 
   &--3 {
     top: 15%;
     left: 50%;
   }
+}
+.phoenix {
+  width: 80%;
 }
 
 // .landscape {
