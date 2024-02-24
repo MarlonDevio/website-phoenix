@@ -1,4 +1,4 @@
-import "./Figure.scss";
+import './Figure.scss';
 interface FigureProps {
   url: string;
   alt: string;
@@ -8,7 +8,10 @@ interface FigureProps {
 const Figure = ({ url, alt, className }: FigureProps) => {
   return (
     <figure className={`figure ${className}`}>
-      <img src={url} alt={alt} />
+      <img
+        src={url}
+        alt={alt}
+      />
     </figure>
   );
 };

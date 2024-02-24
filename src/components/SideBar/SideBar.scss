@@ -4,8 +4,9 @@
   justify-content: center;
   background-color: $color-green-light;
   color: $color-black;
-  z-index: 20000;
+  z-index: 1000;
   .bg {
+    z-index: 1000;
     position: fixed;
     top: 0;
     right: 0;
