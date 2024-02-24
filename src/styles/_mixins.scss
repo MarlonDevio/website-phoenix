@@ -13,14 +13,14 @@
   );
 }
 
-// @mixin gradient($color1, $color2, $opacity1, $opacity2, $url) {
-//   background-image: linear-gradient(
-//       180deg,
-//       rgba($color1, $opacity1),
-//       rgba($color2, $opacity2)
-//     ),
-//     url($url);
-// }
+@mixin gradientBackground($color1, $color2, $opacity1, $opacity2, $url) {
+  background-image: linear-gradient(
+      180deg,
+      rgba($color1, $opacity1),
+      rgba($color2, $opacity2)
+    ),
+    url($url);
+}
 
 @keyframes parallax {
   0% {

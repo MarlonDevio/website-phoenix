@@ -1,29 +1,3 @@
-.portfolio__item__container {
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  .portfolio__item__wrapper {
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    gap: 5rem;
-    .portfolio__img__container {
-      height: 50%;
-      flex: 1;
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-    }
-    &--text {
-      flex: 1;
-    }
-  }
-}
-
 .portfolio {
   position: relative;
   .progress {
@@ -36,6 +10,40 @@
     .progress__bar {
       height: 1rem;
       background-color: $color-green-light;
+    }
+  }
+}
+
+.portfolio__section {
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.portfolio__wrapper {
+  grid-template-areas: 'image textContainer';
+  grid-template-columns: 1fr 1fr;
+  gap: 10rem;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  .portfolio__img__container {
+    grid-area: image;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .portfolio__item__container--text {
+    grid-area: textContainer;
+    position: relative;
+    gap: 2rem;
+
+    .portfolio__button {
+      font-size: 1.6rem;
+      align-self: flex-start;
     }
   }
 }

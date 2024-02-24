@@ -22,7 +22,19 @@ import phoenix from './backgrounds/phoenix.png';
 import logoIconGold from './logos/logo-icon-gold.png';
 import logoIconBlack from './logos/logo-icon-black.png';
 
+// portfolio items
+import attesticoPortfolioImage from './portfolio-images/attestico-portfolio-item.jpg';
+import budgetApp from './portfolio-images/budget-app-portfolio-item.webp';
+import datingApp from './portfolio-images/dating-portfolio-item.webp';
+
+// profile
+import profilePicture from './profile/profile-picture.png';
+
 export {
+  profilePicture,
+  datingApp,
+  attesticoPortfolioImage,
+  budgetApp,
   phoenix,
   fireLandScapeBackground,
   fireballOne,

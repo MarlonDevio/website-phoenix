@@ -1,0 +1,37 @@
+#about {
+  @include gradientBackground(
+    $color-black,
+    $color-black,
+    1,
+    0.8,
+    '../../../assets/backgrounds/bg-image-2.webp'
+  );
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.about__container {
+  align-items: center;
+  gap: 5rem;
+  h3 {
+    color: $color-green-1;
+  }
+  &--text {
+    flex-basis: 50%;
+  }
+  &--image {
+    position: relative;
+    flex-basis: 50%;
+    img {
+      padding: 5rem;
+      max-width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+.profile__gradient {
+  position: absolute;
+}

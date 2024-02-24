@@ -22,35 +22,38 @@ const PortfolioItem = ({ item }: PortfolioItemProps) => {
 
   const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
   return (
-    <section ref={ref}>
-      <div className='portfolio__item__container flex'>
-        <Wrapper
-          className='portfolio__item__wrapper'
-          display='flex'
+    <section
+      ref={ref}
+      className='flex portfolio__section'
+    >
+      <Wrapper
+        display='grid'
+        className='portfolio__wrapper'
+      >
+        <Figure
+          className='portfolio__img__container'
+          url={item.image}
+          alt={item.title}
+        />
+        <motion.div
+          // style={{ y }}
+          className='portfolio__item__container--text flex--column'
         >
-          <Figure
-            className='portfolio__img__container'
-            url={item.image}
-            alt={item.title}
-          />
-          <motion.div
-            // style={{ y }}
-            className='portfolio__item__container--text'
+          <h3>{item.title}</h3>
+          <p>{item.description}</p>
+          <StyledButton
+            className='portfolio__button'
+            primary
           >
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-            <StyledButton primary>
-              <a
-                target='_blank'
-                href={item.url}
-              >
-                See Live
-              </a>
-            </StyledButton>
-          </motion.div>
-        </Wrapper>
-      </div>
-      {item.title}
+            <a
+              target='_blank'
+              href={item.url}
+            >
+              See Live
+            </a>
+          </StyledButton>
+        </motion.div>
+      </Wrapper>
     </section>
   );
 };
