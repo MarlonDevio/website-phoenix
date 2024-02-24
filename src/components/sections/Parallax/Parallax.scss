@@ -1,36 +1,31 @@
 .parallax {
-  width: 100%;
-  height: 100%;
-
-
-  align-items: center;
-  justify-content: center;
-
-
+  min-height: 75vh;
 }
 
 .grid--parallax {
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr;
-  grid-template-areas: "parallax";
+  grid-template-areas: 'parallax';
   position: relative;
-
   h2 {
-    grid-area: parallax;
-    z-index: 1;
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
 
-.landscape {
+.grid--parallax > * {
   grid-area: parallax;
-  @include gradient($color-black, $color-green-light, 0.9, 0.1, 'src/assets/backgrounds/fire-landscape-background.webp');
-  background-position: bottom;
-  background-size: cover;
-  height: 100vh;
-  width: 100%;
 }
 
-.fireball {
+.landscape__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+.fireball__img {
+  width: 10%;
   position: absolute;
 
   &--1 {
@@ -38,18 +33,41 @@
     left: 20%;
   }
   &--2 {
-    top: 30%;
-    left: 30%;
+    top: 10%;
+    right: 20%;
   }
 
   &--3 {
-    top: 10%;
-    left: 10%;
+    top: 15%;
+    left: 50%;
   }
 }
+
+// .landscape {
+//   grid-area: parallax;
+//   @include gradient(
+//     $color-black,
+//     $color-green-light,
+//     0.9,
+//     0.1,
+//     'src/assets/backgrounds/fire-landscape-background.webp'
+//   );
+//   background-position: bottom;
+//   background-size: cover;
+//   height: 100vh;
+//   width: 100%;
+// }
 
 .parallax--services {
   position: relative;
 
   @include backgroundGradient;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  @include gradient($color-black, $color-green-5, 0.9, 0.3);
 }
