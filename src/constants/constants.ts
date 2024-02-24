@@ -2,19 +2,22 @@ import { logoIconGold } from '../assets';
 
 export const portfolioItems = [
   {
+    id: 'i1',
     title: 'portfolio1',
     description: 'portfolio1 description',
     image: logoIconGold,
     url: 'https://www.google.com'
   },
   {
-    title: 'portfolio1',
+    id: 'i2',
+    title: 'portfolio2',
     description: 'portfolio1 description',
     image: logoIconGold,
     url: 'https://www.google.com'
   },
   {
-    title: 'portfolio1',
+    id: 'i3',
+    title: 'portfolio3',
     description: 'portfolio1 description',
     image: logoIconGold,
     url: 'https://www.google.com'
