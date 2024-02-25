@@ -3,29 +3,61 @@
   }
 
   &__main__title__container {
-    .innovation__image {
-      img {
-        max-width: 30rem;
-        height: 10rem;
-        border-radius: 30rem;
+    display: grid;
+    grid-template-areas: "top"
+                        "bottom";
+
+    .services__container {
+      &--top {
+        display: flex;
+        grid-area: top;
+        justify-self: center;
+      }
+
+      &--bottom {
+        display: flex;
+        grid-area: bottom;
+        justify-self: center;
       }
     }
 
+    .innovation__image__top__button {
+      background-image: url(../../../assets/backgrounds/bg-image-3.webp);
+      background-size: cover;
+      background-position: center;
+      grid-area: title1;
+      justify-self: start;
+    }
+
     .services__title {
+      &--top {
+
+      }
+
+      &--bottom {
+
+      }
+
       .title__element {
         &--1 {
+          align-self: flex-end;
+          margin-right: -10rem;
         }
 
         &--2 {
         }
-        &--thin{
+
+        &--thin {
           font-weight: 200;
         }
       }
     }
 
     .services__title__button {
-
+      margin-bottom: 1rem;
+      margin-left: 2rem;
+      align-self: flex-end;
+      grid-area: iconBottom;
     }
   }
 

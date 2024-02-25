@@ -4,7 +4,7 @@ import {
   Hero,
   Mission,
   NavigationBar,
-  Parallax,
+  // Parallax,
   Portfolio,
   Services,
 } from "../../components";
