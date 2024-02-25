@@ -5,28 +5,39 @@ import {
   Mission,
   NavigationBar,
   Parallax,
-  Portfolio
-} from '../../components';
-import './Home.scss';
+  Portfolio,
+  Services,
+} from "../../components";
+import "./Home.scss";
 
 const Home = () => {
   return (
     <>
-      <section className='heading__section'>
+      <section className="heading__section">
         <NavigationBar />
         <Hero />
       </section>
-      <About />
+      <section className="section--about__me">
+        <About />
+      </section>
+      <section className="section--services">
+        <Services />
+      </section>
       {/* <section>
         <Parallax type="services" />
       </section> */}
-      <Mission />
+      <section className="section--mission">
+        <Mission />
+      </section>
       {/* <section>
         <Parallax type="services" />
       </section> */}
-      <Portfolio />
-
-      <Contact />
+      <section className="section--portfolio">
+        <Portfolio />
+      </section>
+      <section className="section--contact">
+        <Contact />
+      </section>
     </>
   );
 };

@@ -1,0 +1,34 @@
+.services {
+  &__upper__text {
+  }
+
+  &__main__title__container {
+    .innovation__image {
+      img {
+        max-width: 30rem;
+        height: 10rem;
+        border-radius: 30rem;
+      }
+    }
+
+    .services__title {
+      .title__element {
+        &--1 {
+        }
+
+        &--2 {
+        }
+        &--thin{
+          font-weight: 200;
+        }
+      }
+    }
+
+    .services__title__button {
+
+    }
+  }
+
+  &__points {
+  }
+}

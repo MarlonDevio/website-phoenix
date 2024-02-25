@@ -1,12 +1,3 @@
 .mission {
-  @include gradientBackground(
-    $color-black,
-    $color-black,
-    0.8,
-    0.8,
-    '../../../assets/backgrounds/bg-image-3.webp'
-  );
-  background-position: center;
-  background-size: cover;
-  background-attachment: fixed;
+
 }

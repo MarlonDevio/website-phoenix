@@ -1,9 +1,9 @@
-import './Contact.scss';
-import { Form, Wrapper } from '../../index.ts';
+import "./Contact.scss";
+import { Form, Wrapper } from "../../index.ts";
 
 const Contact = () => {
   return (
-    <section id='contact'>
+    <div id="contact">
       <Wrapper>
         <h2>Contact</h2>
         <h3>Ignite Opportunities</h3>
@@ -17,7 +17,7 @@ const Contact = () => {
 
         <Form />
       </Wrapper>
-    </section>
+    </div>
   );
 };
 

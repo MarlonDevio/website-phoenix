@@ -35,6 +35,7 @@ export const portfolioItems = [
 export const sidebarLinks = [
   { sectionName: 'Home', id: 'home' },
   { sectionName: 'About', id: 'about' },
+  { sectionName: 'Services', id: 'services' },
   { sectionName: 'Mission', id: 'mission' },
   { sectionName: 'Portfolio', id: 'portfolio' },
   { sectionName: 'Contact', id: 'contact' }

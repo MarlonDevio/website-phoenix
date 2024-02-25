@@ -3,7 +3,7 @@ import { Wrapper } from "../../index.ts";
 
 const Mission = () => {
   return (
-    <section id="mission" className="mission">
+    <div id="mission" className="mission">
       <Wrapper>
         <h2>Mission</h2>
         <h3>Rising Together: Coding for Change</h3>
@@ -24,7 +24,7 @@ const Mission = () => {
           impact, one line of code at a time.
         </p>
       </Wrapper>
-    </section>
+    </div>
   );
 };
 
