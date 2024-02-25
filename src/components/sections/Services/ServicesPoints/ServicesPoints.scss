@@ -1,0 +1,22 @@
+.services__points{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(25rem ,1fr));
+  gap: 5rem;
+  div {
+    display: grid;
+    grid-template-areas: "icon title" "icon description";
+    padding: 3rem;
+    h6 {
+      grid-area: title;
+    }
+    p {
+      grid-area: description;
+      font-size: 1.5rem;
+    }
+    img {
+      grid-area: icon;
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+}

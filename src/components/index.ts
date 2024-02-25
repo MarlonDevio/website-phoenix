@@ -32,7 +32,10 @@ import Hero from "./sections/Hero/Hero";
 import Mission from "./sections/Mission/Mission";
 import Parallax from "./sections/Parallax/Parallax";
 import Portfolio from "./sections/Portfolio/Portfolio";
+import MainTitle from "./sections/Services/MainTitle/MainTitle";
 import Services from "./sections/Services/Services";
+import ServicesPoints from "./sections/Services/ServicesPoints/ServicesPoints";
+import UpperText from "./sections/Services/UpperText/UpperText";
 
 export {
   Figure,
@@ -68,5 +71,8 @@ export {
   Mission,
   Parallax,
   Portfolio,
+  MainTitle,
   Services,
+  ServicesPoints,
+  UpperText,
 };

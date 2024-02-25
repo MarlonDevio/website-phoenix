@@ -1,14 +1,14 @@
-import "./About.scss";
-import { Figure, Wrapper } from "../../index.ts";
-import { profilePicture } from "../../../assets/index.ts";
+import './About.scss';
+import { Figure, Wrapper } from '../../index.ts';
+import { profilePicture } from '../../../assets/index.ts';
 
 const About = () => {
   return (
-    <div id="about">
+    <div id='about'>
       <Wrapper>
         <h2>About Me</h2>
-        <div className="about__container flex">
-          <div className="about__container--text">
+        <div className='about__container flex'>
+          <div className='about__container--text'>
             <h3>My Journey - From Ashes to Code</h3>
             <p>
               Hello, my name is Marlon. I am a 32-year-old self-taught developer
@@ -24,9 +24,12 @@ const About = () => {
               believe in the possibility of transformation."
             </p>
           </div>
-          <div className="about__container--image">
-            <div className="profile__gradient" />
-            <Figure url={profilePicture} alt="Profile Picture" />
+          <div className='about__container--image'>
+            <div className='profile__gradient' />
+            <Figure
+              url={profilePicture}
+              alt='Profile Picture'
+            />
           </div>
         </div>
       </Wrapper>

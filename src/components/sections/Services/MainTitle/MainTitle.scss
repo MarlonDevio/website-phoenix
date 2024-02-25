@@ -1,0 +1,42 @@
+.services__main__title {
+  align-items: center;
+  span {
+    font-weight: 200;
+  }
+  &__container {
+    display: flex;
+    gap: 2rem;
+    button {
+      width: 20rem;
+      align-self: center;
+      min-height: 6rem;
+    }
+    &--upper {
+      .services__main__title--img {
+        background-image: url('src/assets/backgrounds/bg-image-2.webp');
+        background-position: center;
+        background-size: cover;
+      }
+      button {
+        @include insetBorder(rgba($color-gold-3, 1));
+        &:hover {
+          box-shadow: none;
+        }
+      }
+    }
+    &--lower {
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .services__main__title {
+    &__container {
+      flex-direction: column;
+      gap: 1rem;
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
