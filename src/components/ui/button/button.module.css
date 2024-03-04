@@ -1,0 +1,15 @@
+.button {
+  padding: 1rem 2rem;
+  border: none;
+  cursor: pointer;
+  @apply rounded-2xl transition-all duration-100 ease-in-out hover:-translate-y-0.5 
+    active:-translate-y-[-10] active:shadow-sm;
+}
+
+.primary {
+  @apply bg-color-gold-3 hover:bg-gradient-to-gold transition-colors duration-500 ease-in-out;
+}
+
+.secondary {
+  @apply shadow-inset-green-pre-hover hover:shadow-inset-green-post-hover-large transition-shadow duration-200 ease-linear hover:text-green-900;
+}

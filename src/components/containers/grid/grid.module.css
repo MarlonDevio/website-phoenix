@@ -1,0 +1,29 @@
+.gridCol3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+}
+
+.gridCol4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.gridCol5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 1200px) {
+  .gridCol3 {
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  }
+  .gridCol4 {
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+  .gridCol5 {
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+}

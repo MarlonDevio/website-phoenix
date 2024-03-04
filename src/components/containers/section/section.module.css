@@ -1,0 +1,11 @@
+.section {
+  padding-top: calc(1rem + 8vw);
+  padding-bottom: calc(1rem + 8vw);
+}
+
+@media (min-width: 1200px) {
+  .section {
+    padding-top: 9rem;
+    padding-bottom: 9rem;
+  }
+}
