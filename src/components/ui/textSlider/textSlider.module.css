@@ -1,0 +1,12 @@
+.textSlider {
+  position: absolute;
+  width: 50%;
+  bottom: -10vh;
+  z-index: -1;
+  opacity: 0.1;
+}
+
+.paragraph {
+  font-size: 40vh;
+  white-space: nowrap;
+}

@@ -1,9 +1,8 @@
 import React from "react";
-import clsx from "clsx";
 import styles from "./button.module.css";
+import { cn } from "@/lib/utils/cn";
 
-interface ButtonProps {
-  onClick?: () => void;
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   children: React.ReactNode;
   $primary?: boolean;
@@ -13,18 +12,17 @@ interface ButtonProps {
 export default function Button({
   $primary,
   $secondary,
-  onClick,
   children,
   className,
+  ...props
 }: ButtonProps) {
   return (
     <button
-      type="button"
-      className={clsx(styles.button, className, {
+      className={cn(styles.button, className, {
         [styles.primary]: $primary,
         [styles.secondary]: $secondary,
       })}
-      onClick={onClick}
+      {...props}
     >
       {children}
     </button>

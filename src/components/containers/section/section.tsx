@@ -2,6 +2,7 @@ import { Variants } from "framer-motion";
 import styles from "./section.module.css";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils/cn";
 
 interface SectionProps {
   children: React.ReactNode;
@@ -21,8 +22,8 @@ export default function Section({
 }: SectionProps) {
   return (
     <motion.section
-    // TODO: fix the motion react fc component
-      className={clsx(className, {
+      // TODO: fix the motion react fc component
+      className={cn(className, {
         [styles.section]: $containerPadding,
       })}
       animate={animate}

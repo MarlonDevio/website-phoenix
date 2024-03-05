@@ -18,6 +18,7 @@ import bg3 from "./backgrounds/bg-image-3.webp";
 import phoenixImg from "./backgrounds/img-phoenix.png";
 import fireLandScapeBackground from "./backgrounds/fire-landscape-background.webp";
 import innovation2 from "./backgrounds/innovation2.webp";
+import walkingToPhoenix from "./backgrounds/walking-to-phoenix.png";
 
 // Elements
 import fireballOne from "./backgrounds/fireball-1.png";

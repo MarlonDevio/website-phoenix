@@ -29,7 +29,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-to-green":
-          "linear-gradient(to bottom, rgba(var(--color-black), 0.6), rgba(var(--color-green-5), 0.4))",
+          "linear-gradient(to bottom, rgba(var(--color-black), 0.9), rgba(var(--color-green-5), 0.4))",
         "gradient-from-green":
           "linear-gradient(to bottom, rgba(var(--color-green-5), 0.4), rgba(var(--color-black), 0.6))",
         "gradient-to-gold":
