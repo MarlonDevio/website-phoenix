@@ -4,7 +4,7 @@ import { logoIconGold } from "../../../../public/assets";
 import Image from "next/image";
 export default function Logo() {
   return (
-    <Container className="flex items-end">
+    <Container className="flex items-end p-[2rem]">
       <Image
         className="w-[4rem]"
         height={476}

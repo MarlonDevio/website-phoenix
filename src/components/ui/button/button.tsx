@@ -18,10 +18,14 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
-      className={cn(styles.button, className, {
-        [styles.primary]: $primary,
-        [styles.secondary]: $secondary,
-      })}
+      className={cn(
+        styles.button,
+        {
+          [styles.primary]: $primary,
+          [styles.secondary]: $secondary,
+        },
+        className,
+      )}
       {...props}
     >
       {children}

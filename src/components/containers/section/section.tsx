@@ -11,6 +11,7 @@ interface SectionProps {
   variants?: Variants;
   initial?: string | boolean;
   animate?: string | boolean;
+  id?: string;
 }
 export default function Section({
   children,
@@ -19,6 +20,7 @@ export default function Section({
   variants,
   initial,
   animate,
+  id,
 }: SectionProps) {
   return (
     <motion.section
@@ -29,6 +31,7 @@ export default function Section({
       animate={animate}
       initial={initial}
       variants={variants}
+      id={id}
     >
       {children}
     </motion.section>

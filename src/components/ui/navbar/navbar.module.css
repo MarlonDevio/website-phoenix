@@ -1,3 +1,12 @@
 .navbar {
-  min-height: 10vh;
+  background-color: rgba(var(--color-green-light), 0.1);
+}
+
+.linkContainer {
+  background-color: rgba(var(--color-green-light), 0.1);
+  padding: 2rem;
+  align-items: center;
+  justify-content: flex-end;
+  width: min-content;
+  gap: 2.5rem;
 }

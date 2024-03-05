@@ -1,14 +1,15 @@
-import Container from "@/components/containers/container/container";
-import styles from "./about.module.css";
 import Section from "@/components/containers/section/section";
+import styles from "./about.module.css";
 import Wrapper from "@/components/containers/wrapper/wrapper";
-import { motion } from "framer-motion";
-import Grid from "@/components/containers/grid/grid";
-import Image from "next/image";
+import { cn } from "@/lib/utils/cn";
 
 export default function About() {
   return (
-    <Section $containerPadding className="bg-gradient-from-green">
+    <Section
+      id="about"
+      $containerPadding
+      className={cn(styles.about, "bg-gradient-from-green")}
+    >
       <Wrapper>
         <h2>About</h2>
       </Wrapper>

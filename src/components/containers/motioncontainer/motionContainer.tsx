@@ -26,7 +26,7 @@ const MotionContainer = React.forwardRef<HTMLDivElement, MotionContainerProps>(
         animate={animate}
         exit={exit}
         variants={variants}
-        className={cn("container mx-auto", className)}
+        className={cn(className)}
       >
         {children}
       </motion.div>

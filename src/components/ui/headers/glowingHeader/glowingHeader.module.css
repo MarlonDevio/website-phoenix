@@ -1,0 +1,35 @@
+.glowingHeader {
+  position: relative;
+  color: rgb(var(--color-green-5));
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  font-weight: 600;
+  /* -webkit-box-reflect: below calc(-4vw + 0.1vh)
+    linear-gradient(transparent, rgba(var(--color-green-5), 0.2)); */
+}
+
+.glowingHeader {
+  position: relative;
+  color: rgb(var(--color-green-5));
+  text-transform: uppercase;
+  letter-spacing: 1rem;
+  font-weight: 600;
+  text-shadow: 0 20px 10px 1px black;
+}
+
+.glowingHeader::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 55%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform: scaleY(-1);
+  opacity: 0.05;
+  text-shadow: 0 10px 10px 1px black;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(var(--color-green-5), 0.2),
+    rgba(var(--color-green-5), 0.2)
+  );
+}
