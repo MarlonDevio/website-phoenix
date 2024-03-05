@@ -9,10 +9,11 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   variants?: any;
   initial?: string | boolean;
   animate?: string | boolean;
+  whileInView?: any;
 }
 
 const Wrapper = React.forwardRef<HTMLDivElement, WrapperProps>(
-  ({ variants, initial, animate, children, className }, ref) => {
+  ({ variants, initial, animate, children, className, whileInView }, ref) => {
     return (
       <motion.div
         className={clsx(styles.wrapper, className)}
@@ -20,6 +21,7 @@ const Wrapper = React.forwardRef<HTMLDivElement, WrapperProps>(
         initial={initial}
         variants={variants}
         ref={ref}
+        whileInView={whileInView}
       >
         {children}
       </motion.div>

@@ -7,10 +7,13 @@ import NavLinks from "./navLinks/navLinks";
 
 export default function Navbar() {
   return (
-    <nav className={cn(styles.navbar, "flex items-center ")}>
+    <nav className={cn(styles.navbar, "flex min-h-[10vh] items-center ")}>
       <Logo />
       <Container
-        className={cn(styles.linkContainer, "relative hidden  md:flex")}
+        className={cn(
+          styles.linkContainer,
+          "relative hidden  min-h-[10vh] md:flex",
+        )}
       >
         <NavLinks />
       </Container>

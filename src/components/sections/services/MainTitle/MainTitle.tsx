@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 
 const MainTitle = () => {
   return (
-    <motion.div className="">
-      <div className="">
-        <Button $secondary className="cursor-not-allowed">
+    <motion.div className="flex flex-col justify-center">
+      <div>
+        {/* <Button $secondary className="cursor-not-allowed">
           btn
-        </Button>
+        </Button> */}
         <h2>
           <b>Innovative</b> <span>Paths</span>
         </h2>
