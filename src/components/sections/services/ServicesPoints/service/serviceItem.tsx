@@ -49,7 +49,7 @@ const ServiceItem = ({
       animate={animate}
       whileInView={whileInView}
       className={cn(
-        "place-content-start gap-5 p-10 shadow-inset-green-pre-hover",
+        "cursor-pointer gap-5 p-10 shadow-inset-green-pre-hover",
         styles.serviceItem,
       )}
     >
@@ -61,19 +61,31 @@ const ServiceItem = ({
         className="col-span-1 col-start-1 row-span-1 row-start-1 min-h-12 min-w-12"
       />
       <h6
-        className={cn("col-span-2 col-start-2 font-bold lg:text-[2.2rem]", {
-          "text-color-green-3": hover,
-        })}
+        className={cn("col-span-2 col-start-2 font-bold lg:text-[2.2rem]", {})}
       >
         {service.title}
       </h6>
       <p
-        className={cn("col-span-2 col-start-2 lg:text-[1.8rem]", {
-          "text-color-green-4": hover,
-        })}
+        className={cn("col-span-2 col-start-2 self-start lg:text-[1.8rem]", {})}
       >
         {service.description}
       </p>
+      <Button
+        className={cn(
+          "col-span-2 col-start-2 self-end bg-color-gold-3 font-bold transition-all duration-1000 ease-in-out",
+          {
+            "bg-green-400    ": hover,
+          },
+        )}
+      >
+        <p
+          className={cn("transition-colors duration-1000", {
+            "text-color-gold-3": hover,
+          })}
+        >
+          GO
+        </p>
+      </Button>
       {/* TODO PLACE BUTTON */}
     </Card>
   );

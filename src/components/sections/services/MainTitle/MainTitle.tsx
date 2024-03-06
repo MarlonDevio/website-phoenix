@@ -22,15 +22,17 @@ const MainTitle = () => {
           btn
         </Button> */}
         <h2>
-          <b>Innovative</b> <span>Paths</span>
+          <b>Innovative</b>{" "}
+          <span className="font-[300] text-color-green-light">Paths</span>
         </h2>
       </div>
       <div className="">
         <h2>
-          <b>Transformative</b> <span>Outcomes</span>
+          <b>Transformative</b>{" "}
+          <span className="font-[300] text-color-green-light">Outcomes</span>
         </h2>
         <Button $primary className="cursor-none">
-          What we do?
+          What I do?
         </Button>
       </div>
     </motion.div>

@@ -46,6 +46,8 @@ const config: Config = {
           "inset 0 0 25px 25px rgb(var(--color-green-light))",
         "inset-green-post-hover-large":
           "inset 0 0 100px 100px rgb(var(--color-green-light))",
+        "inset-gold-color-3-post-hover-large":
+          "inset 0 0 100px 250px rgb(var(--color-gold-3))",
       },
       backgroundColor: {
         "bg-main": "var(--main-color)",

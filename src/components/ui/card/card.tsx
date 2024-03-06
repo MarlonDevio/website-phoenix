@@ -1,9 +1,7 @@
 import MotionContainer from "@/components/containers/motioncontainer/motionContainer";
 import React from "react";
 import styles from "./card.module.css";
-import { motion } from "framer-motion";
 import { MotionContainerProps } from "../../containers/motioncontainer/motionContainer";
-import Grid from "@/components/containers/grid/grid";
 import { cn } from "../../../lib/utils/cn";
 
 interface CardProps extends MotionContainerProps {

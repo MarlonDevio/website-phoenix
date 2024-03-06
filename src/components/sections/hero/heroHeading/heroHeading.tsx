@@ -15,7 +15,7 @@ const fadeIn = {
 export default function HeroHeading() {
   return (
     <Wrapper className="flex flex-col items-center justify-center text-center">
-      <motion.h1 className="flex flex-col font-semibold uppercase leading-snug tracking-normal ">
+      <motion.h1 className="flex flex-col font-semibold  leading-snug tracking-normal ">
         <motion.span
           variants={fadeIn}
           initial={{ opacity: 0 }}
