@@ -59,21 +59,20 @@ import Grid from "@/components/containers/grid/grid";
 //     </>
 //   );
 // };
-const variants = {
-  initial: { opacity: 0, y: 100 },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeInOut", staggerChildren: 0.5 },
-  },
-};
 
-const servicePointVariants = {
-  initial: { opacity: 0, y: 100 },
-  whileInView: {
-    opacity: 1,
-    y: 0,
-  },
+const servicePointVariants = (index?: number) => {
+  return {
+    initial: { opacity: 0, y: 100 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+        delay: index ? index * 0.2 : 0,
+      },
+    },
+  };
 };
 // export default ServicesPoints;
 const ServicesPoints = () => {
@@ -82,12 +81,11 @@ const ServicesPoints = () => {
       {services.map((service, index) => {
         return (
           <ServiceItem
-            variants={servicePointVariants}
+            variants={servicePointVariants(index)}
             initial="initial"
             whileInView="whileInView"
             service={service}
             key={service.id}
-            transition={{ delay: index * 0.2 }} // Add a delay for each service item
           />
         );
       })}

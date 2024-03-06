@@ -8,32 +8,18 @@ import { cn } from "../../../lib/utils/cn";
 
 interface CardProps extends MotionContainerProps {
   cols?: string;
+  whileHover?: any;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  (
-    {
-      children,
-      className,
-      variants,
-      transition,
-      initial,
-      exit,
-      animate,
-      whileInView,
-    },
-    ref,
-  ) => {
+  ({ children, ...props }, ref) => {
     return (
       <MotionContainer
         ref={ref}
-        transition={transition}
-        initial={initial}
-        animate={animate}
-        exit={exit}
-        variants={variants}
-        className={cn(styles.card, className)}
-        whileInView={whileInView}
+        {...props}
+        className={cn(styles.card, props.className)}
       >
         {children}
       </MotionContainer>

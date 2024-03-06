@@ -22,13 +22,13 @@ export default function Services() {
         "min-h-[50vh] flex-col justify-center gap-[10vh] py-[100rem]",
       )}
     >
-      <UpperText />
       <Wrapper
         // variants={variants}
         // initial="initial"
         // whileInView="whileInView"
         className="flex flex-col justify-center gap-[10vh]"
       >
+        <UpperText />
         <MainTitle />
         <ServicesPoints />
       </Wrapper>

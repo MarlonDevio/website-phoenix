@@ -1,0 +1,7 @@
+.serviceItem {
+  transition: box-shadow 0.5s ease-in-out;
+}
+
+.serviceItem:hover {
+  @apply shadow-inset-green-post-hover-large;
+}
