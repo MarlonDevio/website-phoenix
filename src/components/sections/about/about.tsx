@@ -2,6 +2,8 @@ import Section from "@/components/containers/section/section";
 import styles from "./about.module.css";
 import Wrapper from "@/components/containers/wrapper/wrapper";
 import { cn } from "@/lib/utils/cn";
+import { Card } from "@/components/ui/card/card";
+import Grid from "@/components/containers/grid/grid";
 
 export default function About() {
   return (

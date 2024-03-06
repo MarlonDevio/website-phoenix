@@ -4,6 +4,7 @@ import UpperText from "./UpperText/UpperText";
 import MainTitle from "./MainTitle/MainTitle";
 import { cn } from "@/lib/utils/cn";
 import { AnimatePresence, Variants } from "framer-motion";
+import ServicesPoints from "./ServicesPoints/ServicesPoints";
 
 const variants = {
   initial: { opacity: 0, y: 100 },
@@ -17,16 +18,19 @@ export default function Services() {
   return (
     <Section
       $containerPadding
-      className={cn("min-h-[50vh] flex-col justify-center py-[100rem]")}
+      className={cn(
+        "min-h-[50vh] flex-col justify-center gap-[10vh] py-[100rem]",
+      )}
     >
       <UpperText />
       <Wrapper
-        variants={variants}
-        initial="initial"
-        whileInView="whileInView"
-        className="flex flex-col justify-center"
+        // variants={variants}
+        // initial="initial"
+        // whileInView="whileInView"
+        className="flex flex-col justify-center gap-[10vh]"
       >
         <MainTitle />
+        <ServicesPoints />
       </Wrapper>
     </Section>
   );

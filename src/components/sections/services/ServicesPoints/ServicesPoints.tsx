@@ -1,3 +1,6 @@
+import { services } from "@/constants/services";
+import ServiceItem from "./service/serviceItem";
+import Grid from "@/components/containers/grid/grid";
 // import "./ServicesPoints.scss";
 
 // import { useState } from "react";
@@ -56,5 +59,40 @@
 //     </>
 //   );
 // };
+const variants = {
+  initial: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeInOut", staggerChildren: 0.5 },
+  },
+};
 
+const servicePointVariants = {
+  initial: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+  },
+};
 // export default ServicesPoints;
+const ServicesPoints = () => {
+  return (
+    <Grid cols={"gridCol4"}>
+      {services.map((service, index) => {
+        return (
+          <ServiceItem
+            variants={servicePointVariants}
+            initial="initial"
+            whileInView="whileInView"
+            service={service}
+            key={service.id}
+            transition={{ delay: index * 0.2 }} // Add a delay for each service item
+          />
+        );
+      })}
+    </Grid>
+  );
+};
+
+export default ServicesPoints;

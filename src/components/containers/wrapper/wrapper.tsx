@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./wrapper.module.css";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils/cn";
 
 interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -16,7 +17,7 @@ const Wrapper = React.forwardRef<HTMLDivElement, WrapperProps>(
   ({ variants, initial, animate, children, className, whileInView }, ref) => {
     return (
       <motion.div
-        className={clsx(styles.wrapper, className)}
+        className={cn(styles.wrapper, className)}
         animate={animate}
         initial={initial}
         variants={variants}

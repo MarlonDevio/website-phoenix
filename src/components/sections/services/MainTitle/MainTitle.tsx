@@ -1,9 +1,22 @@
 import Button from "@/components/ui/button/button";
 import { motion } from "framer-motion";
 
+const variants = {
+  initial: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeInOut" },
+  },
+};
 const MainTitle = () => {
   return (
-    <motion.div className="flex flex-col justify-center">
+    <motion.div
+      variants={variants}
+      initial="initial"
+      className="flex flex-col justify-center"
+      whileInView={"whileInView"}
+    >
       <div>
         {/* <Button $secondary className="cursor-not-allowed">
           btn

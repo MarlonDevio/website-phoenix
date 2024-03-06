@@ -3,6 +3,11 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
 }
+.gridCol2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 4rem;
+}
 .gridCol3 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -22,6 +27,9 @@
 }
 
 @media (max-width: 1200px) {
+  .gridCol2 {
+    grid-template-columns: repeat(auto-fit, minmax(40rem, 1fr));
+  }
   .gridCol3 {
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   }
@@ -30,5 +38,26 @@
   }
   .gridCol5 {
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  }
+}
+
+@media (max-width: 1080px) {
+  .gridCol4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gridCol2 {
+    grid-template-columns: 1fr;
+  }
+  .gridCol3 {
+    grid-template-columns: 1fr;
+  }
+  .gridCol4 {
+    grid-template-columns: 1fr;
+  }
+  .gridCol5 {
+    grid-template-columns: 1fr;
   }
 }
