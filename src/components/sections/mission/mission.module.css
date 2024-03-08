@@ -1,3 +1,12 @@
+.mission {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.mission::-webkit-scrollbar {
+  display: none;
+}
 .carousel {
   height: 80rem;
   position: relative;

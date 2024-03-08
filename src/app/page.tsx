@@ -10,7 +10,6 @@ import Mission from "@/components/sections/mission/mission";
 export default function Home() {
   return (
     <main>
-      <Navbar />
       <Hero />
       <Services />
       <Mission />
