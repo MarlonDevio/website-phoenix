@@ -1,3 +1,4 @@
 .hero {
   min-height: calc(100vh - 10vh);
+  overflow: hidden;
 }

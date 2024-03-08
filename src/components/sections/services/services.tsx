@@ -3,7 +3,6 @@ import Wrapper from "@/components/containers/wrapper/wrapper";
 import UpperText from "./UpperText/UpperText";
 import MainTitle from "./MainTitle/MainTitle";
 import { cn } from "@/lib/utils/cn";
-import { AnimatePresence, Variants } from "framer-motion";
 import ServicesPoints from "./ServicesPoints/ServicesPoints";
 
 const variants = {
