@@ -39,7 +39,7 @@ import treasureHouse from "./portfolio-images/treasurehouse.png";
 // 3D icons
 import hand3D from "./3d-icons/hands.png";
 import heart3D from "./3d-icons/heart.png";
-import lightBulb3D from "./3d-icons/lightBulb.png";
+import lightBulb3D from "./3d-icons/lightbulb.png";
 import mentor3D from "./3d-icons/mentor3D.png";
 import creative3D from "./3d-icons/creative3D.png";
 // profile
