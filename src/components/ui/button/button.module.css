@@ -15,3 +15,18 @@
   @apply shadow-inset-green-pre-hover transition-shadow duration-700 ease-in-out hover:text-green-900 hover:shadow-inset-green-post-hover-large;
   cursor: pointer;
 }
+
+.arrowButton {
+  composes: button;
+  @apply hover:scale-150;
+}
+
+.prev {
+}
+
+.next {
+}
+
+.backButton {
+  composes: arrowButton;
+}

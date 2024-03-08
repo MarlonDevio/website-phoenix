@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styles from "./textSlider.module.css";
-import { MotionComponentProps } from "@/lib/interfaces/motionComponentProps";
+import { MotionComponentProps } from "@/lib/interfaces/interfaces";
 import { cn } from "../../../lib/utils/cn";
 const sliderVariants = {
   initial: { x: 0 },

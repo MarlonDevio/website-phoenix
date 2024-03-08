@@ -31,14 +31,27 @@ import logoIconGold from "./logos/logo-icon-gold.png";
 import logoIconBlack from "./logos/logo-icon-black.png";
 
 // portfolio items
-import attesticoPortfolioImage from "./portfolio-images/attestico-portfolio-item.jpg";
+import attesticoPortfolioImage from "./portfolio-images/attestico-portfolio-item.webp";
 import budgetApp from "./portfolio-images/budget-app-portfolio-item.webp";
 import datingApp from "./portfolio-images/dating-portfolio-item.webp";
+import treasureHouse from "./portfolio-images/treasurehouse.png";
 
+// 3D icons
+import hand3D from "./3d-icons/hands.png";
+import heart3D from "./3d-icons/heart.png";
+import lightBulb3D from "./3d-icons/lightBulb.png";
+import mentor3D from "./3d-icons/mentor3D.png";
+import creative3D from "./3d-icons/creative3D.png";
 // profile
 import profilePicture from "./profile/profile-picture.png";
 
 export {
+  mentor3D,
+  creative3D,
+  hand3D,
+  lightBulb3D,
+  heart3D,
+  treasureHouse,
   innovation2,
   app,
   counselor,

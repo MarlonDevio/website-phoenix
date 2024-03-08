@@ -1,12 +1,9 @@
 import React from "react";
 import styles from "./container.module.css";
-import clsx from "clsx";
 import { cn } from "@/lib/utils/cn";
-interface ContainerProps {
-  children: React.ReactNode;
-  className?: string;
-}
+import { IContainer } from "@/lib/interfaces/interfaces";
 
-export default function Container({ children, className }: ContainerProps) {
+const Container: React.FC<IContainer> = ({ children, className }) => {
   return <div className={cn(styles.container, className)}>{children}</div>;
-}
+};
+export default Container;
