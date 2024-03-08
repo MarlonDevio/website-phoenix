@@ -26,7 +26,7 @@ const Mission: React.FC<IContainer> = ({ ...props }) => {
   return (
     <Section
       id="mission"
-      className={cn("bg-gradient-to-green", styles.mission)}
+      className={cn("overflow-x-hidden bg-gradient-to-green", styles.mission)}
     >
       <Wrapper variants={variants2} initial="hidden" whileInView="whileInView">
         <MotionHeader
