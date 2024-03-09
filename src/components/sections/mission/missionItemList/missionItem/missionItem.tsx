@@ -26,20 +26,32 @@ const MissionItem: React.FC<MissionProps> = ({ missionItem, ...props }) => {
         className={cn(styles.image)}
       />
       <div className={cn("flex flex-col gap-4", styles.intro)}>
-        <div className="title font-[600] uppercase text-color-gold-3">
+        <div
+          className={cn(
+            "title font-[600] uppercase text-color-gold-3",
+            styles.title,
+          )}
+        >
           {" "}
           {missionItem.title}
         </div>
-        <h6 className="topic leading-tight ">{missionItem.topic}</h6>
-        <div className="description">{missionItem.description}</div>
-        <Button $secondary className="mt-5 self-start">
+        <h6 className={(cn("leading-tight"), styles.topic)}>
+          {missionItem.topic}
+        </h6>
+        <div className={cn(styles.description)}>{missionItem.description}</div>
+        <Button $secondary className={cn("mt-5 self-start", styles.seeMore)}>
           Learn More
         </Button>
       </div>
       <div className={styles.detail}>
-        <div className="title"> {missionItem.detailTitle}</div>
-        <div className="description">{missionItem.detailDescription}</div>
-        <div className="specification">
+        <div className={cn("title", styles.title)}>
+          {" "}
+          {missionItem.detailTitle}
+        </div>
+        <div className={cn("description", styles.description)}>
+          {missionItem.detailDescription}
+        </div>
+        <div className={cn("specification", styles.specification)}>
           <div>
             {missionItem.specification.map((spec, index) => (
               <p key={index}>{spec}</p>
