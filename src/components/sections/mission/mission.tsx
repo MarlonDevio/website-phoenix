@@ -9,6 +9,7 @@ import Wrapper from "@/components/containers/wrapper/wrapper";
 import styles from "./mission.module.css";
 import { cn } from "@/lib/utils/cn";
 import carousel from "../../ui/carousel/carousel";
+import MissionCarousel from "./missionCarousel/missionCarousel";
 
 const variants = {
   hidden: { opacity: 0, y: 100 },
@@ -37,10 +38,7 @@ const Mission: React.FC<IContainer> = ({ ...props }) => {
         >
           Mission
         </MotionHeader>
-        <Carousel {...props} className={cn(styles.carousel)}>
-          <MissionItemList className={cn(styles.list)} />
-          <Arrows />
-        </Carousel>
+        <MissionCarousel />
       </Wrapper>
     </Section>
   );

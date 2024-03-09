@@ -12,12 +12,17 @@ interface MissionProps extends IContainer {
     detailTitle: string;
     detailDescription: string;
     specification: string[];
+    className?: string;
   };
 }
 
-const MissionItem: React.FC<MissionProps> = ({ missionItem, ...props }) => {
+const MissionItem: React.FC<MissionProps> = ({
+  className,
+  missionItem,
+  ...props
+}) => {
   return (
-    <article className={cn(styles.missionItem)}>
+    <article className={cn(styles.missionItem, className)}>
       <Image
         src={missionItem.url}
         width={500}

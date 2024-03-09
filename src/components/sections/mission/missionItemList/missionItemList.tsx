@@ -6,8 +6,9 @@ import { cn } from "@/lib/utils/cn";
 
 interface MissionItemListProps {
   className?: string;
+  missionItems: typeof missionItems;
 }
-const MissionItemList = ({ className }: MissionItemListProps) => {
+const MissionItemList = ({ className, missionItems }: MissionItemListProps) => {
   return (
     <Container className={cn(className)}>
       {missionItems.map((missionItem, index) => (
