@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { IMissionItem } from "../interfaces/interfaces";
 
-type ClickedType = "next" | "prev" | "seeMore" | null;
+type ClickedType = "next" | "prev" | "seeMore" | "back" | null;
 interface UseMissionCarousel {
   missionItems: IMissionItem[];
   nextSlide: () => void;
   prevSlide: () => void;
   showSeeMore: () => void;
+  onBack: () => void;
   clicked: ClickedType;
 }
 
@@ -19,7 +20,7 @@ export const useMissionCarousel = (
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
-    if (clicked) {
+    if (clicked === "next" || clicked === "prev") {
       timer = setTimeout(() => {
         setClicked(null);
       }, 1000); // Verander dit naar de gewenste tijd
@@ -58,5 +59,9 @@ export const useMissionCarousel = (
     setClicked("seeMore");
     console.log("I got clicked");
   };
-  return { missionItems, nextSlide, prevSlide, showSeeMore, clicked };
+
+  const onBack = () => {
+    setClicked("back");
+  };
+  return { missionItems, nextSlide, prevSlide, showSeeMore, clicked, onBack };
 };

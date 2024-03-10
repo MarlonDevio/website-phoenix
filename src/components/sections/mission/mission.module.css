@@ -254,3 +254,90 @@
     opacity: var(--item4-opacity);
   }
 }
+
+.carousel .list .missionItem {
+  transition:
+    left 0.5s,
+    opacity 0.5s;
+}
+
+.carousel.showDetail .list .missionItem:nth-child(3),
+.carousel.showDetail .list .missionItem:nth-child(4) {
+  left: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel.showDetail .list .missionItem:nth-child(2) {
+  width: 100%;
+}
+
+.carousel.showDetail .list .missionItem:nth-child(2) .intro {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel.showDetail .list .missionItem:nth-child(2) .image {
+  transition: right 1.5s;
+}
+.carousel.showDetail .list .missionItem:nth-child(2) .image {
+  right: 60%;
+}
+
+.carousel.showDetail .list .missionItem:nth-child(2) .detail {
+  opacity: 1;
+  pointer-events: auto;
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  text-align: right;
+  transform: translateY(-50%);
+}
+
+.carousel.showDetail .list .missionItem:nth-child(2) .detail .title,
+.carousel.showDetail .list .missionItem:nth-child(2) .detail .description,
+.carousel.showDetail .list .missionItem:nth-child(2) .detail .specification,
+.carousel.showDetail .list .missionItem:nth-child(2) .detail .buttonInfo {
+  opacity: 0;
+  animation: showContent 0.5s 1s ease-in-out 1 forwards;
+}
+
+.carousel.showDetail .list .missionItem:nth-child(2) .detail .description {
+  animation-delay: 1.2s;
+}
+.carousel.showDetail .list .missionItem:nth-child(2) .detail .specification {
+  animation-delay: 1.4s;
+}
+.carousel.showDetail .list .missionItem:nth-child(2) .detail .buttonInfo {
+  animation-delay: 1.6s;
+}
+
+.carousel.showDetail .prev {
+  font-size: 100rem;
+}
+.carousel::before {
+  width: 50rem;
+  height: 30rem;
+  content: "";
+  background-image: linear-gradient(
+    45deg,
+    rgba(var(--color-green-1), 1),
+    rgba(var(--color-green-2), 1),
+    rgba(var(--color-gold-3), 1),
+    rgba(var(--color-gold-2), 1),
+    rgba(var(--color-green-light), 1)
+  );
+  filter: blur(150px);
+  position: absolute;
+  z-index: -1;
+  border-radius: 20% 30% 80% 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-10%, -50%);
+  transition: 1s;
+}
+
+.carousel.showDetail::before {
+  transform: translate(-100%, -50%) rotate(70deg);
+}

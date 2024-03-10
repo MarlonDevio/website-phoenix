@@ -30,4 +30,5 @@ export interface IMissionItem extends IContainer {
   detailDescription: string;
   specification: string[];
   className?: string;
+  buttonText: string;
 }

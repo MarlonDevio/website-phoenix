@@ -42,14 +42,35 @@ const MissionItem: React.FC<MissionItemProps> = ({
           Learn More
         </Button>
       </div>
-      <div className={styles.detail}>
-        <div className={cn("title", styles.title)}> {props.detailTitle}</div>
+      <div className={cn("flex flex-col", styles.detail)}>
+        <h6 className={cn("title", styles.title)}> {props.detailTitle}</h6>
         <div className={cn("description", styles.description)}>
           {props.detailDescription}
         </div>
-        <div className={cn("specification", styles.specification)}>
-          <div></div>
+        <div
+          className={cn("specification flex flex-col", styles.specification)}
+        >
+          <div className="border-t-1 mt-8 flex w-full justify-end gap-10 border-t-[1px] border-color-green-light">
+            {props.specification.map((spec, index) => {
+              return (
+                <div
+                  className="max-w-full flex-shrink-0  text-center"
+                  key={index}
+                >
+                  <p className="mt-5 text-[2rem]  font-bold text-color-light-grey">
+                    {spec}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
         </div>
+        <Button
+          $primary
+          className={cn(styles.buttonInfo, "mt-5 self-end font-bold")}
+        >
+          {props.buttonText}
+        </Button>
       </div>
     </article>
   );

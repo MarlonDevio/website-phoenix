@@ -13,7 +13,7 @@ const MissionCarousel: React.FC<IContainer> = ({
   className,
   ...props
 }) => {
-  const { missionItems, nextSlide, prevSlide, showSeeMore, clicked } =
+  const { missionItems, nextSlide, prevSlide, showSeeMore, clicked, onBack } =
     useMissionCarousel(initialMissionItems);
 
   return (
@@ -22,7 +22,7 @@ const MissionCarousel: React.FC<IContainer> = ({
       className={cn(styles.carousel, {
         [styles.next]: clicked === "next",
         [styles.prev]: clicked === "prev",
-        [styles.seeMore]: clicked === "seeMore",
+        [styles.showDetail]: clicked === "seeMore",
       })}
     >
       <MissionItemList
@@ -30,7 +30,7 @@ const MissionCarousel: React.FC<IContainer> = ({
         missionItems={missionItems}
         onSeeMore={showSeeMore}
       />
-      <Arrows onNext={nextSlide} onPrev={prevSlide} />
+      <Arrows onBack={onBack} onNext={nextSlide} onPrev={prevSlide} />
     </Carousel>
   );
 };
