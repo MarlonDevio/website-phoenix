@@ -1,33 +1,25 @@
 import Button from "@/components/ui/button/button";
 import Image, { StaticImageData } from "next/image";
-import { IContainer } from "../../../../../lib/interfaces/interfaces";
 import styles from "../../mission.module.css";
 import { cn } from "@/lib/utils/cn";
-interface MissionProps extends IContainer {
-  missionItem: {
-    url: StaticImageData;
-    title: string;
-    topic: string;
-    description: string;
-    detailTitle: string;
-    detailDescription: string;
-    specification: string[];
-    className?: string;
-  };
-}
+import { IMissionItem } from "../../../../../lib/interfaces/interfaces";
+import Mission from "../../mission";
 
-const MissionItem: React.FC<MissionProps> = ({
+interface MissionItemProps extends IMissionItem {
+  onSeeMore: () => void;
+}
+const MissionItem: React.FC<MissionItemProps> = ({
   className,
-  missionItem,
+  onSeeMore,
   ...props
 }) => {
   return (
     <article className={cn(styles.missionItem, className)}>
       <Image
-        src={missionItem.url}
+        src={props.url}
         width={500}
         height={600}
-        alt={missionItem.description}
+        alt={props.description}
         className={cn(styles.image)}
       />
       <div className={cn("flex flex-col gap-4", styles.intro)}>
@@ -38,30 +30,25 @@ const MissionItem: React.FC<MissionProps> = ({
           )}
         >
           {" "}
-          {missionItem.title}
+          {props.title}
         </div>
-        <h6 className={(cn("leading-tight"), styles.topic)}>
-          {missionItem.topic}
-        </h6>
-        <div className={cn(styles.description)}>{missionItem.description}</div>
-        <Button $secondary className={cn("mt-5 self-start", styles.seeMore)}>
+        <h6 className={(cn("leading-tight"), styles.topic)}>{props.topic}</h6>
+        <div className={cn(styles.description)}>{props.description}</div>
+        <Button
+          onClick={onSeeMore}
+          $secondary
+          className={cn("mt-5 self-start", styles.seeMore)}
+        >
           Learn More
         </Button>
       </div>
       <div className={styles.detail}>
-        <div className={cn("title", styles.title)}>
-          {" "}
-          {missionItem.detailTitle}
-        </div>
+        <div className={cn("title", styles.title)}> {props.detailTitle}</div>
         <div className={cn("description", styles.description)}>
-          {missionItem.detailDescription}
+          {props.detailDescription}
         </div>
         <div className={cn("specification", styles.specification)}>
-          <div>
-            {missionItem.specification.map((spec, index) => (
-              <p key={index}>{spec}</p>
-            ))}
-          </div>
+          <div></div>
         </div>
       </div>
     </article>

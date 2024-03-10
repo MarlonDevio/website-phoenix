@@ -7,12 +7,17 @@ import { cn } from "@/lib/utils/cn";
 interface MissionItemListProps {
   className?: string;
   missionItems: typeof missionItems;
+  onSeeMore: () => void;
 }
-const MissionItemList = ({ className, missionItems }: MissionItemListProps) => {
+const MissionItemList = ({
+  className,
+  missionItems,
+  onSeeMore,
+}: MissionItemListProps) => {
   return (
     <Container className={cn(className)}>
       {missionItems.map((missionItem, index) => (
-        <MissionItem key={index} missionItem={missionItem} />
+        <MissionItem key={index} {...missionItem} onSeeMore={onSeeMore} />
       ))}
     </Container>
   );

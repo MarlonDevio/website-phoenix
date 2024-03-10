@@ -1,12 +1,11 @@
-.mission {
+/* .mission {
   -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-}
+/* scrollbar-width: none; /* Firefox */
 
 /* Hide scrollbar for IE, Edge and Firefox */
-.mission::-webkit-scrollbar {
+/* .mission::-webkit-scrollbar {
   display: none;
-}
+} */
 .carousel {
   height: 80rem;
   position: relative;
@@ -107,7 +106,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  bottom: -30%;
+  height: min-content;
+  bottom: 10%;
 }
 
 .carousel.next .list .missionItem:nth-child(2) .intro .title {
@@ -152,6 +152,7 @@
     transform: translateY(0);
     opacity: 1;
     filter: blur(0);
+    pointer-events: auto;
   }
 }
 
