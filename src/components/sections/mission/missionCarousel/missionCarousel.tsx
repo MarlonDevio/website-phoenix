@@ -16,26 +16,25 @@ const MissionCarousel: React.FC<IContainer> = ({
   const [missionItems, setMissionItems] = useState(initialMissionItems);
   const [nextClicked, setNextClicked] = useState(false);
   const [prevClicked, setPrevClicked] = useState(false);
+  const [seeMoreClicked, setSeeMoreClicked] = useState(false);
 
   useEffect(() => {
+    let timer: NodeJS.Timeout;
     if (nextClicked) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setNextClicked(false);
       }, 1000); // Verander dit naar de gewenste tijd
-
-      return () => clearTimeout(timer); // Dit zal de timer wissen wanneer de component wordt gedemonteerd
     }
-  }, [nextClicked]);
-
-  useEffect(() => {
     if (prevClicked) {
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setPrevClicked(false);
       }, 1000); // Verander dit naar de gewenste tijd
-
-      return () => clearTimeout(timer); // Dit zal de timer wissen wanneer de component wordt gedemonteerd
     }
-  }, [prevClicked]);
+    return () => {
+      clearTimeout(timer); // Dit zal de timer wissen wanneer de component wordt gedemonteerd
+    };
+  }, [nextClicked, prevClicked]);
+
   const nextSlide = () => {
     setMissionItems((prevItems) => {
       const newItems = [...prevItems]; // create a copy of the array
@@ -45,7 +44,6 @@ const MissionCarousel: React.FC<IContainer> = ({
       }
       return newItems;
     });
-    prevClicked && setPrevClicked(false);
     setNextClicked(true);
   };
   const prevSlide = () => {
@@ -57,7 +55,6 @@ const MissionCarousel: React.FC<IContainer> = ({
       }
       return newItems;
     });
-    nextClicked && setNextClicked;
     setPrevClicked(true);
   };
 
@@ -68,6 +65,7 @@ const MissionCarousel: React.FC<IContainer> = ({
         styles.carousel,
         nextClicked && styles.next,
         prevClicked && styles.prev,
+        seeMoreClicked && styles.seeMore,
       )}
     >
       <MissionItemList
