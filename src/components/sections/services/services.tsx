@@ -23,7 +23,7 @@ export default function Services() {
         // variants={variants}
         // initial="initial"
         // whileInView="whileInView"
-        className="flex flex-col justify-center gap-[10vh]"
+        className="flex flex-col justify-center gap-[15vh]"
       >
         <UpperText />
         <MainTitle />

@@ -50,7 +50,7 @@ const ServiceItem = ({
       animate={animate}
       whileInView={whileInView}
       className={cn(
-        "cursor-pointer gap-5 p-10 shadow-inset-green-pre-hover",
+        "cursor-pointer gap-5 px-10 py-20 shadow-inset-green-pre-hover",
         styles.serviceItem,
       )}
     >
@@ -73,9 +73,9 @@ const ServiceItem = ({
       </p>
       <Button
         className={cn(
-          "col-span-2 col-start-2 self-end bg-color-gold-3 font-bold transition-all duration-1000 ease-in-out",
+          " col-start-2 self-end justify-self-start bg-color-gold-3 px-20 py-2 font-medium",
           {
-            "bg-green-400    ": hover,
+            "bg-transparent shadow-inset-green-pre-hover": hover,
           },
         )}
       >
