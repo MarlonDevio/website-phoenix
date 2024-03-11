@@ -57,7 +57,7 @@ export const PortfolioParallax = ({
   return (
     <div
       ref={ref}
-      className="relative flex h-[220vh]  flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+      className="relative flex h-[200vh]  flex-col self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d]"
     >
       <Header />
       <motion.div
@@ -67,7 +67,7 @@ export const PortfolioParallax = ({
           translateY,
           opacity,
         }}
-        className=""
+        className="mx-auto max-w-[40vw]"
       >
         <motion.div className="mb-20 flex flex-row-reverse space-x-20 space-x-reverse">
           {firstRow.map((product) => (
@@ -146,14 +146,14 @@ export const ProductCard = ({
           src={product.thumbnail}
           height="600"
           width="600"
-          className="absolute inset-0 h-full w-full object-cover object-left-top"
+          className="absolute inset-0 h-full w-full object-cover object-center"
           alt={product.title}
         />
       </Link>
       <div className="pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-80"></div>
-      <h2 className="absolute bottom-4 left-4 text-white opacity-0 group-hover/product:opacity-100">
+      <h3 className="absolute bottom-4 left-4 text-[3rem] text-white opacity-0 group-hover/product:opacity-100">
         {product.title}
-      </h2>
+      </h3>
     </motion.div>
   );
 };
