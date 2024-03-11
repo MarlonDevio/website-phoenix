@@ -1,3 +1,4 @@
+"use client";
 import Section from "@/components/containers/section/section";
 import styles from "./about.module.css";
 import Wrapper from "@/components/containers/wrapper/wrapper";

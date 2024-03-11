@@ -1,3 +1,4 @@
+"use client";
 import { services } from "@/constants/services";
 import ServiceItem from "./service/serviceItem";
 import Grid from "@/components/containers/grid/grid";

@@ -1,16 +1,15 @@
 "use client";
-import Navbar from "@/components/ui/navbar/navbar";
-import Hero from "@/components/sections/hero/hero";
-
-import Button from "@/components/ui/button/button";
-import TextSlider from "@/components/ui/textSlider/textSlider";
 import About from "@/components/sections/about/about";
-import Services from "@/components/sections/services/services";
+import Hero from "@/components/sections/hero/hero";
 import Mission from "@/components/sections/mission/mission";
+import Portfolio from "@/components/sections/portfolio/portfolio";
+import Services from "@/components/sections/services/services";
+
 export default function Home() {
   return (
     <main>
       <Hero />
+      <Portfolio />
       <Services />
       <Mission />
       <About />

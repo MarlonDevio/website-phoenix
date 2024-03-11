@@ -1,3 +1,4 @@
+"use client";
 import NavLink from "./navLink/navLink";
 import { navigationLinks } from "@/constants/links";
 const NavLinks: React.FC = () => {

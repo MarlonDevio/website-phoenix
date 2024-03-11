@@ -1,10 +1,12 @@
+"use client";
 import { Variants } from "framer-motion";
+import React from "react";
 import styles from "./section.module.css";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
 
-interface SectionProps {
+interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   $containerPadding?: boolean;
@@ -13,27 +15,31 @@ interface SectionProps {
   animate?: string | boolean;
   id?: string;
 }
-export default function Section({
-  children,
-  className,
-  $containerPadding,
-  variants,
-  initial,
-  animate,
-  id,
-}: SectionProps) {
-  return (
-    <motion.section
-      // TODO: fix the motion react fc component
-      className={cn(className, {
-        [styles.section]: $containerPadding,
-      })}
-      animate={animate}
-      initial={initial}
-      variants={variants}
-      id={id}
-    >
-      {children}
-    </motion.section>
-  );
-}
+const Section = React.forwardRef<HTMLDivElement, SectionProps>(
+  (
+    { children, className, $containerPadding, variants, initial, animate, id },
+    ref,
+  ) => {
+    return (
+      <motion.section
+        // TODO: fix the motion react fc component
+        className={cn(
+          {
+            [styles.section]: $containerPadding,
+          },
+          className,
+        )}
+        animate={animate}
+        initial={initial}
+        variants={variants}
+        ref={ref}
+        id={id}
+      >
+        {children}
+      </motion.section>
+    );
+  },
+);
+
+Section.displayName = "Section";
+export default Section;

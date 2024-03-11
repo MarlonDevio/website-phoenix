@@ -1,7 +1,9 @@
+"use client";
 import React from "react";
 import styles from "./wrapper.module.css";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+
 import { cn } from "@/lib/utils/cn";
 
 interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {

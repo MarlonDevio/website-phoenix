@@ -17,9 +17,7 @@ export default function Services() {
   return (
     <Section
       $containerPadding
-      className={cn(
-        "min-h-[50vh] flex-col justify-center gap-[10vh] py-[100rem]",
-      )}
+      className={cn("min-h-[50vh] flex-col justify-center gap-[10vh]")}
     >
       <Wrapper
         // variants={variants}

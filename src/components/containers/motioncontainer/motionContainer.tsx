@@ -1,3 +1,4 @@
+"use client";
 import { AnimationDefinition, MotionProps, motion } from "framer-motion";
 import React from "react";
 import { Variants } from "framer-motion";

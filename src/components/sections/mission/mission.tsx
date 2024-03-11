@@ -1,3 +1,4 @@
+"use client";
 import { IContainer } from "@/lib/interfaces/interfaces";
 import React from "react";
 import Section from "@/components/containers/section/section";
@@ -27,7 +28,10 @@ const Mission: React.FC<IContainer> = ({ ...props }) => {
   return (
     <Section
       id="mission"
-      className={cn("overflow-x-hidden bg-gradient-to-green", styles.mission)}
+      className={cn(
+        "overflow-x-hidden bg-gradient-to-green py-[9rem]",
+        styles.mission,
+      )}
     >
       <Wrapper variants={variants2} initial="hidden" whileInView="whileInView">
         <MotionHeader

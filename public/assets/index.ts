@@ -34,7 +34,18 @@ import logoIconBlack from "./logos/logo-icon-black.png";
 import attesticoPortfolioImage from "./portfolio-images/attestico-portfolio-item.webp";
 import budgetApp from "./portfolio-images/budget-app-portfolio-item.webp";
 import datingApp from "./portfolio-images/dating-portfolio-item.webp";
-import treasureHouse from "./portfolio-images/treasurehouse.png";
+import treasureHouse from "./portfolio-images/treasurehouse.webp";
+import booksApp from "./portfolio-images/booksapp.webp";
+import fitnessApp from "./portfolio-images/fitnessapp.webp";
+import littleLemon from "./portfolio-images/littleLemon.webp";
+import prettysizedApp from "./portfolio-images/prettysizedapp.webp";
+import webcrawler from "./portfolio-images/webcrawler.webp";
+import websiteThreeD from "./portfolio-images/3dwebsite.webp";
+import mapty from "./portfolio-images/mapty.webp";
+import facebrainrecognitionapp from "./portfolio-images/facebrainrecognitionapp.webp";
+import mystyrybox from "./portfolio-images/mystyrybox.webp";
+import fullstackecommerce from "./portfolio-images/fullstackecommerce.webp";
+import machineLearning from "./portfolio-images/machinelearning.webp";
 
 // 3D icons
 import hand3D from "./3d-icons/hands.png";
@@ -46,6 +57,17 @@ import creative3D from "./3d-icons/creative3D.png";
 import profilePicture from "./profile/profile-picture.png";
 
 export {
+  machineLearning,
+  mystyrybox,
+  fullstackecommerce,
+  webcrawler,
+  websiteThreeD,
+  mapty,
+  facebrainrecognitionapp,
+  booksApp,
+  fitnessApp,
+  littleLemon,
+  prettysizedApp,
   mentor3D,
   creative3D,
   hand3D,
