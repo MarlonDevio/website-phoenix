@@ -11,12 +11,12 @@ const childVariants = {
 const variants = fadeInOnView;
 export function WavySection() {
   return (
-    <WavyBackground className="absolute mx-auto max-w-4xl pb-40">
+    <WavyBackground className="absolute mx-auto flex max-w-[89rem] flex-col gap-[6rem] pb-40">
       <motion.p
         variants={variants}
         initial="initial"
         whileInView="whileInView"
-        className=" text-center font-bold text-white md:text-[4rem] lg:text-[5rem] xl:text-[6rem]"
+        className=" mb-11 flex flex-col text-center text-[4rem] font-bold leading-tight text-white lg:text-[5rem] xl:text-[6rem]"
       >
         <motion.span
           variants={childVariants}
