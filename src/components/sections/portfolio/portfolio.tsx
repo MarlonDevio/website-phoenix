@@ -14,7 +14,7 @@ const childrenVariants = {
 };
 export function Portfolio() {
   return (
-    <Section className="bg-gradient-to-green pb-20">
+    <Section className=" bg-gradient-to-green pb-20">
       <PortfolioParallax products={portfolioItems} />
     </Section>
   );

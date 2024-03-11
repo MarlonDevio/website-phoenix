@@ -1,9 +1,7 @@
 .navbar {
-  @apply bg-gradient-from-green;
 }
 
 .linkContainer {
-  background-color: rgba(var(--color-green-light), 0.1);
   padding: 2rem;
   align-items: center;
   justify-content: flex-end;

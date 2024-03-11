@@ -10,7 +10,7 @@ export const fadeInOnView: Variants = {
   whileInView: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeInOut" },
+    transition: { duration: 1, ease: "easeInOut", staggerChildren: 2 },
   },
 };
 
