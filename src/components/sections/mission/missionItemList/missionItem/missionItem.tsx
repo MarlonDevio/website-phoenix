@@ -57,7 +57,12 @@ const MissionItem: React.FC<MissionItemProps> = ({
                   className="max-w-full flex-shrink-0  text-center"
                   key={index}
                 >
-                  <p className="mt-5 text-[2rem]  font-bold text-color-light-grey">
+                  <p
+                    className={cn(
+                      "mt-5 text-[2rem]  font-bold text-color-light-grey",
+                      styles.spec,
+                    )}
+                  >
                     {spec}
                   </p>
                 </div>

@@ -32,7 +32,7 @@
 
 .image {
   position: absolute;
-  width: 50%;
+  width: 40%;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -340,4 +340,52 @@
 
 .carousel.showDetail::before {
   transform: translate(-100%, -50%) rotate(70deg);
+}
+
+@media screen and (max-width: 1200px) {
+  .carousel .list .detail .specification .spec {
+    font-size: 1.5rem;
+  }
+  .carousel.showDetail .list .missionItem .image {
+    width: 35%;
+  }
+}
+@media screen and (max-width: 991px) {
+  .carousel .list .missionItem {
+    width: 90%;
+  }
+
+  .spec {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 852px) {
+  .carousel .list .detail .specification {
+    display: none;
+  }
+}
+@media screen and (max-width: 767px) {
+  .carousel .list .missionItem {
+    width: 100%;
+    font-size: 10px;
+  }
+  .carousel {
+    height: 600px;
+  }
+  .carousel .list {
+    height: 100%;
+  }
+
+  .carousel .list .missionItem .intro {
+    width: 50%;
+  }
+
+  .carousel .list .missionItem .image {
+    width: 40%;
+  }
+
+  .carousel.showDetail .list .missionItem .detail .title {
+    font-size: 2rem;
+  }
 }
