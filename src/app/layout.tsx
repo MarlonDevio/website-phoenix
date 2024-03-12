@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils/cn";
@@ -24,6 +25,8 @@ export default function RootLayout({
       <body className={cn(poppinsFont.className, "antialiased")}>
         <Navbar />
         {children}
+
+        <SpeedInsights />
       </body>
     </html>
   );
