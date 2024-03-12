@@ -5,19 +5,6 @@ import styles from "../mission.module.css";
 import { cn } from "@/lib/utils/cn";
 
 interface ArrowsProps {
-<<<<<<< HEAD
-  handleClick: (e: Event) => void;
-}
-
-const Arrows: React.FC<ArrowsProps> = ({ handleClick }: any) => {
-  return (
-    <Container className={cn(styles.arrowContainer)}>
-      <ArrowButton onClick={handleClick} className="prev">
-        &lt;
-      </ArrowButton>
-      <BackButton>Go Back &#8599;</BackButton>
-      <ArrowButton onClick={handleClick} className="next">
-=======
   onNext: any;
   onPrev: any;
   onBack: any;
@@ -33,7 +20,6 @@ const Arrows: React.FC<ArrowsProps> = ({ onBack, onNext, onPrev }) => {
         Go Back &#8599;
       </BackButton>
       <ArrowButton buttonType={onNext} className={cn(styles.next, "next")}>
->>>>>>> errorbranch
         &gt;{" "}
       </ArrowButton>
     </Container>

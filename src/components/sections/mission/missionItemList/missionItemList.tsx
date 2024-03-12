@@ -9,22 +9,11 @@ interface MissionItemListProps {
   missionItems: typeof missionItems;
   onSeeMore: () => void;
 }
-<<<<<<< HEAD
-
-const missionItemList = missionItems.map((item) => item);
-
-const MissionItemList = ({ className }: MissionItemListProps) => {
-  const handleClick = () => {
-    console.log("clicked");
-  };
-
-=======
 const MissionItemList = ({
   className,
   missionItems,
   onSeeMore,
 }: MissionItemListProps) => {
->>>>>>> errorbranch
   return (
     <Container className={cn(className)}>
       {missionItems.map((missionItem, index) => (

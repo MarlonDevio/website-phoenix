@@ -32,13 +32,6 @@ const MissionItem: React.FC<MissionItemProps> = ({
           {" "}
           {props.title}
         </div>
-<<<<<<< HEAD
-        <h6 className={cn("leading-tight", styles.topic)}>
-          {missionItem.topic}
-        </h6>
-        <div className={cn(styles.description)}>{missionItem.description}</div>
-        <Button $secondary className={cn("mt-5 self-start", styles.seeMore)}>
-=======
         <h6 className={(cn("leading-tight"), styles.topic)}>{props.topic}</h6>
         <div className={cn(styles.description)}>{props.description}</div>
         <Button
@@ -46,7 +39,6 @@ const MissionItem: React.FC<MissionItemProps> = ({
           $secondary
           className={cn("mt-5 self-start", styles.seeMore)}
         >
->>>>>>> errorbranch
           Learn More
         </Button>
       </div>
