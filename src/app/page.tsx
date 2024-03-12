@@ -4,6 +4,7 @@ import Mission from "@/components/sections/mission/mission";
 import Portfolio from "@/components/sections/portfolio/portfolio";
 import Services from "@/components/sections/services/services";
 import { SparklesSection } from "@/components/ui/sparklesSection";
+import { TextGenerate } from "@/components/ui/textGenerate";
 import { TypeWriter } from "@/components/ui/typeWriter";
 import { WavySection } from "@/components/ui/wavySection";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <WavySection />
       <Portfolio />
       <Services />
+      {/* <TextGenerate /> */}
       <Mission />
       <TypeWriter />
       <SparklesSection />
