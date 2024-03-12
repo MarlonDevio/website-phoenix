@@ -23,6 +23,7 @@ const Button: React.FC<ButtonProps> = ({
           [styles.primary]: $primary,
           [styles.secondary]: $secondary,
         },
+        "px-[2rem] py-[1rem]",
         className,
       )}
       {...props}

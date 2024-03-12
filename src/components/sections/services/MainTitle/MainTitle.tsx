@@ -16,6 +16,7 @@ const MainTitle = () => {
       initial="initial"
       className="flex flex-col justify-center"
       whileInView={"whileInView"}
+      viewport={{ once: true }}
     >
       <div>
         {/* <Button $secondary className="cursor-not-allowed">

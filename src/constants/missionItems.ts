@@ -16,6 +16,7 @@ export const missionItems = [
     detailDescription:
       "How I transformed hardship into a driving force for learning and growth in the tech industry.",
     specification: ["Self-Taught Learning", "Perseverance", "Problem Solving"],
+    buttonText: "Overcome Challenges",
   },
   {
     title: "Empowering Others",
@@ -30,6 +31,7 @@ export const missionItems = [
       "Mentorship Programs",
       "Community Engagement",
     ],
+    buttonText: "Empower Others",
   },
   {
     title: "Igniting Innovation",
@@ -44,6 +46,7 @@ export const missionItems = [
       "Creative Solutions",
       "Tech Implementation",
     ],
+    buttonText: "Ignite Innovation",
   },
   {
     title: "Fostering Growth",
@@ -54,6 +57,7 @@ export const missionItems = [
     detailDescription:
       "My approach to mentorship and the impact it has on personal and professional growth.",
     specification: ["Leadership", "Growth Mindset", "Skill Development"],
+    buttonText: "Foster Growth",
   },
   {
     title: "Creative Expression",
@@ -64,5 +68,6 @@ export const missionItems = [
     detailDescription:
       "Projects that showcase the intersection of technology and artistic creativity.",
     specification: ["Digital Art", "User Interface Design", "Animation"],
+    buttonText: "Let's get Creative",
   },
 ];

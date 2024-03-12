@@ -6,7 +6,10 @@ import { cn } from "@/lib/utils/cn";
 
 interface MissionItemListProps {
   className?: string;
+  missionItems: typeof missionItems;
+  onSeeMore: () => void;
 }
+<<<<<<< HEAD
 
 const missionItemList = missionItems.map((item) => item);
 
@@ -15,10 +18,17 @@ const MissionItemList = ({ className }: MissionItemListProps) => {
     console.log("clicked");
   };
 
+=======
+const MissionItemList = ({
+  className,
+  missionItems,
+  onSeeMore,
+}: MissionItemListProps) => {
+>>>>>>> errorbranch
   return (
     <Container className={cn(className)}>
       {missionItems.map((missionItem, index) => (
-        <MissionItem key={index} missionItem={missionItem} />
+        <MissionItem key={index} {...missionItem} onSeeMore={onSeeMore} />
       ))}
     </Container>
   );

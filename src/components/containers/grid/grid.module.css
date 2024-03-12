@@ -17,7 +17,7 @@
 .gridCol4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .gridCol5 {

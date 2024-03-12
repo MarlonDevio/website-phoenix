@@ -17,15 +17,13 @@ export default function Services() {
   return (
     <Section
       $containerPadding
-      className={cn(
-        "min-h-[50vh] flex-col justify-center gap-[10vh] py-[100rem]",
-      )}
+      className={cn("min-h-[50vh] flex-col justify-center gap-[10vh]")}
     >
       <Wrapper
         // variants={variants}
         // initial="initial"
         // whileInView="whileInView"
-        className="flex flex-col justify-center gap-[10vh]"
+        className="flex flex-col justify-center gap-[15vh]"
       >
         <UpperText />
         <MainTitle />

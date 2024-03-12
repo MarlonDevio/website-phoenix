@@ -15,7 +15,7 @@ export default function Hero({ className }: HeroProps) {
     <Section
       className={cn(
         styles.hero,
-        "relative flex flex-col justify-center gap-10 bg-gradient-to-green",
+        "relative flex flex-col justify-center gap-10 bg-gradient-from-green",
       )}
     >
       <HeroHeading />

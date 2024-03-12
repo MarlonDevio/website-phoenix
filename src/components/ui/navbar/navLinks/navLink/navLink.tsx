@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import styles from "./navLink.module.css";
 import { AnchorHTMLAttributes, useEffect, useRef, useState } from "react";

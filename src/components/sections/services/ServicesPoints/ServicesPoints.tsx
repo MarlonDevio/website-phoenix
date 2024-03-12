@@ -1,3 +1,4 @@
+"use client";
 import { services } from "@/constants/services";
 import ServiceItem from "./service/serviceItem";
 import Grid from "@/components/containers/grid/grid";
@@ -84,6 +85,7 @@ const ServicesPoints = () => {
             variants={servicePointVariants(index)}
             initial="initial"
             whileInView="whileInView"
+            viewport={{ once: true }}
             service={service}
             key={service.id}
           />

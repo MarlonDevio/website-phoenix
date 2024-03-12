@@ -1,31 +1,22 @@
-import React from "react";
-import { cn } from "@/lib/utils/cn";
+"use client";
+import React, { useRef } from "react";
 import Image from "next/image";
-import styles from "./portfolio.module.css";
-import { attesticoPortfolioImage } from "../../../../public/assets";
-import Button from "@/components/ui/button/button";
+import { attesticoPortfolioImage, datingApp } from "../../../../public/assets";
+import Section from "@/components/containers/section/section";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { PortfolioParallax } from "./projectParallax";
+import { portfolioItems } from "@/constants/portfolioItems";
+import Wrapper from "@/components/containers/wrapper/wrapper";
 
-function Portfolio() {
+const childrenVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+export function Portfolio() {
   return (
-    <div>
-      <div className="center">
-        <div className="top">solar system</div>
-        <div className="carousel">
-          <div className="left">
-            <div className="left-item">
-              <div className="title">Dating</div>
-              <div className="description">dating app best for ...</div>
-            </div>
-          </div>
-          <div className="right">
-            <div className="item">
-              <Image src={attesticoPortfolioImage} alt="attestico" />
-              <Button>Button</Button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Section className=" bg-gradient-to-green pb-20">
+      <PortfolioParallax products={portfolioItems} />
+    </Section>
   );
 }
 

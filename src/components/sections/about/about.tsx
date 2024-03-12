@@ -1,3 +1,4 @@
+"use client";
 import Section from "@/components/containers/section/section";
 import styles from "./about.module.css";
 import Wrapper from "@/components/containers/wrapper/wrapper";
@@ -7,11 +8,7 @@ import Grid from "@/components/containers/grid/grid";
 
 export default function About() {
   return (
-    <Section
-      id="about"
-      $containerPadding
-      className={cn(styles.about, "bg-gradient-from-green")}
-    >
+    <Section id="about" $containerPadding className={cn(styles.about)}>
       <Wrapper>
         <h2>About</h2>
       </Wrapper>

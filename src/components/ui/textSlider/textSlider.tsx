@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import styles from "./textSlider.module.css";
 import { MotionComponentProps } from "@/lib/interfaces/interfaces";

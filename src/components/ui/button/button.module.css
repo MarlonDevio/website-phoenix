@@ -1,9 +1,8 @@
 .button {
-  padding: 1rem 2rem;
+  /* padding: 1rem 2rem; */
   border: none;
   cursor: pointer;
-  @apply rounded-2xl transition-all duration-100 ease-in-out hover:-translate-y-0.5 
-    active:-translate-y-[-10] active:shadow-sm;
+  @apply rounded-2xl transition-all duration-100 ease-in-out hover:-translate-y-0.5 active:-translate-y-[-10] active:shadow-sm;
 }
 
 .primary {
