@@ -3,7 +3,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils/cn";
-import Navbar from "@/components/ui/navbar/navbar";
+import Navbar from "../../components/ui/navbar/navbar";
+import { ThemeContextProvider } from "./themeContext";
 
 const poppinsFont = Poppins({
   weight: ["200", "300", "400", "500", "600", "700"],
@@ -22,8 +23,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(poppinsFont.className, "antialiased")}>
-        <Navbar />
+      <body
+        className={cn(
+          poppinsFont.className,
+          "dark:text-grey-1 bg-white text-black antialiased dark:bg-black",
+        )}
+      >
+        {/* <Navbar /> */}
         {children}
 
         <SpeedInsights />

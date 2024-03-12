@@ -16,11 +16,11 @@ export const navigationLinks = [
     label: "Portfolio",
   },
   {
-    href: "/#contact",
-    label: "Contact",
-  },
-  {
     href: "/blog",
     label: "Blog",
+  },
+  {
+    href: "/#contact",
+    label: "Contact",
   },
 ];
