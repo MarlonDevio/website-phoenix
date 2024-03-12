@@ -128,3 +128,13 @@
     filter: blur(0);
   }
 }
+
+.carousel .list .missionItem:nth-child(2) .intro .topic {
+  animation-delay: 0.9s;
+}
+.carousel .list .missionItem:nth-child(2) .intro .description {
+  animation-delay: 1.1s;
+}
+.carousel .list .missionItem:nth-child(2) .intro .seeMore {
+  animation-delay: 1.3s;
+}

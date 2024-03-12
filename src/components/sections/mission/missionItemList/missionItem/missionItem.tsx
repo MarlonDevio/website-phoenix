@@ -35,7 +35,7 @@ const MissionItem: React.FC<MissionProps> = ({ missionItem, ...props }) => {
           {" "}
           {missionItem.title}
         </div>
-        <h6 className={(cn("leading-tight"), styles.topic)}>
+        <h6 className={cn("leading-tight", styles.topic)}>
           {missionItem.topic}
         </h6>
         <div className={cn(styles.description)}>{missionItem.description}</div>

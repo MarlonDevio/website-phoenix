@@ -7,7 +7,14 @@ import { cn } from "@/lib/utils/cn";
 interface MissionItemListProps {
   className?: string;
 }
+
+const missionItemList = missionItems.map((item) => item);
+
 const MissionItemList = ({ className }: MissionItemListProps) => {
+  const handleClick = () => {
+    console.log("clicked");
+  };
+
   return (
     <Container className={cn(className)}>
       {missionItems.map((missionItem, index) => (

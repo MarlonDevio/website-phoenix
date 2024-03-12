@@ -4,12 +4,20 @@ import BackButton from "@/components/ui/button/backButton";
 import styles from "../mission.module.css";
 import { cn } from "@/lib/utils/cn";
 
-const Arrows: React.FC = () => {
+interface ArrowsProps {
+  handleClick: (e: Event) => void;
+}
+
+const Arrows: React.FC<ArrowsProps> = ({ handleClick }: any) => {
   return (
     <Container className={cn(styles.arrowContainer)}>
-      <ArrowButton className="prev">&lt;</ArrowButton>
+      <ArrowButton onClick={handleClick} className="prev">
+        &lt;
+      </ArrowButton>
       <BackButton>Go Back &#8599;</BackButton>
-      <ArrowButton className="next">&gt; </ArrowButton>
+      <ArrowButton onClick={handleClick} className="next">
+        &gt;{" "}
+      </ArrowButton>
     </Container>
   );
 };
