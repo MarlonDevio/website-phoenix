@@ -85,6 +85,7 @@ const ServicesPoints = () => {
             variants={servicePointVariants(index)}
             initial="initial"
             whileInView="whileInView"
+            viewport={{ once: true }}
             service={service}
             key={service.id}
           />

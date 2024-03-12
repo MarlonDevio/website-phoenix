@@ -49,6 +49,7 @@ const ServiceItem = ({
       initial={initial}
       animate={animate}
       whileInView={whileInView}
+      viewport={{ once: true }}
       className={cn(
         "cursor-pointer gap-5 px-10 py-20 shadow-inset-green-pre-hover",
         styles.serviceItem,

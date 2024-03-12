@@ -57,7 +57,7 @@ export const PortfolioParallax = ({
   return (
     <div
       ref={ref}
-      className="relative flex min-h-[180vh] flex-col  self-auto overflow-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d] md:h-[220vh]"
+      className="relative flex min-h-[180vh] flex-col  self-auto overflow-x-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d] md:h-[220vh]"
     >
       <Header />
       <motion.div
