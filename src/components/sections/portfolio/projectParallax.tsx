@@ -101,18 +101,35 @@ export const PortfolioParallax = ({
   );
 };
 
+const headerVariants = {
+  hidden: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+      staggerChildren: 1.2,
+    },
+  },
+};
 export const Header = () => {
   return (
-    <div className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4  py-20 md:py-40">
-      <h2 className="text-2xl font-bold md:text-7xl dark:text-white">
+    <motion.div
+      variants={headerVariants}
+      initial="hidden"
+      whileInView="whileInView"
+      className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4  py-20 md:py-40"
+    >
+      <motion.h2 className="text-2xl font-bold md:text-7xl dark:text-white">
         Unleash <br /> Your Creativity
-      </h2>
-      <p className="mt-8 text-[2rem] md:text-[2.5rem] dark:text-neutral-200">
+      </motion.h2>
+      <motion.p className="mt-8 text-[2rem] md:text-[2.5rem] dark:text-neutral-200">
         I build beautiful products with the latest technologies and frameworks.
         I am a passionate Self-taught developer with a strong focus on client
         satisfaction and delivering high-quality products.
-      </p>
-    </div>
+      </motion.p>
+    </motion.div>
   );
 };
 
