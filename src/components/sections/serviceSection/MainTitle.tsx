@@ -1,5 +1,5 @@
 import { buttonStyles } from "@/lib/utils/stylesheet";
-import Button from "../../../components/ui/button/button";
+import Button from "../../../../components/ui/button/button";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { cn } from "@/lib/utils/cn";
@@ -44,7 +44,7 @@ const MainTitle = () => {
             href="/"
             className={cn(
               buttonStyles(""),
-              "min-w-[15rem] self-center py-[2rem] text-center align-middle",
+              "dark:hover:shadow-inset-hover-gold-large min-w-[15rem] self-center py-[2rem] text-center align-middle",
             )}
           >
             Philosophy
@@ -69,7 +69,7 @@ const MainTitle = () => {
             href="/"
             className={cn(
               buttonStyles("", "primary"),
-              "min-w-[15rem] self-center py-[2rem] text-center ",
+              "dark:hover:shadow-inset-hover-grey-medium-large min-w-[15rem] self-center py-[2rem] text-center",
             )}
           >
             Mission

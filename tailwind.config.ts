@@ -34,6 +34,11 @@ const config: Config = {
         "inset-grey-dark": "inset 0 0 2px 1px #767676",
         "inset-hover-grey-dark": "inset 0 0 10px 20px #767676",
         "inset-hover-grey-medium": "inset 0 0 10px 20px #b2b2b2",
+        "inset-hover-grey-light-large": "inset 0 0 30px 40px #f4f4f4",
+        "inset-hover-grey-medium-large": "inset 0 0 50px 100px #b2b2b2",
+        "inset-hover-grey-dark-large": "inset 0 0 30px 40px #767676",
+        "inset-hover-gold-large": "inset 0 0 50px 70px #fecf33",
+        "inset-hover-gold-dark-large": "inset 0 0 30px 40px #8e6d00",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",

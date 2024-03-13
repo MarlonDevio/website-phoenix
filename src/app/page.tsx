@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar/navbar";
 import Section from "../../components/containers/section/section";
 import Hero from "../../components/sections/hero/hero";
 import Mission from "../../components/sections/mission/mission";
-import Portfolio from "../../components/sections/portfolio/portfolio";
+import Portfolio from "../components/sections/portfolio/portfolio";
 import Services from "../../components/sections/services/services";
 import { SparklesSection } from "../components/ui/heroSparkles/sparklesSection";
 import { TextGenerate } from "../../components/ui/textGenerate";
@@ -11,7 +11,7 @@ import { TypeWriter } from "../../components/ui/typeWriter";
 import { WavySection } from "../components/ui/waves/wavySection";
 import { ThemeContextProvider } from "./themeContext";
 import { MotionSection } from "@/components/ui/wrapper";
-import ServiceSection from "@/components/sections/serviceSection";
+import ServiceSection from "@/components/sections/serviceSection/serviceSection";
 
 export default function Home() {
   return (
@@ -21,6 +21,7 @@ export default function Home() {
         <SparklesSection />
         <WavySection />
         <ServiceSection />
+        <Portfolio />
         {/* <Hero />
       <WavySection />
       <Portfolio />

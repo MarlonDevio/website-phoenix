@@ -23,7 +23,7 @@ export function WavySection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-        className=" mb-11 flex flex-col text-center text-[4rem] font-bold leading-tight text-white lg:text-[5rem] xl:text-[6rem]"
+        className=" mb-11 flex flex-col text-center text-[6rem] font-bold leading-tight text-white lg:text-[7rem] xl:text-[8rem]"
       >
         <motion.span
           variants={childVariants}

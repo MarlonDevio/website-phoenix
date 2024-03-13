@@ -1,12 +1,12 @@
 "use client";
 import React, { useRef } from "react";
 import Image from "next/image";
-import { attesticoPortfolioImage, datingApp } from "../../../public/assets";
-import Section from "../../containers/section/section";
+import { attesticoPortfolioImage, datingApp } from "../../../../public/assets";
+import Section from "../../../../components/containers/section/section";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { PortfolioParallax } from "./projectParallax";
 import { portfolioItems } from "@/constants/portfolioItems";
-import Wrapper from "../../containers/wrapper/wrapper";
+import Wrapper from "../../../../components/containers/wrapper/wrapper";
 
 const childrenVariants = {
   hidden: { opacity: 0 },
