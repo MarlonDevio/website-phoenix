@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { cn } from "@/lib/utils/cn";
-import { fadeInOnView } from "../../src/lib/utils/motionTemplates";
+import { fadeInOnView } from "../../lib/utils/motionTemplates";
 
 export const TextGenerateEffect = ({
   words,

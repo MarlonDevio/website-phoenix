@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-
+import plugin from "tailwindcss/plugin";
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,6 +12,21 @@ const config: Config = {
   darkMode: "selector",
   theme: {
     extend: {
+      animation: {
+        spotlight: "spotlight 2s ease .75s 1 forwards",
+      },
+      keyframes: {
+        spotlight: {
+          "0%": {
+            opacity: 0,
+            transform: "translate(-72%, -62%) scale(0.5)",
+          },
+          "100%": {
+            opacity: 1,
+            transform: "translate(-50%,-40%) scale(1)",
+          },
+        },
+      },
       colors: {
         black: "#000000",
         blackSmooth: "#1f1f1f",
@@ -57,7 +72,19 @@ const config: Config = {
     },
   },
 
-  plugins: [],
+  plugins: [
+    plugin(function ({ addComponents, theme }) {
+      addComponents({
+        ".btn": {
+          padding: "0.8rem 2.5rem",
+          borderRadius: "0.5rem",
+          boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+          "@apply dark:bg-white dark:text-black bg-black text-white": {},
+          "@apply hover:shadow-lg": {},
+        },
+      });
+    }),
+  ],
 };
 
 export default config;

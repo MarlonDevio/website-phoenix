@@ -1,6 +1,6 @@
 "use client";
-import Section from "../containers/section/section";
-import Button from "./button/button";
+import Section from "../../../components/containers/section/section";
+import Button from "../../../components/ui/button/button";
 import { TypewriterEffectSmooth } from "./typeWriterEffect";
 export function TypeWriter() {
   const words = [
@@ -23,7 +23,7 @@ export function TypeWriter() {
   ];
   return (
     <Section className="flex h-[40rem] flex-col items-center justify-center  ">
-      <p className="text-[1.6rem] text-neutral-600 sm:text-[2rem] dark:text-color-light-grey  ">
+      <p className="dark:text-color-light-grey text-[1.6rem] text-neutral-600 sm:text-[2rem]  ">
         Transcend limits through code, resilience, and innovation
       </p>
       <TypewriterEffectSmooth words={words} />
