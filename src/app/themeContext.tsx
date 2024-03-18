@@ -1,16 +1,18 @@
 "use client";
 import { useEffect, useState, createContext } from "react";
+
 interface ThemeContextProps {
   darkMode: boolean;
   setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 export const ThemeContext = createContext<ThemeContextProps>({
-  darkMode: true,
+  darkMode: false,
   setDarkMode: () => {},
 });
 
 export const ThemeContextProvider = ({ children }: any) => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const theme = localStorage.getItem("theme");

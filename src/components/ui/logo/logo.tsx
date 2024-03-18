@@ -5,11 +5,12 @@ import Image from "next/image";
 import { log } from "console";
 import { useContext } from "react";
 import { ThemeContext } from "@/app/themeContext";
+import {cn} from '@/lib/utils/cn';
 
-export default function Logo() {
+export default function Logo({className}: {className?: string}) {
   const { darkMode } = useContext(ThemeContext);
   return (
-    <div className=" flex items-baseline">
+    <div className={cn("flex items-baseline", className)}>
       <Image
         className="w-[4rem]"
         height={476}

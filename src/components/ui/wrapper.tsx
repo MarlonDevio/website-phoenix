@@ -1,7 +1,8 @@
 import { IContainer } from "@/lib/interfaces/interfaces";
 import { cn } from "@/lib/utils/cn";
-import { Variants, motion } from "framer-motion";
+import { MotionProps, Variants, motion } from "framer-motion";
 import { init } from "next/dist/compiled/webpack/webpack";
+import React from "react";
 
 export const Wrapper: React.FC<IContainer> = ({ children, className }) => {
   return (
@@ -31,7 +32,10 @@ export const MotionWrapper: React.FC<IMotionWrapper> = ({
     </motion.div>
   );
 };
-interface IMotionSection extends IContainer {}
+interface IMotionSection extends MotionProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
 export const variants = {
   hidden: { opacity: 0, y: 100 }, // Define a more explicit hidden state
@@ -47,19 +51,20 @@ export const variants = {
   },
 };
 
-export const MotionSection: React.FC<IMotionSection> = ({
-  children,
-  className,
-}) => {
-  return (
-    <motion.section
-      variants={variants} // Applying the parent variants
-      initial="hidden"
-      whileInView="show" // Triggers the animation when the component comes into view
-      viewport={{ once: true }} // Ensures animation only plays once
-      className={cn("py-40", className)} // 'py-[10rem]' converted to TailwindCSS class
-    >
-      {children}
-    </motion.section>
-  );
-};
+export const MotionSection = React.forwardRef<HTMLDivElement, IMotionSection>(
+  ({ children, className }, ref) => {
+    return (
+      <motion.section
+        variants={variants} // Applying the parent variants
+        initial="hidden"
+        whileInView="show" // Triggers the animation when the component comes into view
+        viewport={{ once: true }} // Ensures animation only plays once
+        className={cn("py-40", className)} // 'py-[10rem]' converted to TailwindCSS class
+        ref={ref}
+      >
+        {children}
+      </motion.section>
+    );
+  },
+);
+MotionSection.displayName = "MotionSection";

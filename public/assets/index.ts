@@ -57,6 +57,7 @@ import creative3D from "./3d-icons/creative3D.png";
 import profilePicture from "./profile/profile-picture.png";
 
 export {
+  walkingToPhoenix,
   machineLearning,
   mystyrybox,
   fullstackecommerce,
