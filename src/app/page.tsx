@@ -5,34 +5,31 @@ import Hero from "../../components/sections/hero/hero";
 import Mission from "../../components/sections/mission/mission";
 import Portfolio from "../components/sections/portfolio/portfolio";
 import { SparklesSection } from "@/components/ui/heroSparkles/sparklesSection";
-import { TextGenerate } from "../components/ui/textGenerate";
-import { TypeWriter } from "../components/ui/typeWriter";
-import { WavySection } from "@/components/ui/waves/wavySection";
-import { ThemeContextProvider } from "./themeContext";
-import { MotionSection } from "@/components/ui/wrapper";
-import ServiceSection from "@/components/sections/serviceSection/serviceSection";
-import { CallToAction } from "@/components/ui/CallToAction";
-import Header from "@/components/ui/header/Header";
 
+import gsap from "gsap";
+
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(useGSAP);
 export default function Home() {
   return (
-    <ThemeContextProvider>
-        {/*<Navbar />*/}
-        <Header />
-        {/*<SparklesSection />*/}
-        {/*<WavySection />*/}
-        {/*<ServiceSection />*/}
-        {/*<Portfolio />*/}
-        {/*<CallToAction />*/}
+    <main>
+      {/*<Navbar />*/}
+      {/*<Header />*/}
+      {/*<SparklesSection />*/}
+      {/*<WavySection />*/}
+      {/*<ServiceSection />*/}
+      {/*<Portfolio />*/}
+      {/*<CallToAction />*/}
 
-        {/* <Hero />
+      {/* <Hero />
       <WavySection />
       <Portfolio />
       <Services />
       {/* <TextGenerate /> */}
-        {/* <Mission />
+      {/* <Mission />
       <TypeWriter />
       <SparklesSection /> */}
-    </ThemeContextProvider>
+    </main>
   );
 }

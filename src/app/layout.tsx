@@ -5,6 +5,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils/cn";
 import Navbar from "../../components/ui/navbar/navbar";
 import { ThemeContextProvider } from "./themeContext";
+import { Menu } from "@/components/menu/Menu";
 
 const poppinsFont = Poppins({
   weight: ["200", "300", "400", "500", "600", "700"],
@@ -26,9 +27,10 @@ export default function RootLayout({
       <body
         className={cn(
           poppinsFont.className,
-          "dark:text-grey-1 bg-white text-black antialiased dark:bg-black",
+          "bg-white text-black antialiased dark:bg-black dark:text-grey-1",
         )}
       >
+        <Menu />
         {/* <Navbar /> */}
         {children}
 
