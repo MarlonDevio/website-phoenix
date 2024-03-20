@@ -12,15 +12,10 @@ export interface HeroProps {
 }
 export default function Hero({ className }: HeroProps) {
   return (
-    <Section
-      className={cn(
-        styles.hero,
-        "relative flex flex-col justify-center gap-10 bg-gradient-from-green",
-      )}
-    >
+    <section className={cn("")}>
       <HeroHeading />
       <Buttons />
       <Slider />
-    </Section>
+    </section>
   );
 }

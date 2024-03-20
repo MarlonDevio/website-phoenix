@@ -1,3 +1,4 @@
+import React from "react";
 import { cn } from "@/lib/utils/cn";
 import Image from "next/image";
 import { bg1, bg2, bg3, walkingToPhoenix } from "../../../../public/assets";
@@ -40,9 +41,18 @@ export const ImageHolder: React.FC = () => {
   );
 };
 
-export const ContentHolder: React.FC = () => {
+interface ContentHolderProps {
+  className?: string;
+}
+export const ContentHolder = React.forwardRef<
+  HTMLDivElement,
+  ContentHolderProps
+>(({ className }, ref) => {
   return (
-    <div className="content-holder relative top-[-5px] w-full bg-black p-[1em] text-white">
+    <div
+      className="content-holder relative top-[-5px] w-full bg-black p-[1em] text-white"
+      ref={ref}
+    >
       <div className="row mx-[1em] my-[2em]">
         <h1>History</h1>
       </div>
@@ -65,13 +75,13 @@ export const ContentHolder: React.FC = () => {
 
       <TextRow
         text="Row 1, Lorem Ipsum dolor sit amet consectetur adipisicing elit. "
-        className=""
+        className="row"
       />
 
       <TextRow
         text="Row 2, Lorem Ipsum dolor sit amet consectetur adipisicing elit. "
-        className=""
+        className="row"
       />
     </div>
   );
-};
+});

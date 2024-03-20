@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./button.module.css";
 import { cn } from "@/lib/utils/cn";
 import { IButton } from "@/lib/interfaces/interfaces";
 
@@ -18,10 +17,9 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button
       className={cn(
-        styles.button,
         {
-          [styles.primary]: $primary,
-          [styles.secondary]: $secondary,
+          "btn-primary btn": $primary,
+          "btn-secondary btn": $secondary,
         },
         "px-[2rem] py-[1rem]",
         className,

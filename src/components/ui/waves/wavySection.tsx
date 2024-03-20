@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils/cn";
 import React from "react";
 import { WavyBackground } from "./wavyBackground";
 import { motion, Variants } from "framer-motion";
@@ -15,7 +16,7 @@ export function WavySection() {
   const { darkMode } = useContext(ThemeContext);
   return (
     <WavyBackground
-      backgroundFill={darkMode ? "#000000" : "#ffffff"}
+      backgroundFill={cn("#000000")}
       className="absolute mx-auto flex max-w-[89rem] flex-col gap-[6rem] pb-40"
     >
       <motion.p

@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Logo from "../ui/logo/logo";
 import { useContext } from "react";
 import { ThemeContext } from "@/app/themeContext";
-import { buttonStyles, flexBox } from "../../lib/utils/stylesheet";
 
 const Navbar = () => {
   const { darkMode, setDarkMode } = useContext(ThemeContext);

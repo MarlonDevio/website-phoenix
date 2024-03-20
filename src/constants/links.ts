@@ -4,15 +4,15 @@ export const navigationLinks = [
     label: "Home",
   },
   {
-    href: "/#about",
+    href: "/about",
     label: "About",
   },
   {
-    href: "/#services",
+    href: "/services",
     label: "Services",
   },
   {
-    href: "/#portfolio",
+    href: "/portfolio",
     label: "Portfolio",
   },
   {
@@ -20,7 +20,7 @@ export const navigationLinks = [
     label: "Blog",
   },
   {
-    href: "/#contact",
+    href: "/contact",
     label: "Contact",
   },
 ];

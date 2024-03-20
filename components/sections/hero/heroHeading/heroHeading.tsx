@@ -14,7 +14,7 @@ const fadeIn = {
 };
 export default function HeroHeading() {
   return (
-    <Wrapper className="flex flex-col items-center justify-center text-center">
+    <Wrapper className="flex min-h-[100vh] flex-col items-center justify-center text-center">
       <motion.h1 className="flex flex-col font-medium  leading-snug tracking-normal ">
         <motion.span
           variants={fadeIn}
