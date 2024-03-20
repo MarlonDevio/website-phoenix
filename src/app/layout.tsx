@@ -1,9 +1,10 @@
+import Nav from "@/components/navbar/Nav";
 import type { Metadata } from "next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils/cn";
-import Navbar from "../../components/ui/navbar/navbar";
+import Navbar from "@/components/navbar/navbar";
 import { ThemeContextProvider } from "./themeContext";
 
 const poppinsFont = Poppins({
@@ -26,13 +27,16 @@ export default function RootLayout({
       <body
         className={cn(
           poppinsFont.className,
-          "dark:text-grey-1 bg-white text-black antialiased dark:bg-black",
+          "bg-white text-black antialiased dark:bg-black dark:text-grey-1",
         )}
       >
-        {/* <Navbar /> */}
-        {children}
+        <ThemeContextProvider>
+          <Nav />
+          {/* <Navbar /> */}
+          {children}
 
-        <SpeedInsights />
+          <SpeedInsights />
+        </ThemeContextProvider>
       </body>
     </html>
   );
