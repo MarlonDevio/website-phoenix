@@ -12,33 +12,78 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(useGSAP, ScrollTrigger);
+
 const lettersMarlon = ["m", "a", "r", "l", "o", "n"];
 const lettersDev = ["d", "e", "v", ".", "i", "o"];
 
 export default function Header() {
-  const ref = useRef(null);
-  useEffect(() => {
-    if (ref.current) {
-      console.log(ref.current);
-    }
-  }, []);
-  const contentHolderHeight = document.querySelector(".content-holder");
-  console.log(contentHolderHeight);
-  useGSAP(() => {
-    gsap.registerPlugin(ScrollTrigger);
+  const contentHolderRef = useRef<HTMLDivElement>();
+  const imgHolderRef = useRef<HTMLDivElement>();
+  const totalBodyHeight = useRef<number>();
+  // const additionalScrollHeight = window.innerHeight;
 
+  // useEffect(() => {
+  //   const contentHolder = contentHolderRef.current;
+  //   const imgHolder = window.innerHeight;
+  //   const additionalScrollHeight = window.innerHeight;
+
+  //   totalBodyHeight.current =
+  //     contentHolder?.offsetHeight &&
+  //     contentHolder.offsetHeight + imgHolder + additionalScrollHeight;
+
+  //   if (contentHolderRef.current) {
+  //     console.log("ContentHolder: " + contentHolderRef.current.offsetHeight);
+  //   }
+  //   if (imgHolderRef.current) {
+  //     console.log("ImgHolder: " + imgHolderRef.current.offsetHeight);
+  //   }
+  //   if (window) {
+  //     console.log("Window: " + window.innerHeight);
+  //     console.log("Total: " + totalBodyHeight.current);
+  //   }
+  //   // console.log(additionalScrollHeight);
+  // });
+
+  useGSAP(() => {
+    const contentHolder = contentHolderRef.current;
+    const imgHolder = window.innerHeight;
+    const additionalScrollHeight = window.innerHeight;
+
+    totalBodyHeight.current =
+      contentHolder?.offsetHeight &&
+      contentHolder.offsetHeight + imgHolder + additionalScrollHeight;
     const timeline = gsap.timeline({
       scrollTrigger: {
-        trigger: ".header",
-        start: "top top",
-        end: "6000",
+        trigger: ".website-content",
+        start: "-0.1% top",
+        end: "bottom bottom",
+        markers: true,
+        onEnter: () => {
+          gsap.set(".website-content", { position: "absolute", top: "195%" });
+        },
+        onLeaveBack: () => {
+          gsap.set(".website-content", { position: "fixed", top: "0" });
+        },
       },
     });
-  });
+    timeline.to(".header .letters:first-child", {
+      x: () => -innerWidth * 3,
+      scale: 10,
+      ease: "power2.inOut",
+      scrollTrigger: {
+        start: "top top",
+        end: `+=200%`,
+        scrub: 1,
+      },
+    });
+  }, []);
   // https://www.youtube.com/watch?v=AaO-LmExmkM&list=PLHehj03wDKX8wsi_zuk_JTSEZSFtf20XJ&index=6&ab_channel=Codegrid 5.52min
   return (
-    <div className="header-container h-full bg-white">
+    <div
+      className="header-container bg-black"
+      style={{ height: `${totalBodyHeight.current}px` }}
+    >
       <Logo className="logo fixed right-0 top-0  z-[10000] m-[2em]" />
 
       <header
@@ -51,9 +96,10 @@ export default function Header() {
       </header>
 
       <div className="website-content fixed top-0 min-h-[100vh] w-[100%] bg-white">
-        <ImageHolder />
         {/*  @ts-ignore*/}
-        <ContentHolder ref={ref} />
+        <ImageHolder ref={imgHolderRef} />
+        {/*  @ts-ignore*/}
+        <ContentHolder ref={contentHolderRef} />
       </div>
     </div>
   );

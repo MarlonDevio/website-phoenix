@@ -23,23 +23,29 @@ const images = [
 ];
 const clipPath = "polygon(37.5% 20%, 62.5% 20%, 62.5% 80%, 37.5% 80%)";
 const transform = "rotate(30deg)";
-export const ImageHolder: React.FC = () => {
-  return (
-    <div
-      className={cn("img-holder relative top-0 h-[100vh] w-full ")}
-      style={{ clipPath: clipPath, transform: transform }}
-    >
-      <Image
-        src={bg1}
-        alt=""
-        className="relative h-full w-full object-cover"
-        style={{
-          transform: "scale(2)",
-        }}
-      />
-    </div>
-  );
-};
+
+export const ImageHolder = React.forwardRef<HTMLDivElement, ContentHolderProps>(
+  ({ ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        {...props}
+        className={cn("img-holder relative top-0 h-[100vh] w-full ")}
+        style={{ clipPath: clipPath, transform: transform }}
+      >
+        <Image
+          src={bg1}
+          alt=""
+          className="relative h-full w-full object-cover"
+          style={{
+            transform: "scale(2)",
+          }}
+        />
+      </div>
+    );
+  },
+);
+ImageHolder.displayName = "ImageHolder";
 
 interface ContentHolderProps {
   className?: string;
@@ -85,3 +91,4 @@ export const ContentHolder = React.forwardRef<
     </div>
   );
 });
+ContentHolder.displayName = "ContentHolder";

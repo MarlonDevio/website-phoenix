@@ -24,9 +24,9 @@ export default function Home() {
       <TypeWriter />
       <SparklesSection /> */}
       <Header />
-      <section>Hello</section>
+      {/* <section>Hello</section>
       <button className="btn-primary btn">hey</button>
-      <button className="btn-secondary btn">secondary</button>
+      <button className="btn-secondary btn">secondary</button> */}
     </>
   );
 }
