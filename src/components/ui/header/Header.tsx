@@ -16,39 +16,12 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const lettersMarlon = ["m", "a", "r", "l", "o", "n"];
 const lettersDev = ["d", "e", "v", ".", "i", "o"];
 
-function updateTotalBodyHeight(contentHolder: any, totalBodyHeight: any) {
-  const contentHolderHeight = contentHolder.current
-    ? contentHolder.current.offsetHeight
-    : 0;
-  const imgHolderHeight = window.innerHeight;
-  const additionalScrollHeight = window.innerHeight;
-
-  totalBodyHeight.current =
-    contentHolderHeight + imgHolderHeight + additionalScrollHeight;
-}
-
 export default function Header() {
   const contentHolderRef = useRef<HTMLDivElement>();
   const imgHolderRef = useRef<HTMLDivElement>(null);
   const totalBodyHeight = useRef<number>();
   const websiteContent = useRef<HTMLDivElement>(null);
 
-  //     // Forceer ScrollTrigger om de lay-out te heroverwegen
-  //     ScrollTrigger.refresh();
-  //   }
-
-  //   window.addEventListener("resize", updateTotalBodyHeight);
-  //   window.addEventListener("resize", (event) => ScrollTrigger.refresh);
-
-  //   setupAnimations();
-
-  //   return () => {
-  //     window.removeEventListener("resize", updateTotalBodyHeight);
-  //     window.removeEventListener("resize", (event) => ScrollTrigger.refresh);
-  //     ScrollTrigger.clearScrollMemory();
-  //     ScrollTrigger.getAll().forEach((st) => st.kill()); // Opruimen wanneer de component unmount
-  //   };
-  // }, []);
   useGSAP(() => {
     function updateTotalBodyHeight() {
       const contentHolderHeight = contentHolderRef.current
@@ -152,49 +125,6 @@ export default function Header() {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-  // useGSAP(() => {
-  //   const contentHolder = contentHolderRef.current;
-  //   const imgHolder = window.innerHeight;
-  //   const additionalScrollHeight = window.innerHeight;
-
-  //   totalBodyHeight.current =
-  //     contentHolder.offsetHeight + imgHolder + additionalScrollHeight;
-  //   const timeline = gsap.timeline({
-  //     scrollTrigger: {
-  //       trigger: ".website-content",
-  //       start: "-0.1% top",
-  //       end: "bottom bottom",
-  //       markers: true,
-  //       onEnter: () => {
-  //         gsap.set(".website-content", { position: "absolute", top: "195%" });
-  //       },
-  //       onLeaveBack: () => {
-  //         gsap.set(".website-content", { position: "fixed", top: "0" });
-  //       },
-  //     },
-  //   });
-  //   timeline.to(".header .letters:first-child", {
-  //     x: () => -innerWidth * 3,
-  //     scale: 10,
-  //     ease: "power2.inOut",
-  //     scrollTrigger: {
-  //       start: "top top",
-  //       end: `+=200%`,
-  //       scrub: 1,
-  //     },
-  //   });
-  //   timeline.to(".header .letters:last-child", {
-  //     x: () => innerWidth * 3,
-  //     scale: 10,
-  //     ease: "power2.inOut",
-  //     scrollTrigger: {
-  //       start: "top top",
-  //       end: `+=200%`,
-  //       scrub: 1,
-  //     },
-  //   });
-  // });
-  // https://www.youtube.com/watch?v=AaO-LmExmkM&list=PLHehj03wDKX8wsi_zuk_JTSEZSFtf20XJ&index=6&ab_channel=Codegrid 5.52min
   return (
     <div
       className="header-container bg-black"

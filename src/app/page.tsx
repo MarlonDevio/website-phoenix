@@ -23,7 +23,7 @@ export default function Home() {
       {/* <Mission />
       <TypeWriter />
       <SparklesSection /> */}
-      <Header />
+      {/* <Header /> */}
       {/* <section>Hello</section>
       <button className="btn-primary btn">hey</button>
       <button className="btn-secondary btn">secondary</button> */}
