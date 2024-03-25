@@ -4,10 +4,10 @@ import { logoIconBlack, logoIconGold } from "../../../../public/assets";
 import Image from "next/image";
 import { log } from "console";
 import { useContext } from "react";
-import { ThemeContext } from "@/app/themeContext";
-import {cn} from '@/lib/utils/cn';
+import { ThemeContext } from "@/components/themeContext";
+import { cn } from "@/lib/utils/cn";
 
-export default function Logo({className}: {className?: string}) {
+export default function Logo({ className }: { className?: string }) {
   const { darkMode } = useContext(ThemeContext);
   return (
     <div className={cn("flex items-baseline", className)}>

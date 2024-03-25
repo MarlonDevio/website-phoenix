@@ -5,7 +5,7 @@ import { Poppins } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils/cn";
 import Navbar from "@/components/navbar/navbar";
-import { ThemeContextProvider } from "./themeContext";
+import { ThemeContextProvider } from "../components/themeContext";
 
 const poppinsFont = Poppins({
   weight: ["200", "300", "400", "500", "600", "700"],

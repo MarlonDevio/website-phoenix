@@ -5,7 +5,7 @@ import { WavyBackground } from "./wavyBackground";
 import { motion, Variants } from "framer-motion";
 import { textVariant } from "@/lib/utils/motionTemplates";
 import { init } from "next/dist/compiled/webpack/webpack";
-import { ThemeContext } from "../../../app/themeContext";
+import { ThemeContext } from "../../themeContext";
 import { useContext } from "react";
 const childVariants = {
   initial: { y: 0, opacity: 0 },
