@@ -1,0 +1,2626 @@
+
+
+--- /Users/marlon/Development/portfolio/src/app/layout.tsx ---
+
+import type { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Poppins } from "next/font/google";
+import "./globals.css";
+import { cn } from "@/lib/utils/cn";
+import Navbar from "@/components/ui/navbar/navbar";
+
+const poppinsFont = Poppins({
+  weight: ["200", "300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
+export const metadata: Metadata = {
+  title: "MarlonDev.io",
+  description:
+    "MarlonDev.io - Your Business Vision, My FullStack Mission - Portfolio",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={cn(poppinsFont.className, "antialiased")}>
+        <Navbar />
+        {children}
+
+        <SpeedInsights />
+      </body>
+    </html>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/app/page.tsx ---
+
+"use client";
+import Hero from "@/components/sections/hero/hero";
+import Mission from "@/components/sections/mission/mission";
+import Portfolio from "@/components/sections/portfolio/portfolio";
+import Services from "@/components/sections/services/services";
+import { SparklesSection } from "@/components/ui/sparklesSection";
+import { TextGenerate } from "@/components/ui/textGenerate";
+import { TypeWriter } from "@/components/ui/typeWriter";
+import { WavySection } from "@/components/ui/wavySection";
+
+export default function Home() {
+  return (
+    <main>
+      <Hero />
+      <WavySection />
+      <Portfolio />
+      <Services />
+      {/* <TextGenerate /> */}
+      <Mission />
+      <TypeWriter />
+      <SparklesSection />
+    </main>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/app/blog/blog.tsx ---
+
+
+
+--- /Users/marlon/Development/portfolio/src/app/blog/page.tsx ---
+
+export default function Blog() {
+  return (
+    <h1>This is my blog</h1>
+  )
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/textGenerate.tsx ---
+
+"use client";
+import Container from "../containers/container/container";
+import Section from "../containers/section/section";
+import Wrapper from "../containers/wrapper/wrapper";
+import { TextGenerateEffect } from "./textGenerateEffect";
+import { fadeInOnView } from "../../lib/motionTemplates";
+import { init } from "next/dist/compiled/webpack/webpack";
+
+const words = `Sure, I write code. Clean, efficient, and occasionally witty—just like my coffee. I believe in elegance, not just in attire but in algorithms. Hire me, and your bugs won't just be fixed, they'll retire.
+`;
+
+export function TextGenerate() {
+  return (
+    <Section>
+      <Wrapper
+        variants={fadeInOnView}
+        whileInView="whileInView"
+        initial="initial"
+      >
+        <Container className="mx-auto flex max-w-[70vw]">
+          <TextGenerateEffect words={words} />
+        </Container>
+      </Wrapper>
+    </Section>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/typeWriterEffect.tsx ---
+
+"use client";
+
+import { cn } from "@/lib/utils/cn";
+import { motion, stagger, useAnimate, useInView } from "framer-motion";
+import { useEffect } from "react";
+
+export const TypewriterEffect = ({
+  words,
+  className,
+  cursorClassName,
+}: {
+  words: {
+    text: string;
+    className?: string;
+  }[];
+  className?: string;
+  cursorClassName?: string;
+}) => {
+  // split text inside of words into array of characters
+  const wordsArray = words.map((word) => {
+    return {
+      ...word,
+      text: word.text.split(""),
+    };
+  });
+
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
+  useEffect(() => {
+    if (isInView) {
+      animate(
+        "span",
+        {
+          display: "inline-block",
+          opacity: 1,
+        },
+        {
+          duration: 0.3,
+          delay: stagger(0.1),
+          ease: "easeInOut",
+        },
+      );
+    }
+  }, [isInView]);
+
+  const renderWords = () => {
+    return (
+      <motion.div ref={scope} className="inline">
+        {wordsArray.map((word, idx) => {
+          return (
+            <div key={`word-${idx}`} className="inline-block">
+              {word.text.map((char, index) => (
+                <motion.span
+                  initial={{}}
+                  key={`char-${index}`}
+                  className={cn(
+                    `hidden text-black opacity-0 dark:text-white`,
+                    word.className,
+                  )}
+                >
+                  {char}
+                </motion.span>
+              ))}
+              &nbsp;
+            </div>
+          );
+        })}
+      </motion.div>
+    );
+  };
+  return (
+    <div
+      className={cn(
+        "text-center text-base font-bold sm:text-xl md:text-3xl lg:text-5xl",
+        className,
+      )}
+    >
+      {renderWords()}
+      <motion.span
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.8,
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+        className={cn(
+          "inline-block h-4 w-[4px] rounded-sm bg-blue-500 md:h-6 lg:h-10",
+          cursorClassName,
+        )}
+      ></motion.span>
+    </div>
+  );
+};
+
+export const TypewriterEffectSmooth = ({
+  words,
+  className,
+  cursorClassName,
+}: {
+  words: {
+    text: string;
+    className?: string;
+  }[];
+  className?: string;
+  cursorClassName?: string;
+}) => {
+  // split text inside of words into array of characters
+  const wordsArray = words.map((word) => {
+    return {
+      ...word,
+      text: word.text.split(""),
+    };
+  });
+  const renderWords = () => {
+    return (
+      <div>
+        {wordsArray.map((word, idx) => {
+          return (
+            <div key={`word-${idx}`} className="inline-block">
+              {word.text.map((char, index) => (
+                <span
+                  key={`char-${index}`}
+                  className={cn(`text-white dark:text-white `, word.className)}
+                >
+                  {char}
+                </span>
+              ))}
+              &nbsp;
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+
+  return (
+    <div className={cn("my-6 flex space-x-1", className)}>
+      <motion.div
+        className="overflow-hidden pb-2"
+        initial={{
+          width: "0%",
+        }}
+        whileInView={{
+          width: "fit-content",
+        }}
+        transition={{
+          duration: 2,
+          ease: "linear",
+          delay: 1,
+        }}
+      >
+        <div
+          className="text-[2rem] font-bold sm:text-[3rem] md:text-[3.5rem] lg:text-[5rem] "
+          style={{
+            whiteSpace: "nowrap",
+          }}
+        >
+          {renderWords()}{" "}
+        </div>{" "}
+      </motion.div>
+      <motion.span
+        initial={{
+          opacity: 0,
+        }}
+        animate={{
+          opacity: 1,
+        }}
+        transition={{
+          duration: 0.8,
+
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
+        className={cn(
+          "block h-[3rem] w-[4px] rounded-sm bg-color-green-light sm:h-[4rem] md:h-[4.5rem] lg:h-[6rem]",
+          cursorClassName,
+        )}
+      ></motion.span>
+    </div>
+  );
+};
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/typeWriter.tsx ---
+
+"use client";
+import Section from "../containers/section/section";
+import Button from "./button/button";
+import { TypewriterEffectSmooth } from "./typeWriterEffect";
+export function TypeWriter() {
+  const words = [
+    {
+      text: "Elevate",
+    },
+    {
+      text: "your",
+    },
+    {
+      text: "projects",
+    },
+    {
+      text: "with",
+    },
+    {
+      text: "MarlonDev.io",
+      className: "text-color-gold-3 dark:text-color-gold-3", // Signifying professionalism and technology
+    },
+  ];
+  return (
+    <Section className="flex h-[40rem] flex-col items-center justify-center  ">
+      <p className="text-[1.6rem] text-neutral-600 sm:text-[2rem] dark:text-color-light-grey  ">
+        Transcend limits through code, resilience, and innovation
+      </p>
+      <TypewriterEffectSmooth words={words} />
+      <div className="flex flex-col space-x-0 space-y-4 md:flex-row md:space-x-4 md:space-y-0">
+        <Button $primary className="">
+          Contact Me
+        </Button>
+        <Button $secondary className="">
+          Explore Portfolio
+        </Button>
+      </div>
+    </Section>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/textGenerateEffect.tsx ---
+
+"use client";
+import { useEffect } from "react";
+import { motion, stagger, useAnimate } from "framer-motion";
+import { cn } from "@/lib/utils/cn";
+import { fadeInOnView } from "../../lib/motionTemplates";
+
+export const TextGenerateEffect = ({
+  words,
+  className,
+}: {
+  words: string;
+  className?: string;
+}) => {
+  const [scope, animate] = useAnimate();
+  let wordsArray = words.split(" ");
+  useEffect(() => {
+    animate(
+      "span",
+      {
+        opacity: 1,
+      },
+      {
+        duration: 2,
+        delay: stagger(0.2),
+      },
+    );
+  }, [scope.current]);
+
+  const renderWords = () => {
+    return (
+      <motion.div
+        ref={scope}
+        variants={fadeInOnView}
+        initial="initial"
+        whileInView="whileInView"
+      >
+        {wordsArray.map((word, idx) => {
+          return (
+            <motion.span
+              key={word + idx}
+              className="text-white opacity-0 dark:text-white"
+            >
+              {word}{" "}
+            </motion.span>
+          );
+        })}
+      </motion.div>
+    );
+  };
+
+  return (
+    <div className={cn("font-bold", className)}>
+      <div className="mt-[1.6rem]">
+        <div className=" text-[2.4rem] leading-snug tracking-wide text-white dark:text-white">
+          {renderWords()}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/sparkles.tsx ---
+
+"use client";
+import React from "react";
+import { useEffect, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import type { Container, SingleOrMultiple } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
+import { cn } from "@/lib/utils/cn";
+import { motion, useAnimation } from "framer-motion";
+
+type ParticlesProps = {
+  id?: string;
+  className?: string;
+  background?: string;
+  particleSize?: number;
+  minSize?: number;
+  maxSize?: number;
+  speed?: number;
+  particleColor?: string;
+  particleDensity?: number;
+};
+export const SparklesCore = (props: ParticlesProps) => {
+  const {
+    id,
+    className,
+    background,
+    minSize,
+    maxSize,
+    speed,
+    particleColor,
+    particleDensity,
+  } = props;
+  const [init, setInit] = useState(false);
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
+  const controls = useAnimation();
+
+  const particlesLoaded = async (container?: Container) => {
+    if (container) {
+      console.log(container);
+      controls.start({
+        opacity: 1,
+        transition: {
+          duration: 1,
+        },
+      });
+    }
+  };
+
+  return (
+    <motion.div animate={controls} className={cn("opacity-0", className)}>
+      {init && (
+        <Particles
+          id={id || "tsparticles"}
+          className={cn("h-full w-full")}
+          particlesLoaded={particlesLoaded}
+          options={{
+            background: {
+              color: {
+                value: background || "#0d47a1",
+              },
+            },
+            fullScreen: {
+              enable: false,
+              zIndex: 1,
+            },
+
+            fpsLimit: 120,
+            interactivity: {
+              events: {
+                onClick: {
+                  enable: true,
+                  mode: "push",
+                },
+                onHover: {
+                  enable: false,
+                  mode: "repulse",
+                },
+                resize: true as any,
+              },
+              modes: {
+                push: {
+                  quantity: 4,
+                },
+                repulse: {
+                  distance: 200,
+                  duration: 0.4,
+                },
+              },
+            },
+            particles: {
+              bounce: {
+                horizontal: {
+                  value: 1,
+                },
+                vertical: {
+                  value: 1,
+                },
+              },
+              collisions: {
+                absorb: {
+                  speed: 2,
+                },
+                bounce: {
+                  horizontal: {
+                    value: 1,
+                  },
+                  vertical: {
+                    value: 1,
+                  },
+                },
+                enable: false,
+                maxSpeed: 50,
+                mode: "bounce",
+                overlap: {
+                  enable: true,
+                  retries: 0,
+                },
+              },
+              color: {
+                value: particleColor || "#ffffff",
+                animation: {
+                  h: {
+                    count: 0,
+                    enable: false,
+                    speed: 1,
+                    decay: 0,
+                    delay: 0,
+                    sync: true,
+                    offset: 0,
+                  },
+                  s: {
+                    count: 0,
+                    enable: false,
+                    speed: 1,
+                    decay: 0,
+                    delay: 0,
+                    sync: true,
+                    offset: 0,
+                  },
+                  l: {
+                    count: 0,
+                    enable: false,
+                    speed: 1,
+                    decay: 0,
+                    delay: 0,
+                    sync: true,
+                    offset: 0,
+                  },
+                },
+              },
+              effect: {
+                close: true,
+                fill: true,
+                options: {},
+                type: {} as SingleOrMultiple<string> | undefined,
+              },
+              groups: {},
+              move: {
+                angle: {
+                  offset: 0,
+                  value: 90,
+                },
+                attract: {
+                  distance: 200,
+                  enable: false,
+                  rotate: {
+                    x: 3000,
+                    y: 3000,
+                  },
+                },
+                center: {
+                  x: 50,
+                  y: 50,
+                  mode: "percent",
+                  radius: 0,
+                },
+                decay: 0,
+                distance: {},
+                direction: "none",
+                drift: 0,
+                enable: true,
+                gravity: {
+                  acceleration: 9.81,
+                  enable: false,
+                  inverse: false,
+                  maxSpeed: 50,
+                },
+                path: {
+                  clamp: true,
+                  delay: {
+                    value: 0,
+                  },
+                  enable: false,
+                  options: {},
+                },
+                outModes: {
+                  default: "out",
+                },
+                random: false,
+                size: false,
+                speed: {
+                  min: 0.1,
+                  max: 1,
+                },
+                spin: {
+                  acceleration: 0,
+                  enable: false,
+                },
+                straight: false,
+                trail: {
+                  enable: false,
+                  length: 10,
+                  fill: {},
+                },
+                vibrate: false,
+                warp: false,
+              },
+              number: {
+                density: {
+                  enable: true,
+                  width: 400,
+                  height: 400,
+                },
+                limit: {
+                  mode: "delete",
+                  value: 0,
+                },
+                value: particleDensity || 120,
+              },
+              opacity: {
+                value: {
+                  min: 0.1,
+                  max: 1,
+                },
+                animation: {
+                  count: 0,
+                  enable: true,
+                  speed: speed || 4,
+                  decay: 0,
+                  delay: 0,
+                  sync: false,
+                  mode: "auto",
+                  startValue: "random",
+                  destroy: "none",
+                },
+              },
+              reduceDuplicates: false,
+              shadow: {
+                blur: 0,
+                color: {
+                  value: "#000",
+                },
+                enable: false,
+                offset: {
+                  x: 0,
+                  y: 0,
+                },
+              },
+              shape: {
+                close: true,
+                fill: true,
+                options: {},
+                type: "circle",
+              },
+              size: {
+                value: {
+                  min: minSize || 1,
+                  max: maxSize || 3,
+                },
+                animation: {
+                  count: 0,
+                  enable: false,
+                  speed: 5,
+                  decay: 0,
+                  delay: 0,
+                  sync: false,
+                  mode: "auto",
+                  startValue: "random",
+                  destroy: "none",
+                },
+              },
+              stroke: {
+                width: 0,
+              },
+              zIndex: {
+                value: 0,
+                opacityRate: 1,
+                sizeRate: 1,
+                velocityRate: 1,
+              },
+              destroy: {
+                bounds: {},
+                mode: "none",
+                split: {
+                  count: 1,
+                  factor: {
+                    value: 3,
+                  },
+                  rate: {
+                    value: {
+                      min: 4,
+                      max: 9,
+                    },
+                  },
+                  sizeOffset: true,
+                },
+              },
+              roll: {
+                darken: {
+                  enable: false,
+                  value: 0,
+                },
+                enable: false,
+                enlighten: {
+                  enable: false,
+                  value: 0,
+                },
+                mode: "vertical",
+                speed: 25,
+              },
+              tilt: {
+                value: 0,
+                animation: {
+                  enable: false,
+                  speed: 0,
+                  decay: 0,
+                  sync: false,
+                },
+                direction: "clockwise",
+                enable: false,
+              },
+              twinkle: {
+                lines: {
+                  enable: false,
+                  frequency: 0.05,
+                  opacity: 1,
+                },
+                particles: {
+                  enable: false,
+                  frequency: 0.05,
+                  opacity: 1,
+                },
+              },
+              wobble: {
+                distance: 5,
+                enable: false,
+                speed: {
+                  angle: 50,
+                  move: 10,
+                },
+              },
+              life: {
+                count: 0,
+                delay: {
+                  value: 0,
+                  sync: false,
+                },
+                duration: {
+                  value: 0,
+                  sync: false,
+                },
+              },
+              rotate: {
+                value: 0,
+                animation: {
+                  enable: false,
+                  speed: 0,
+                  decay: 0,
+                  sync: false,
+                },
+                direction: "clockwise",
+                path: false,
+              },
+              orbit: {
+                animation: {
+                  count: 0,
+                  enable: false,
+                  speed: 1,
+                  decay: 0,
+                  delay: 0,
+                  sync: false,
+                },
+                enable: false,
+                opacity: 1,
+                rotation: {
+                  value: 45,
+                },
+                width: 1,
+              },
+              links: {
+                blink: false,
+                color: {
+                  value: "#fff",
+                },
+                consent: false,
+                distance: 100,
+                enable: false,
+                frequency: 1,
+                opacity: 1,
+                shadow: {
+                  blur: 5,
+                  color: {
+                    value: "#000",
+                  },
+                  enable: false,
+                },
+                triangles: {
+                  enable: false,
+                  frequency: 1,
+                },
+                width: 1,
+                warp: false,
+              },
+              repulse: {
+                value: 0,
+                enabled: false,
+                distance: 1,
+                duration: 1,
+                factor: 1,
+                speed: 1,
+              },
+            },
+            detectRetina: true,
+          }}
+        />
+      )}
+    </motion.div>
+  );
+};
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/wavyBackground.tsx ---
+
+"use client";
+import { cn } from "@/lib/utils/cn";
+import React, { useEffect, useRef, useState } from "react";
+import { createNoise3D } from "simplex-noise";
+
+export const WavyBackground = ({
+  children,
+  className,
+  containerClassName,
+  colors,
+  waveWidth,
+  backgroundFill,
+  blur = 10,
+  speed = "fast",
+  waveOpacity = 0.5,
+  ...props
+}: {
+  children?: any;
+  className?: string;
+  containerClassName?: string;
+  colors?: string[];
+  waveWidth?: number;
+  backgroundFill?: string;
+  blur?: number;
+  speed?: "slow" | "fast";
+  waveOpacity?: number;
+  [key: string]: any;
+}) => {
+  const noise = createNoise3D();
+  let w: number,
+    h: number,
+    nt: number,
+    i: number,
+    x: number,
+    ctx: any,
+    canvas: any;
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const getSpeed = () => {
+    switch (speed) {
+      case "slow":
+        return 0.001;
+      case "fast":
+        return 0.002;
+      default:
+        return 0.001;
+    }
+  };
+
+  const init = () => {
+    canvas = canvasRef.current;
+    ctx = canvas.getContext("2d");
+    w = ctx.canvas.width = window.innerWidth;
+    h = ctx.canvas.height = window.innerHeight;
+    ctx.filter = `blur(${blur}px)`;
+    nt = 0;
+    window.onresize = function () {
+      w = ctx.canvas.width = window.innerWidth;
+      h = ctx.canvas.height = window.innerHeight;
+      ctx.filter = `blur(${blur}px)`;
+    };
+    render();
+  };
+
+  const waveColors = colors ?? [
+    "#57ffc6",
+    "#00d062",
+    "#beff0d",
+    "#e6ff00",
+    "#f6c960",
+    "#beff0d",
+  ];
+  const drawWave = (n: number) => {
+    nt += getSpeed();
+    for (i = 0; i < n; i++) {
+      ctx.beginPath();
+      ctx.lineWidth = waveWidth || 50;
+      ctx.strokeStyle = waveColors[i % waveColors.length];
+      for (x = 0; x < w; x += 5) {
+        var y = noise(x / 800, 0.3 * i, nt) * 100;
+        ctx.lineTo(x, y + h * 0.5); // adjust for height, currently at 50% of the container
+      }
+      ctx.stroke();
+      ctx.closePath();
+    }
+  };
+
+  let animationId: number;
+  const render = () => {
+    ctx.fillStyle = backgroundFill || "";
+    ctx.globalAlpha = waveOpacity || 0.5;
+    ctx.fillRect(0, 0, w, h);
+    drawWave(5);
+    animationId = requestAnimationFrame(render);
+  };
+
+  useEffect(() => {
+    init();
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, []);
+
+  const [isSafari, setIsSafari] = useState(false);
+  useEffect(() => {
+    // I'm sorry but i have got to support it on safari.
+    setIsSafari(
+      typeof window !== "undefined" &&
+        navigator.userAgent.includes("Safari") &&
+        !navigator.userAgent.includes("Chrome"),
+    );
+  }, []);
+
+  return (
+    <div
+      className={cn(
+        "flex h-screen flex-col items-center justify-center",
+        containerClassName,
+      )}
+    >
+      <canvas
+        className="relative inset-0 z-0"
+        ref={canvasRef}
+        id="canvas"
+        style={{
+          ...(isSafari ? { filter: `blur(${blur}px)` } : {}),
+        }}
+      ></canvas>
+      <div className={cn("relative z-10", className)} {...props}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/sparklesSection.tsx ---
+
+"use client";
+import React from "react";
+import { SparklesCore } from "../ui/sparkles";
+
+export function SparklesSection() {
+  return (
+    <div className="flex h-[40rem] w-full flex-col items-center justify-center overflow-hidden rounded-md bg-gradient-from-green">
+      <h2 className="relative z-20 text-center text-3xl font-bold text-white md:text-7xl lg:text-9xl">
+        <span>Marlon</span>
+        <span className="text-color-gold-3">Dev</span>
+        <span>.io</span>
+      </h2>
+      <div className="relative h-40 w-[40rem]">
+        {/* Gradients */}
+        <div className="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-color-green-light to-transparent blur-sm" />
+        <div className="absolute inset-x-20 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-color-green-light to-transparent" />
+        <div className="absolute inset-x-60 top-0 h-[5px] w-1/4 bg-gradient-to-r from-transparent via-color-green-1 to-transparent blur-sm" />
+        <div className="absolute inset-x-60 top-0 h-px w-1/4 bg-gradient-to-r from-transparent via-color-gold-4 to-transparent" />
+
+        {/* Core component */}
+        <SparklesCore
+          background="transparent"
+          minSize={0.4}
+          maxSize={1}
+          particleDensity={1200}
+          className="h-full w-full"
+          particleColor="#FFFFFF"
+        />
+
+        {/* Radial Gradient to prevent sharp edges */}
+        <div className="absolute inset-0 h-full w-full bg-transparent [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
+      </div>
+    </div>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/wavySection.tsx ---
+
+"use client";
+import React from "react";
+import { WavyBackground } from "./wavyBackground";
+import { motion, Variants } from "framer-motion";
+import { fadeInOnView } from "@/lib/motionTemplates";
+import { init } from "next/dist/compiled/webpack/webpack";
+const childVariants = {
+  initial: { y: 0, opacity: 0 },
+  animate: { y: 100, opacity: 1 },
+};
+const variants = fadeInOnView;
+export function WavySection() {
+  return (
+    <WavyBackground className="absolute mx-auto flex max-w-[89rem] flex-col gap-[6rem] pb-40">
+      <motion.p
+        variants={variants}
+        initial="initial"
+        whileInView="whileInView"
+        className=" mb-11 flex flex-col text-center text-[4rem] font-bold leading-tight text-white lg:text-[5rem] xl:text-[6rem]"
+      >
+        <motion.span
+          variants={childVariants}
+          initial="initial"
+          animate="animate"
+        >
+          Code the Future,{" "}
+        </motion.span>{" "}
+        <motion.span
+          variants={childVariants}
+          initial="initial"
+          animate="animate"
+        >
+          Transform Lives
+        </motion.span>
+      </motion.p>
+      <motion.p
+        variants={variants}
+        initial="initial"
+        whileInView="whileInView"
+        className=" mt-4 text-center  font-normal text-white md:text-[3rem]"
+      >
+        Harnessing technology to overcome, innovate, and inspire
+      </motion.p>
+    </WavyBackground>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/navbar/navbar.tsx ---
+
+"use client";
+import styles from "./navbar.module.css";
+import Container from "@/components/containers/container/container";
+import Logo from "@/components/ui/logo/logo";
+import { cn } from "@/lib/utils/cn";
+import NavLinks from "./navLinks/navLinks";
+import { useState, useEffect } from "react";
+
+export default function Navbar() {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+    if (window.scrollY > lastScrollY) {
+      // if scroll down hide the navbar
+      setShow(false);
+    } else {
+      // if scroll up show the navbar
+      setShow(true);
+    }
+
+    // remember current page location to use in the next move
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+
+    // cleanup function
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
+
+  // return (
+  //       <nav className={`active ${show && 'hidden'}`}>
+  //       ....
+  //       </nav>
+  return (
+    <nav
+      className={cn(
+        styles.navbar,
+        "bg fixed z-50 flex min-h-[10vh] w-full items-center transition-all duration-300 ease-in-out",
+        !show && "hidden",
+      )}
+    >
+      <Logo />
+      <Container
+        className={cn(
+          styles.linkContainer,
+          "relative hidden  min-h-[10vh] lg:flex",
+        )}
+      >
+        <NavLinks />
+      </Container>
+    </nav>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/navbar/navLinks/navLinks.tsx ---
+
+"use client";
+import NavLink from "./navLink/navLink";
+import { navigationLinks } from "@/constants/links";
+const NavLinks: React.FC = () => {
+  return navigationLinks.map((link) => {
+    return (
+      <NavLink href={link.href} key={link.label}>
+        {link.label}
+      </NavLink>
+    );
+  });
+};
+
+export default NavLinks;
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/navbar/navLinks/navLink/navLink.tsx ---
+
+"use client";
+import Link from "next/link";
+import styles from "./navLink.module.css";
+import { AnchorHTMLAttributes, useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils/cn";
+
+interface NavLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
+  href: string;
+  as?: string;
+  replace?: boolean;
+  scroll?: boolean;
+  shallow?: boolean;
+  prefetch?: boolean;
+  locale?: string | false;
+  className?: string;
+}
+
+const NavLink: React.FC<NavLinkProps> = ({ href, children, ...props }) => {
+  const markerRef = useRef<HTMLDivElement>(null);
+
+  const indicator = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (markerRef.current && e.currentTarget instanceof HTMLElement) {
+      markerRef.current.style.left = `${e.currentTarget.offsetLeft}px`;
+      markerRef.current.style.width = `${e.currentTarget.offsetWidth}px`;
+      markerRef.current.style.opacity = "1";
+    }
+  };
+
+  const hideIndicator = () => {
+    if (markerRef.current) {
+      markerRef.current.style.opacity = "0";
+    }
+  };
+
+  return (
+    <>
+      <Link
+        className={cn(styles.navLink, props.className)}
+        href={href}
+        onMouseEnter={indicator}
+        onMouseLeave={hideIndicator}
+        {...props}
+      >
+        {children}
+      </Link>
+      <div ref={markerRef} className={cn(styles.marker)} />
+    </>
+  );
+};
+
+export default NavLink;
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/card/card.tsx ---
+
+import MotionContainer from "@/components/containers/motioncontainer/motionContainer";
+import React from "react";
+import styles from "./card.module.css";
+import { MotionContainerProps } from "../../containers/motioncontainer/motionContainer";
+import { cn } from "../../../lib/utils/cn";
+
+interface CardProps extends MotionContainerProps {
+  cols?: string;
+  whileHover?: any;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
+}
+
+export const Card = React.forwardRef<HTMLDivElement, CardProps>(
+  ({ children, ...props }, ref) => {
+    return (
+      <MotionContainer
+        ref={ref}
+        {...props}
+        className={cn(styles.card, props.className)}
+      >
+        {children}
+      </MotionContainer>
+    );
+  },
+);
+Card.displayName = "Card";
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/carousel/carousel.tsx ---
+
+import { IContainer } from "@/lib/interfaces/interfaces";
+import { cn } from "@/lib/utils/cn";
+import styles from "./carousel.module.css";
+
+const carousel: React.FC<IContainer> = ({ children, className }) => {
+  return <div className={cn(styles.carousel, className)}>{children}</div>;
+};
+
+export default carousel;
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/button/backButton.tsx ---
+
+import { IButton } from "@/lib/interfaces/interfaces";
+import styles from "./button.module.css";
+import { cn } from "@/lib/utils/cn";
+
+interface BackProps extends IButton {
+  onBack: any;
+}
+const BackButton: React.FC<BackProps> = ({
+  onBack,
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <button
+      onClick={onBack}
+      className={cn(styles.backButton, className)}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default BackButton;
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/button/arrowButton.tsx ---
+
+import { IButton } from "@/lib/interfaces/interfaces";
+import styles from "./button.module.css";
+import { cn } from "../../../lib/utils/cn";
+
+interface ArrowButtonProps extends IButton {
+  buttonType: any;
+}
+const ArrowButton: React.FC<ArrowButtonProps> = ({
+  children,
+  className,
+  buttonType,
+  ...props
+}) => {
+  return (
+    <button
+      onClick={buttonType}
+      id={props.id}
+      className={cn(styles.arrowButton, {
+        [styles.prev]: className === "prev",
+        [styles.next]: className === "next",
+      })}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default ArrowButton;
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/button/button.tsx ---
+
+import React from "react";
+import styles from "./button.module.css";
+import { cn } from "@/lib/utils/cn";
+import { IButton } from "@/lib/interfaces/interfaces";
+
+interface ButtonProps extends IButton {
+  $primary?: boolean;
+  $secondary?: boolean;
+}
+
+const Button: React.FC<ButtonProps> = ({
+  $primary,
+  $secondary,
+  children,
+  className,
+  ...props
+}) => {
+  return (
+    <button
+      className={cn(
+        styles.button,
+        {
+          [styles.primary]: $primary,
+          [styles.secondary]: $secondary,
+        },
+        "px-[2rem] py-[1rem]",
+        className,
+      )}
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
+export default Button;
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/logo/logo.tsx ---
+
+"use client";
+import Container from "@/components/containers/container/container";
+import { logoIconGold } from "../../../../public/assets";
+import Image from "next/image";
+export default function Logo() {
+  return (
+    <Container className="flex items-end p-[2rem]">
+      <Image
+        className="w-[4rem]"
+        height={476}
+        width={487}
+        src={logoIconGold}
+        alt="logo"
+      />
+      <p className="ml-1  hidden  text-6xl font-bold tracking-tighter sm:block">
+        <span>Marlon</span>
+        <span className="text-color-gold-3">Dev</span>
+        <span>.</span>
+        <span>io</span>
+      </p>
+    </Container>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/headers/motionHeader/motionHeader.tsx ---
+
+import { IMotionHeader } from "@/lib/interfaces/interfaces";
+import { cn } from "@/lib/utils/cn";
+import { motion } from "framer-motion";
+
+const MotionComponents = {
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+};
+
+const MotionHeader: React.FC<IMotionHeader> = ({
+  className,
+  headerType,
+  ...props
+}) => {
+  const MotionComponent = MotionComponents[headerType];
+  return (
+    <MotionComponent {...props} className={cn(className)}>
+      {props.children}
+    </MotionComponent>
+  );
+};
+
+export default MotionHeader;
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/headers/glowingHeader/glowingHeader.tsx ---
+
+import { cn } from "@/lib/utils/cn";
+import styles from "./glowingHeader.module.css";
+
+export const GlowingHeader = () => {
+  return (
+    <div className="flex justify-center">
+      <h2 data-text={"Glowing Header"} className={cn(styles.glowingHeader)}>
+        Glowing Header
+      </h2>
+    </div>
+  );
+};
+
+
+--- /Users/marlon/Development/portfolio/src/components/ui/textSlider/textSlider.tsx ---
+
+"use client";
+import { motion } from "framer-motion";
+import styles from "./textSlider.module.css";
+import { MotionComponentProps } from "@/lib/interfaces/interfaces";
+import { cn } from "../../../lib/utils/cn";
+const sliderVariants = {
+  initial: { x: 0 },
+  animate: {
+    x: "-700%",
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror" as const,
+      duration: 20,
+      ease: "linear",
+    },
+  },
+};
+
+const TextSlider: React.FC<MotionComponentProps> = ({
+  className,
+  variants,
+  initial,
+  animate,
+  children,
+  ...props
+}) => {
+  return (
+    <motion.div
+      variants={sliderVariants}
+      initial="initial"
+      animate="animate"
+      className={cn(styles.textSlider, className)}
+      {...props}
+    >
+      {children}
+    </motion.div>
+  );
+};
+export default TextSlider;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/about/about.tsx ---
+
+"use client";
+import Section from "@/components/containers/section/section";
+import styles from "./about.module.css";
+import Wrapper from "@/components/containers/wrapper/wrapper";
+import { cn } from "@/lib/utils/cn";
+import { Card } from "@/components/ui/card/card";
+import Grid from "@/components/containers/grid/grid";
+
+export default function About() {
+  return (
+    <Section id="about" $containerPadding className={cn(styles.about)}>
+      <Wrapper>
+        <h2>About</h2>
+      </Wrapper>
+    </Section>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/mission/mission.tsx ---
+
+"use client";
+import { IContainer } from "@/lib/interfaces/interfaces";
+import React from "react";
+import Section from "@/components/containers/section/section";
+import Carousel from "@/components/ui/carousel/carousel";
+import MissionItemList from "./missionItemList/missionItemList";
+import Arrows from "./arrows/arrows";
+import MotionHeader from "@/components/ui/headers/motionHeader/motionHeader";
+import Wrapper from "@/components/containers/wrapper/wrapper";
+import styles from "./mission.module.css";
+import { cn } from "@/lib/utils/cn";
+import carousel from "../../ui/carousel/carousel";
+import MissionCarousel from "./missionCarousel/missionCarousel";
+
+const variants = {
+  hidden: { opacity: 0, x: -100 },
+  whileInView: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 1, staggerChildren: 2, delay: 0.5 },
+  },
+};
+const variants2 = {
+  hidden: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, transition: { duration: 1.5, delay: 0.5 } },
+  },
+};
+const Mission: React.FC<IContainer> = ({ ...props }) => {
+  return (
+    <Section
+      id="mission"
+      className={cn(
+        "overflow-x-hidden bg-gradient-to-green py-[9rem]",
+        styles.mission,
+      )}
+    >
+      <Wrapper variants={variants} initial="hidden" whileInView="whileInView">
+        <MotionHeader
+          variants={variants}
+          initial="hidden"
+          whileInView="whileInView"
+          headerType="h2"
+          className="mb-20 font-semibold"
+        >
+          My Mission
+        </MotionHeader>
+        <MissionCarousel />
+      </Wrapper>
+    </Section>
+  );
+};
+
+export default Mission;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/mission/arrows/arrows.tsx ---
+
+import ArrowButton from "@/components/ui/button/arrowButton";
+import Container from "@/components/containers/container/container";
+import BackButton from "@/components/ui/button/backButton";
+import styles from "../mission.module.css";
+import { cn } from "@/lib/utils/cn";
+
+interface ArrowsProps {
+  onNext: any;
+  onPrev: any;
+  onBack: any;
+}
+
+const Arrows: React.FC<ArrowsProps> = ({ onBack, onNext, onPrev }) => {
+  return (
+    <Container className={cn(styles.arrowContainer)}>
+      <ArrowButton buttonType={onPrev} className={cn(styles.prev, "prev")}>
+        &lt;
+      </ArrowButton>
+      <BackButton className={cn(styles.back)} onBack={onBack}>
+        Go Back &#8599;
+      </BackButton>
+      <ArrowButton buttonType={onNext} className={cn(styles.next, "next")}>
+        &gt;{" "}
+      </ArrowButton>
+    </Container>
+  );
+};
+
+export default Arrows;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/mission/missionCarousel/missionCarousel.tsx ---
+
+import Carousel from "@/components/ui/carousel/carousel";
+import { cn } from "@/lib/utils/cn";
+import Arrows from "../arrows/arrows";
+import MissionItemList from "../missionItemList/missionItemList";
+import { IContainer } from "@/lib/interfaces/interfaces";
+import styles from "../mission.module.css";
+import React from "react";
+import { missionItems as initialMissionItems } from "@/constants/missionItems";
+import { useMissionCarousel } from "@/lib/hooks/missionHooks";
+
+const MissionCarousel: React.FC<IContainer> = ({
+  children,
+  className,
+  ...props
+}) => {
+  const { missionItems, nextSlide, prevSlide, showSeeMore, clicked, onBack } =
+    useMissionCarousel(initialMissionItems);
+
+  return (
+    <Carousel
+      {...props}
+      className={cn(styles.carousel, {
+        [styles.next]: clicked === "next",
+        [styles.prev]: clicked === "prev",
+        [styles.showDetail]: clicked === "seeMore",
+      })}
+    >
+      <MissionItemList
+        className={cn(styles.list)}
+        missionItems={missionItems}
+        onSeeMore={showSeeMore}
+      />
+      <Arrows onBack={onBack} onNext={nextSlide} onPrev={prevSlide} />
+    </Carousel>
+  );
+};
+export default MissionCarousel;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/mission/missionItemList/missionItemList.tsx ---
+
+import Container from "@/components/containers/container/container";
+import { missionItems } from "@/constants/missionItems";
+import MissionItem from "./missionItem/missionItem";
+import styles from "../mission.module.css";
+import { cn } from "@/lib/utils/cn";
+
+interface MissionItemListProps {
+  className?: string;
+  missionItems: typeof missionItems;
+  onSeeMore: () => void;
+}
+const MissionItemList = ({
+  className,
+  missionItems,
+  onSeeMore,
+}: MissionItemListProps) => {
+  return (
+    <Container className={cn(className)}>
+      {missionItems.map((missionItem, index) => (
+        <MissionItem key={index} {...missionItem} onSeeMore={onSeeMore} />
+      ))}
+    </Container>
+  );
+};
+
+export default MissionItemList;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/mission/missionItemList/missionItem/missionItem.tsx ---
+
+import Button from "@/components/ui/button/button";
+import Image, { StaticImageData } from "next/image";
+import styles from "../../mission.module.css";
+import { cn } from "@/lib/utils/cn";
+import { IMissionItem } from "../../../../../lib/interfaces/interfaces";
+import Mission from "../../mission";
+
+interface MissionItemProps extends IMissionItem {
+  onSeeMore: () => void;
+}
+const MissionItem: React.FC<MissionItemProps> = ({
+  className,
+  onSeeMore,
+  ...props
+}) => {
+  return (
+    <article className={cn(styles.missionItem, className)}>
+      <Image
+        src={props.url}
+        width={500}
+        height={600}
+        alt={props.description}
+        className={cn(styles.image)}
+      />
+      <div className={cn("flex flex-col gap-4", styles.intro)}>
+        <div
+          className={cn(
+            "title font-[600] uppercase text-color-gold-3",
+            styles.title,
+          )}
+        >
+          {" "}
+          {props.title}
+        </div>
+        <h6 className={(cn("leading-tight"), styles.topic)}>{props.topic}</h6>
+        <div className={cn(styles.description)}>{props.description}</div>
+        <Button
+          onClick={onSeeMore}
+          $secondary
+          className={cn("mt-5 self-start", styles.seeMore)}
+        >
+          Learn More
+        </Button>
+      </div>
+      <div className={cn("flex flex-col", styles.detail)}>
+        <h6 className={cn("title", styles.title)}> {props.detailTitle}</h6>
+        <div className={cn("description", styles.description)}>
+          {props.detailDescription}
+        </div>
+        <div
+          className={cn("specification flex flex-col", styles.specification)}
+        >
+          <div className="border-t-1 mt-8 flex w-full justify-end gap-10 border-t-[1px] border-color-green-light">
+            {props.specification.map((spec, index) => {
+              return (
+                <div
+                  className="max-w-full flex-shrink-0  text-center"
+                  key={index}
+                >
+                  <p
+                    className={cn(
+                      "mt-5 text-[2rem]  font-bold text-color-light-grey",
+                      styles.spec,
+                    )}
+                  >
+                    {spec}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+        <Button
+          $primary
+          className={cn(styles.buttonInfo, "mt-5 self-end font-bold")}
+        >
+          {props.buttonText}
+        </Button>
+      </div>
+    </article>
+  );
+};
+export default MissionItem;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/portfolio/projectParallax.tsx ---
+
+"use client";
+import React from "react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  MotionValue,
+} from "framer-motion";
+import Image, { StaticImageData } from "next/image";
+import Link from "next/link";
+
+export const PortfolioParallax = ({
+  products,
+}: {
+  products: {
+    title: string;
+    link: string;
+    thumbnail: StaticImageData;
+  }[];
+}) => {
+  const firstRow = products.slice(0, 5);
+  const secondRow = products.slice(5, 10);
+  const thirdRow = products.slice(10, 15);
+  const ref = React.useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
+
+  const translateX = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    springConfig,
+  );
+  const translateXReverse = useSpring(
+    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    springConfig,
+  );
+  const rotateX = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [15, 0]),
+    springConfig,
+  );
+  const opacity = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [0.2, 1]),
+    springConfig,
+  );
+  const rotateZ = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [20, 0]),
+    springConfig,
+  );
+  const translateY = useSpring(
+    useTransform(scrollYProgress, [0, 0.2], [-700, 500]),
+    springConfig,
+  );
+  return (
+    <div
+      ref={ref}
+      className="relative flex min-h-[180vh] flex-col  self-auto overflow-x-hidden py-40 antialiased [perspective:1000px] [transform-style:preserve-3d] md:h-[220vh]"
+    >
+      <Header />
+      <motion.div
+        style={{
+          rotateX,
+          rotateZ,
+          translateY,
+          opacity,
+        }}
+        className="mx-auto max-w-[40vw]"
+      >
+        <motion.div className="mb-20 flex flex-row-reverse space-x-20 space-x-reverse">
+          {firstRow.map((product) => (
+            <ProductCard
+              product={product}
+              translate={translateX}
+              key={product.title}
+            />
+          ))}
+        </motion.div>
+        <motion.div className="mb-20 flex  flex-row space-x-20 ">
+          {secondRow.map((product) => (
+            <ProductCard
+              product={product}
+              translate={translateXReverse}
+              key={product.title}
+            />
+          ))}
+        </motion.div>
+        <motion.div className="flex flex-row-reverse space-x-20 space-x-reverse">
+          {thirdRow.map((product) => (
+            <ProductCard
+              product={product}
+              translate={translateX}
+              key={product.title}
+            />
+          ))}
+        </motion.div>
+      </motion.div>
+    </div>
+  );
+};
+
+const headerVariants = {
+  hidden: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: "easeInOut",
+      staggerChildren: 1.2,
+    },
+  },
+};
+export const Header = () => {
+  return (
+    <motion.div
+      variants={headerVariants}
+      initial="hidden"
+      whileInView="whileInView"
+      className="relative left-0 top-0 mx-auto w-full max-w-7xl px-4  py-20 md:py-40"
+    >
+      <motion.h2 className="text-2xl font-bold md:text-7xl dark:text-white">
+        Unleash <br /> Your Creativity
+      </motion.h2>
+      <motion.p className="mt-8 text-[2rem] md:text-[2.5rem] dark:text-neutral-200">
+        I build beautiful products with the latest technologies and frameworks.
+        I am a passionate Self-taught developer with a strong focus on client
+        satisfaction and delivering high-quality products.
+      </motion.p>
+    </motion.div>
+  );
+};
+
+export const ProductCard = ({
+  product,
+  translate,
+}: {
+  product: {
+    title: string;
+    link: string;
+    thumbnail: StaticImageData;
+  };
+  translate: MotionValue<number>;
+}) => {
+  return (
+    <motion.div
+      style={{
+        x: translate,
+      }}
+      whileHover={{
+        y: -20,
+      }}
+      key={product.title}
+      className="group/product relative h-96 w-[30rem] flex-shrink-0"
+    >
+      <Link
+        href={product.link}
+        className="block group-hover/product:shadow-2xl "
+      >
+        <Image
+          src={product.thumbnail}
+          height="600"
+          width="600"
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          alt={product.title}
+        />
+      </Link>
+      <div className="pointer-events-none absolute inset-0 h-full w-full bg-black opacity-0 group-hover/product:opacity-80"></div>
+      <h3 className="absolute bottom-4 left-4 text-[3rem] text-white opacity-0 group-hover/product:opacity-100">
+        {product.title}
+      </h3>
+    </motion.div>
+  );
+};
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/portfolio/portfolio.tsx ---
+
+"use client";
+import React, { useRef } from "react";
+import Image from "next/image";
+import { attesticoPortfolioImage, datingApp } from "../../../../public/assets";
+import Section from "@/components/containers/section/section";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { PortfolioParallax } from "./projectParallax";
+import { portfolioItems } from "@/constants/portfolioItems";
+import Wrapper from "@/components/containers/wrapper/wrapper";
+
+const childrenVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+export function Portfolio() {
+  return (
+    <Section className=" bg-gradient-to-green pb-20">
+      <PortfolioParallax products={portfolioItems} />
+    </Section>
+  );
+}
+
+export default Portfolio;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/hero/hero.tsx ---
+
+"use client";
+import Section from "@/components/containers/section/section";
+import styles from "./hero.module.css";
+import HeroHeading from "./heroHeading/heroHeading";
+import { cn } from "@/lib/utils/cn";
+import { Slider } from "./slider/slider";
+import Buttons from "./buttons/buttons";
+import Wrapper from "@/components/containers/wrapper/wrapper";
+
+export interface HeroProps {
+  className?: string;
+}
+export default function Hero({ className }: HeroProps) {
+  return (
+    <Section
+      className={cn(
+        styles.hero,
+        "relative flex flex-col justify-center gap-10 bg-gradient-from-green",
+      )}
+    >
+      <HeroHeading />
+      <Buttons />
+      <Slider />
+    </Section>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/hero/buttons/buttons.tsx ---
+
+import MotionContainer from "@/components/containers/motioncontainer/motionContainer";
+import Button from "@/components/ui/button/button";
+
+const variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 2.5,
+      duration: 2,
+    },
+  },
+};
+const Buttons = () => {
+  return (
+    <MotionContainer
+      className="flex items-center justify-center gap-4"
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+    >
+      <Button
+        $primary
+        className=" transition-all duration-1000"
+        onClick={() => console.log("i got clicked")}
+      >
+        Get Started
+      </Button>
+      <Button $secondary className="duration-1000 hover:transition-all">
+        Get Started
+      </Button>
+    </MotionContainer>
+  );
+};
+
+export default Buttons;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/hero/slider/slider.tsx ---
+
+import TextSlider from "@/components/ui/textSlider/textSlider";
+import styles from "../../../ui/textSlider/textSlider.module.css";
+import { cn } from "../../../../lib/utils/cn";
+
+export const Slider = () => {
+  return (
+    <TextSlider>
+      <p className={cn("text-white", styles.paragraph)}>
+        FullStack Developer Innovator Coach
+      </p>
+    </TextSlider>
+  );
+};
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/hero/heroHeading/heroHeading.tsx ---
+
+import { motion } from "framer-motion";
+import Wrapper from "@/components/containers/wrapper/wrapper";
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 0.5,
+      duration: 2,
+      staggerChildren: 1.5,
+      ease: "easeInOut",
+    },
+  },
+};
+export default function HeroHeading() {
+  return (
+    <Wrapper className="flex flex-col items-center justify-center text-center">
+      <motion.h1 className="flex flex-col font-medium  leading-snug tracking-normal ">
+        <motion.span
+          variants={fadeIn}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 3 }}
+        >
+          Your Business{" "}
+          <motion.span
+            initial={{
+              color: "rgba(var(--color-green-light))",
+            }}
+            animate={{
+              color: "rgb(var(--color-green-light))",
+            }}
+            transition={{ delay: 2, ease: "easeInOut", duration: 3 }}
+          >
+            Vision
+          </motion.span>{" "}
+        </motion.span>
+        <motion.span
+          variants={fadeIn}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 2, duration: 3 }}
+        >
+          My FullStack{" "}
+          <motion.span
+            animate={{ color: "rgb(var(--color-gold-5))", fontWeight: 700 }}
+            initial={{ color: "rgb(var(--color-green-1))" }}
+            transition={{ delay: 2, ease: "easeInOut", duration: 3 }}
+          >
+            Mission
+          </motion.span>
+        </motion.span>
+      </motion.h1>
+    </Wrapper>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/services/services.tsx ---
+
+import Section from "@/components/containers/section/section";
+import Wrapper from "@/components/containers/wrapper/wrapper";
+import UpperText from "./UpperText/UpperText";
+import MainTitle from "./MainTitle/MainTitle";
+import { cn } from "@/lib/utils/cn";
+import ServicesPoints from "./ServicesPoints/ServicesPoints";
+
+const variants = {
+  initial: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeInOut" },
+  },
+};
+export default function Services() {
+  return (
+    <Section
+      $containerPadding
+      className={cn("min-h-[50vh] flex-col justify-center gap-[10vh]")}
+    >
+      <Wrapper
+        // variants={variants}
+        // initial="initial"
+        // whileInView="whileInView"
+        className="flex flex-col justify-center gap-[15vh]"
+      >
+        <UpperText />
+        <MainTitle />
+        <ServicesPoints />
+      </Wrapper>
+    </Section>
+  );
+}
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/services/UpperText/UpperText.tsx ---
+
+import MotionContainer from "@/components/containers/motioncontainer/motionContainer";
+import { fadeInOnView } from "@/lib/motionTemplates";
+import { motion } from "framer-motion";
+const UpperText = () => {
+  return (
+    <MotionContainer
+      className="relative  hidden items-center justify-end sm:flex"
+      variants={fadeInOnView}
+      whileInView="whileInView"
+      initial="initial"
+    >
+      <motion.p className="absolute right-[10%] text-[1.8rem]   ">
+        Empowering your brand&apos;s evolution
+        <br /> with tech-inspired resilience
+      </motion.p>
+      <hr className=" right-[-30%] hidden min-w-[30%] sm:block lg:absolute lg:min-w-[50%]" />
+    </MotionContainer>
+  );
+};
+
+export default UpperText;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/services/MainTitle/MainTitle.tsx ---
+
+import Button from "@/components/ui/button/button";
+import { motion } from "framer-motion";
+
+const variants = {
+  initial: { opacity: 0, y: 100 },
+  whileInView: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 1, ease: "easeInOut" },
+  },
+};
+const MainTitle = () => {
+  return (
+    <motion.div
+      variants={variants}
+      initial="initial"
+      className="flex flex-col justify-center"
+      whileInView={"whileInView"}
+      viewport={{ once: true }}
+    >
+      <div>
+        {/* <Button $secondary className="cursor-not-allowed">
+          btn
+        </Button> */}
+        <h2>
+          <b>Innovative</b>{" "}
+          <span className="font-[300] text-color-green-light">Paths</span>
+        </h2>
+      </div>
+      <div className="">
+        <h2>
+          <b>Transformative</b>{" "}
+          <span className="font-[300] text-color-green-light">Outcomes</span>
+        </h2>
+        <Button $primary className="cursor-none">
+          What I do?
+        </Button>
+      </div>
+    </motion.div>
+  );
+};
+
+export default MainTitle;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/services/ServicesPoints/ServicesPoints.tsx ---
+
+"use client";
+import { services } from "@/constants/services";
+import ServiceItem from "./service/serviceItem";
+import Grid from "@/components/containers/grid/grid";
+// import "./ServicesPoints.scss";
+
+// import { useState } from "react";
+// import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+// import Button from "@/components/ui/button/button";
+
+// interface serviceProps {
+//   service: {
+//     title: string;
+//     icon: string;
+//     description: string;
+//     index: number;
+//   };
+//   staggerChildren?: number;
+//   delayChildren?: number;
+// }
+
+// const hoverStyle = {
+//   boxShadow: "inset 0 0 25px 25px #57ffc6",
+//   color: "black",
+//   transition: "box-shadow 0.5s ease-in-out",
+// };
+
+// const Service = ({ service, staggerChildren, delayChildren }: serviceProps) => {
+//   const [isHovered, setIsHovered] = useState(false);
+//   const handleHover = () => {
+//     setIsHovered(!isHovered);
+//   };
+//   return (
+//     <motion.article className="services__points__service">
+//       <div onMouseLeave={handleHover} onMouseEnter={handleHover}>
+//         <h6>{service.title}</h6>
+//         <img src={service.icon} alt={service.title} />
+//         <p>{service.description}</p>
+//         <Button $primary>GO</Button>
+//       </div>
+//     </motion.article>
+//   );
+// };
+// interface ServicesPointsProps {
+//   staggerChildren?: number;
+//   delayChildren?: number;
+// }
+// const ServicesPoints = ({
+//   staggerChildren,
+//   delayChildren,
+// }: ServicesPointsProps) => {
+//   const { scrollYProgress, scrollY } = useScroll();
+//   useMotionValueEvent(scrollY, "change", (latest) => {
+//     console.log("page Scroll", latest);
+//   });
+//   return (
+//     <>
+//       <motion.div className="progress" style={{ scaleX: scrollYProgress }} />
+//       <motion.div className="services__points"></motion.div>
+//     </>
+//   );
+// };
+
+const servicePointVariants = (index?: number) => {
+  return {
+    initial: { opacity: 0, y: 100 },
+    whileInView: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1,
+        ease: "easeInOut",
+        delay: index ? index * 0.2 : 0,
+      },
+    },
+  };
+};
+// export default ServicesPoints;
+const ServicesPoints = () => {
+  return (
+    <Grid cols={"gridCol4"}>
+      {services.map((service, index) => {
+        return (
+          <ServiceItem
+            variants={servicePointVariants(index)}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            service={service}
+            key={service.id}
+          />
+        );
+      })}
+    </Grid>
+  );
+};
+
+export default ServicesPoints;
+
+
+--- /Users/marlon/Development/portfolio/src/components/sections/services/ServicesPoints/service/serviceItem.tsx ---
+
+"use client";
+import Button from "@/components/ui/button/button";
+import styles from "./serviceItem.module.css";
+import { Card } from "@/components/ui/card/card";
+import { MotionProps } from "framer-motion";
+import Image from "next/image";
+import { cn } from "@/lib/utils/cn";
+import { useState } from "react";
+
+interface ServiceProps extends MotionProps {
+  service: {
+    icon: string;
+    title: string;
+    description: string;
+  };
+  initial: string;
+  animate?: string;
+  variants: any;
+  transition?: any;
+  whileInView: any;
+}
+
+const hoverState = {
+  animate: {
+    scale: 1.1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+const ServiceItem = ({
+  service,
+  variants,
+  initial,
+  animate,
+  transition,
+  whileInView,
+}: ServiceProps) => {
+  const [hover, setHover] = useState(false);
+
+  return (
+    <Card
+      whileHover={hoverState.animate}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      variants={variants}
+      transition={transition}
+      initial={initial}
+      animate={animate}
+      whileInView={whileInView}
+      viewport={{ once: true }}
+      className={cn(
+        "cursor-pointer gap-5 px-10 py-20 shadow-inset-green-pre-hover",
+        styles.serviceItem,
+      )}
+    >
+      <Image
+        height={"30"}
+        width={"30"}
+        src={service.icon}
+        alt={service.description}
+        className="col-span-1 col-start-1 row-span-1 row-start-1 min-h-12 min-w-12"
+      />
+      <h6
+        className={cn("col-span-2 col-start-2 font-bold lg:text-[2.2rem]", {})}
+      >
+        {service.title}
+      </h6>
+      <p
+        className={cn("col-span-2 col-start-2 self-start lg:text-[1.8rem]", {})}
+      >
+        {service.description}
+      </p>
+      <Button
+        className={cn(
+          " col-start-2 self-end justify-self-start bg-color-gold-3 px-20 py-2 font-medium",
+          {
+            "bg-transparent shadow-inset-green-pre-hover": hover,
+          },
+        )}
+      >
+        <p
+          className={cn("transition-colors duration-1000", {
+            "text-color-gold-3": hover,
+          })}
+        >
+          GO
+        </p>
+      </Button>
+      {/* TODO PLACE BUTTON */}
+    </Card>
+  );
+};
+
+export default ServiceItem;
+
+
+--- /Users/marlon/Development/portfolio/src/components/containers/motioncontainer/motionContainer.tsx ---
+
+"use client";
+import { AnimationDefinition, MotionProps, motion } from "framer-motion";
+import React from "react";
+import { Variants } from "framer-motion";
+import { cn } from "@/lib/utils/cn";
+
+export interface MotionContainerProps extends MotionProps {
+  children: React.ReactNode;
+  className?: string;
+  variants?: Variants;
+  initial?: string | Variants;
+  animate?: string | Variants;
+  whileInView?: any;
+  exit?: string | Variants;
+  transition?: any;
+  whileHover?: any;
+  onMouseEnter?: any;
+  onMouseLeave?: any;
+}
+
+const MotionContainer = React.forwardRef<HTMLDivElement, MotionContainerProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <motion.div ref={ref} className={cn(className)} {...props}>
+        {children}
+      </motion.div>
+    );
+  },
+);
+MotionContainer.displayName = "MotionContainer";
+export default MotionContainer;
+
+
+--- /Users/marlon/Development/portfolio/src/components/containers/section/section.tsx ---
+
+"use client";
+import { Variants } from "framer-motion";
+import React from "react";
+import styles from "./section.module.css";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils/cn";
+
+interface SectionProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  className?: string;
+  $containerPadding?: boolean;
+  variants?: Variants;
+  initial?: string | boolean;
+  animate?: string | boolean;
+  id?: string;
+}
+const Section = React.forwardRef<HTMLDivElement, SectionProps>(
+  (
+    { children, className, $containerPadding, variants, initial, animate, id },
+    ref,
+  ) => {
+    return (
+      <motion.section
+        // TODO: fix the motion react fc component
+        className={cn(
+          {
+            [styles.section]: $containerPadding,
+          },
+          className,
+        )}
+        animate={animate}
+        initial={initial}
+        variants={variants}
+        ref={ref}
+        id={id}
+      >
+        {children}
+      </motion.section>
+    );
+  },
+);
+
+Section.displayName = "Section";
+export default Section;
+
+
+--- /Users/marlon/Development/portfolio/src/components/containers/wrapper/wrapper.tsx ---
+
+"use client";
+import React from "react";
+import styles from "./wrapper.module.css";
+import clsx from "clsx";
+import { motion } from "framer-motion";
+
+import { cn } from "@/lib/utils/cn";
+
+interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  className?: string;
+  variants?: any;
+  initial?: string | boolean;
+  animate?: string | boolean;
+  whileInView?: any;
+}
+
+const Wrapper = React.forwardRef<HTMLDivElement, WrapperProps>(
+  ({ variants, initial, animate, children, className, whileInView }, ref) => {
+    return (
+      <motion.div
+        className={cn(styles.wrapper, className)}
+        animate={animate}
+        initial={initial}
+        variants={variants}
+        ref={ref}
+        whileInView={whileInView}
+      >
+        {children}
+      </motion.div>
+    );
+  },
+);
+Wrapper.displayName = "Wrapper";
+export default Wrapper;
+
+
+--- /Users/marlon/Development/portfolio/src/components/containers/container/container.tsx ---
+
+import React from "react";
+import styles from "./container.module.css";
+import { cn } from "@/lib/utils/cn";
+import { IContainer } from "@/lib/interfaces/interfaces";
+
+const Container: React.FC<IContainer> = ({ children, className }) => {
+  return <div className={cn(styles.container, className)}>{children}</div>;
+};
+export default Container;
+
+
+--- /Users/marlon/Development/portfolio/src/components/containers/grid/grid.tsx ---
+
+import { cn } from "@/lib/utils/cn";
+import styles from "./grid.module.css";
+import clsx from "clsx";
+import { Variants, animate, motion } from "framer-motion";
+import React from "react";
+
+interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode;
+  className?: string;
+  variants?: Variants;
+  initial?: string | boolean;
+  animate?: string | boolean;
+  cols?: string;
+  whileInView?: any;
+}
+
+const Grid = React.forwardRef<HTMLDivElement, GridProps>(
+  (
+    { animate, cols, variants, initial, children, className, whileInView },
+    ref,
+  ) => {
+    return (
+      <motion.div
+        className={cn(styles.grid, className, {
+          [styles.gridCol1]: cols === "gridCol1",
+          [styles.gridCol2]: cols === "gridCol2",
+          [styles.gridCol3]: cols === "gridCol3",
+          [styles.gridCol4]: cols === "gridCol4",
+          [styles.gridCol5]: cols === "gridCol5",
+        })}
+        animate={animate}
+        initial={initial}
+        variants={variants}
+        whileInView={whileInView}
+        ref={ref}
+      >
+        {children}
+      </motion.div>
+    );
+  },
+);
+Grid.displayName = "Grid";
+export default Grid;
+
+
+--- /Users/marlon/Development/portfolio/src/lib/interfaces/interfaces.tsx ---
+
+import { MotionProps } from "framer-motion";
+import { StaticImageData } from "next/image";
+
+export interface MotionComponentProps extends MotionProps {
+  className?: string;
+  children: React.ReactNode;
+}
+
+export interface IContainer extends React.HTMLAttributes<HTMLDivElement> {
+  className?: string;
+}
+
+export interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  className?: string;
+  children: React.ReactNode;
+}
+
+export interface IMotionHeader extends MotionComponentProps {
+  className?: string;
+  headerType: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+  children: React.ReactNode;
+}
+
+export interface IMissionItem extends IContainer {
+  url: StaticImageData;
+  title: string;
+  topic: string;
+  description: string;
+  detailTitle: string;
+  detailDescription: string;
+  specification: string[];
+  className?: string;
+  buttonText: string;
+}

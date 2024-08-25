@@ -5,10 +5,12 @@ import Logo from "@/components/ui/logo/logo";
 import { cn } from "@/lib/utils/cn";
 import NavLinks from "./navLinks/navLinks";
 import { useState, useEffect } from "react";
+import HamburgerMenu from "../hamburger-menu";
 
 export default function Navbar() {
   const [show, setShow] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isFocus, setIsFocus] = useState(false);
 
   const controlNavbar = () => {
     if (window.scrollY > lastScrollY) {
@@ -51,7 +53,16 @@ export default function Navbar() {
           "relative hidden  min-h-[10vh] lg:flex",
         )}
       >
+
         <NavLinks />
+      </Container>
+
+      <Container className={cn(styles.linkContainer, "flex flex-col self-end lg:hidden")}>
+        <HamburgerMenu onClick={() => setIsFocus(!isFocus)} className="self-end relative" />
+
+        <div className={`absolute flex top-[10vh] flex-col ${isFocus ? "" : "hidden"} transition-all duration-1000 ease-in-out`}>
+          <NavLinks />
+        </div>
       </Container>
     </nav>
   );

@@ -9,6 +9,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      padding: {
+        "responsive-padding": "calc(8px + 1.5625vw)",
+      },
       colors: {
         "color-black": "rgb(var(--color-black))",
         "color-green-light": "rgb(var(--color-green-light))",
